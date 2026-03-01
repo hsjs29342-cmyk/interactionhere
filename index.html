@@ -58,23 +58,20 @@ opacity:1;
 }
 }
 
-/* NEW: SMALL FLOATING ANIMATION */
-@keyframes smallFloat {
+/* NEW: FLOATING ANIMATION FOR HOME CONTENT ONLY */
+@keyframes homeFloat {
     0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-12px); }
     100% { transform: translateY(0px); }
 }
 
-/* APPLYING FLOAT TO ELEMENTS */
-section h1, section h2, section p, .btn, iframe {
-    animation: smallFloat 3s ease-in-out infinite;
-    display: inline-block; /* Required for transform to work perfectly on some elements */
+#home h1, #home p, #home .btn {
+    display: inline-block;
+    animation: homeFloat 4s ease-in-out infinite;
 }
 
-/* Staggering the floats so they don't move all at once */
-section p { animation-delay: 0.5s; }
-.btn { animation-delay: 1s; }
-iframe:nth-child(even) { animation-duration: 4s; }
+#home p { animation-delay: 0.5s; }
+#home .btn { animation-delay: 1s; }
 
 /* NAVBAR */
 nav{
@@ -254,7 +251,7 @@ padding:6px 8px;
 
 <nav>
 <div class="logo">
-<img src="https://yt3.googleusercontent.com/gUJZ4pWALV-SjNGN-RBgK35c1lTvCYB27HDFz3snXv6J6syUXLRuhOt-c57XKsE7YyaOLf2xyQ=s160-c-k-c0x00ffffff-no-rj">
+<img src="https://i.imgur.com/7k12EPD.png">
 <span>DV Villain</span>
 </div>
 
@@ -270,8 +267,10 @@ padding:6px 8px;
 <section id="home">
 <h1>Welcome to DV Villain</h1>
 <p>Gaming | Entertainment | Streaming</p>
-<a href="https://www.youtube.com/@DV_VILLAIN_YT" class="btn">Subscribe Now</a>
+<div>
+<a href="#" class="btn">Subscribe Now</a>
 <a href="https://instagram.com" target="_blank" class="btn">Follow on Instagram</a>
+</div>
 </section>
 
 <section id="about">
