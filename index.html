@@ -19,45 +19,36 @@
 }
 
 body{
-    background: radial-gradient(circle at top, #1a0000, #000000);
+    background:#000;
     color:white;
-    overflow-x:hidden;
 }
 
 /* ===== NAVBAR ===== */
 nav{
     position:fixed;
     width:100%;
-    padding:20px 50px;
+    padding:20px 40px;
     display:flex;
     justify-content:space-between;
     align-items:center;
     background:rgba(0,0,0,0.85);
-    backdrop-filter:blur(12px);
+    backdrop-filter:blur(10px);
     z-index:1000;
-    border-bottom:1px solid #ff000033;
 }
 
 .logo{
     display:flex;
     align-items:center;
-    position:relative;
 }
 
 .logo img{
-    width:70px;
-    height:70px;
+    width:65px;
+    height:65px;
     border-radius:50%;
     object-fit:cover;
-    margin-right:15px;
+    margin-right:12px;
     border:3px solid #ff0000;
-    box-shadow:0 0 15px #ff0000;
-    transition:0.4s;
-}
-
-.logo img:hover{
-    transform:scale(1.1);
-    box-shadow:0 0 35px #ff0000;
+    box-shadow:0 0 20px #ff0000;
 }
 
 nav ul{
@@ -66,7 +57,7 @@ nav ul{
 }
 
 nav ul li{
-    margin-left:30px;
+    margin-left:25px;
 }
 
 nav ul li a{
@@ -76,54 +67,74 @@ nav ul li a{
 }
 
 nav ul li a:hover{
-    color:#ff1a1a;
-    text-shadow:0 0 10px #ff0000;
+    color:#ff0000;
 }
 
 /* ===== SECTIONS ===== */
 section{
     min-height:100vh;
-    padding-top:120px;
+    padding:140px 20px 80px 20px;
     display:flex;
     justify-content:center;
     align-items:center;
     flex-direction:column;
     text-align:center;
-    padding-left:20px;
-    padding-right:20px;
 }
 
-/* ===== HERO ===== */
-.hero h2{
-    font-size:60px;
-    color:#ff1a1a;
-    text-shadow:0 0 25px #ff0000;
-    animation:glow 2s infinite alternate;
+/* ===== HOME ===== */
+.hero{
+    background:linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.85)),
+    url("https://images.unsplash.com/photo-1538481199705-c710c4e965fc");
+    background-size:cover;
+    background-position:center;
 }
 
-.hero p{
-    margin-top:20px;
-    max-width:800px;
-    color:#cccccc;
+.home-container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:40px;
+    max-width:1100px;
+}
+
+/* Block styling */
+.home-box{
+    flex:1 1 450px;
+    background:rgba(0,0,0,0.7);
+    padding:40px;
+    border-radius:20px;
+    border:1px solid #ff000033;
+    box-shadow:0 0 25px #ff000022;
+}
+
+.home-box h2{
+    color:#ff0000;
+    margin-bottom:20px;
+}
+
+.home-box p{
     line-height:1.7;
+    color:#ccc;
 }
 
-.hero button{
-    margin-top:40px;
-    padding:15px 40px;
-    border:none;
+.home-box button,
+.home-box a{
+    display:inline-block;
+    margin-top:25px;
+    padding:12px 30px;
     background:#ff0000;
     color:white;
-    font-weight:bold;
+    text-decoration:none;
+    border:none;
     border-radius:30px;
     cursor:pointer;
     transition:0.3s;
-    box-shadow:0 0 15px #ff0000;
 }
 
-.hero button:hover{
-    transform:scale(1.1);
-    box-shadow:0 0 30px #ff0000;
+.home-box button:hover,
+.home-box a:hover{
+    box-shadow:0 0 20px #ff0000;
+    transform:scale(1.05);
 }
 
 /* ===== ABOUT ===== */
@@ -132,99 +143,24 @@ section{
 }
 
 .about h2{
-    color:#ff1a1a;
+    color:#ff0000;
     margin-bottom:30px;
-    text-shadow:0 0 15px #ff0000;
 }
 
-.about-content{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    align-items:center;
-    gap:40px;
-    max-width:1200px;
-}
-
-.about-text{
-    flex:1 1 500px;
+.about p{
+    max-width:900px;
     line-height:1.8;
     color:#dddddd;
 }
 
-.about-image{
-    flex:1 1 400px;
-}
-
-.about-image img{
-    width:100%;
-    border-radius:20px;
-    box-shadow:0 0 25px #ff000055;
-}
-
-/* ===== COMMUNITY SECTION ===== */
-.community{
+/* ===== VIDEOS ===== */
+.videos{
     background:#000;
 }
 
-.community h2{
-    color:#ff1a1a;
-    margin-bottom:30px;
-}
-
-.community p{
-    max-width:800px;
-    color:#ccc;
-    margin-bottom:30px;
-}
-
-.community a{
-    padding:15px 40px;
-    background:#ff0000;
-    color:white;
-    text-decoration:none;
-    border-radius:30px;
-    transition:0.3s;
-}
-
-.community a:hover{
-    box-shadow:0 0 25px #ff0000;
-}
-
-/* ===== GALLERY SECTION ===== */
-.gallery{
-    background:#0a0000;
-}
-
-.gallery-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-    max-width:1100px;
-    width:100%;
-}
-
-.gallery-grid img{
-    width:100%;
-    border-radius:15px;
-    transition:0.4s;
-    box-shadow:0 0 15px #ff000033;
-}
-
-.gallery-grid img:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 30px #ff0000;
-}
-
-/* ===== VIDEOS ===== */
-.videos{
-    background:#000000;
-}
-
 .videos h2{
-    color:#ff1a1a;
+    color:#ff0000;
     margin-bottom:40px;
-    text-shadow:0 0 15px #ff0000;
 }
 
 .video-container{
@@ -232,12 +168,12 @@ section{
     grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
     gap:30px;
     width:100%;
-    max-width:1200px;
+    max-width:1100px;
 }
 
 .video-container iframe{
     width:100%;
-    height:260px;
+    height:250px;
     border-radius:15px;
     box-shadow:0 0 20px #ff000044;
     transition:0.4s;
@@ -245,7 +181,7 @@ section{
 
 .video-container iframe:hover{
     transform:scale(1.05);
-    box-shadow:0 0 35px #ff0000;
+    box-shadow:0 0 30px #ff0000;
 }
 
 /* ===== FOOTER ===== */
@@ -254,24 +190,21 @@ footer{
     text-align:center;
     background:black;
     color:#777;
-    border-top:1px solid #ff000022;
 }
 
-/* ===== ANIMATION ===== */
-@keyframes glow{
-    from{ text-shadow:0 0 10px #ff0000; }
-    to{ text-shadow:0 0 40px #ff0000; }
-}
-
+/* ===== RESPONSIVE ===== */
 @media(max-width:768px){
+
     nav{
         flex-direction:column;
     }
+
     nav ul{
         margin-top:10px;
     }
-    .hero h2{
-        font-size:40px;
+
+    .home-container{
+        flex-direction:column;
     }
 }
 
@@ -280,72 +213,67 @@ footer{
 <body>
 
 <nav>
- <div class="logo">
-    <img src="https://yt3.googleusercontent.com/gUJZ4pWALV-SjNGN-RBgK35c1lTvCYB27HDFz3snXv6J6syUXLRuhOt-c57XKsE7YyaOLf2xyQ=s160-c-k-c0x00ffffff-no-rj" alt="DV Villain Logo">
-    <h1>DV VILLAIN YT</h1>
-</div>
+    <div class="logo">
+        <img src="https://yt3.googleusercontent.com/gUJZ4pWALV-SjNGN-RBgK35c1lTvCYB27HDFz3snXv6J6syUXLRuhOt-c57XKsE7YyaOLf2xyQ=s160-c-k-c0x00ffffff-no-rj">
+        <h1>DV VILLAIN YT</h1>
+    </div>
     <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#community">Community</a></li>
-        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#videos">Videos</a></li>
     </ul>
 </nav>
 
+<!-- HOME SECTION -->
 <section id="home" class="hero">
-    <h2>WELCOME TO THE VILLAIN ZONE</h2>
-    <p>
-        DV VILLAIN YT is where knowledge meets humor and gaming energy.  
-        I create informative content, funny videos, and high-energy gaming experiences.  
-        Built by a 20-year-old creator from Geeta University, this channel is focused on growth,
-        consistency, and delivering powerful content that entertains and informs.
-    </p>
-    <button onclick="subscribe()">SUBSCRIBE NOW</button>
+
+    <div class="home-container">
+
+        <!-- BOX 1: Logo + Details -->
+        <div class="home-box">
+            <h2>WELCOME TO THE VILLAIN ZONE</h2>
+            <p>
+                DV VILLAIN YT is a powerful mix of informative content, humor,
+                and high-energy gaming. Created by a 20-year-old student from Geeta University,
+                this channel is built with passion and long-term vision.
+                <br><br>
+                This is not just a YouTube channel — this is a growing digital brand.
+            </p>
+            <button onclick="subscribe()">SUBSCRIBE NOW</button>
+        </div>
+
+        <!-- BOX 2: Google Form Section -->
+        <div class="home-box">
+            <h2>JOIN THE COMMUNITY</h2>
+            <p>
+                Want to suggest video ideas? Participate in challenges?
+                Share feedback or be featured in upcoming videos?
+                <br><br>
+                Fill out the form and become part of the Villain Squad.
+            </p>
+            <a href="https://forms.google.com" target="_blank">Submit Response</a>
+        </div>
+
+    </div>
+
 </section>
 
+<!-- ABOUT SECTION -->
 <section id="about" class="about">
     <h2>ABOUT DV VILLAIN YT</h2>
-
-    <div class="about-content">
-        <div class="about-text">
-            DV VILLAIN YT is more than just a gaming channel.  
-            It’s a space where information becomes interesting and entertainment becomes meaningful.  
-            I combine informative topics, humor, and gaming to create a unique experience.
-            <br><br>
-            As a student at Geeta University, I’m building this channel step by step,
-            aiming to improve content quality, editing, creativity, and audience engagement.
-            <br><br>
-            This is just the beginning of something bigger.  
-            The Villain Squad is growing.
-        </div>
-
-        <div class="about-image">
-            <img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437d1" alt="Gaming Setup">
-        </div>
-    </div>
-</section>
-
-<section id="community" class="community">
-    <h2>JOIN THE COMMUNITY</h2>
     <p>
-        Want to be part of upcoming videos, gaming challenges, or informative content ideas?  
-        Submit your suggestions and feedback using the form below.
+        DV VILLAIN YT combines knowledge, humor, and entertainment into a unique digital experience.
+        The channel focuses on informative videos, funny content, and engaging gaming sessions.
+        <br><br>
+        As a student at Geeta University, I am building this platform step by step,
+        improving quality, creativity, and audience interaction.
+        <br><br>
+        The mission is simple — entertain, inform, and grow consistently.
+        This is only the beginning of something much bigger.
     </p>
-    <a href="https://forms.google.com" target="_blank">Submit Your Response</a>
 </section>
 
-<section id="gallery" class="gallery">
-    <h2 style="color:#ff1a1a;margin-bottom:40px;">CHANNEL GALLERY</h2>
-
-    <div class="gallery-grid">
-        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420" alt="Gaming">
-        <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8" alt="PC Setup">
-        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" alt="Streaming">
-        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" alt="Tech">
-    </div>
-</section>
-
+<!-- VIDEOS SECTION -->
 <section id="videos" class="videos">
     <h2>MY LATEST VIDEOS</h2>
 
