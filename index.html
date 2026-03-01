@@ -43,16 +43,29 @@ nav{
 .logo{
     display:flex;
     align-items:center;
+    position:relative;
 }
 
 .logo img{
-    width:50px;
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    object-fit:cover;
     margin-right:15px;
+    border:3px solid #ff0000;
+    box-shadow:
+        0 0 10px #ff0000,
+        0 0 20px #ff0000,
+        0 0 40px #ff0000;
+    transition:0.4s;
 }
 
-.logo h1{
-    color:#ff1a1a;
-    text-shadow:0 0 15px #ff0000;
+.logo img:hover{
+    transform:scale(1.1);
+    box-shadow:
+        0 0 20px #ff0000,
+        0 0 40px #ff0000,
+        0 0 60px #ff0000;
 }
 
 nav ul{
@@ -210,11 +223,10 @@ footer{
 
 <!-- NAVBAR -->
 <nav>
-    <div class="logo">
-        <!-- Replace logo.png with your actual logo file -->
-        <img src="https://yt3.googleusercontent.com/gUJZ4pWALV-SjNGN-RBgK35c1lTvCYB27HDFz3snXv6J6syUXLRuhOt-c57XKsE7YyaOLf2xyQ=s160-c-k-c0x00ffffff-no-rj" alt="DV Villain Logo">
-        <h1>DV VILLAIN YT</h1>
-    </div>
+ <div class="logo">
+    <img src="https://yt3.googleusercontent.com/gUJZ4pWALV-SjNGN-RBgK35c1lTvCYB27HDFz3snXv6J6syUXLRuhOt-c57XKsE7YyaOLf2xyQ=s160-c-k-c0x00ffffff-no-rj" alt="DV Villain Logo">
+    <h1>DV VILLAIN YT</h1>
+</div>
     <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
