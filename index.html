@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>DV Villain - Video Portal</title>
+<title>DV Villain - Official</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <style>
-/* RESET & GLOBAL */
+/* RESET */
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 body{
@@ -29,11 +29,10 @@ body{
     height: 100dvh; 
     object-fit: cover;
     z-index: -3;
-    filter: brightness(35%);
-    transform: translate3d(0,0,0);
+    filter: brightness(40%);
 }
 
-/* NAVIGATION (LOGO TOP, MENU BELOW ON MOBILE) */
+/* --- NAVIGATION (LOGO TOP, MENU BELOW ON ANDROID) --- */
 nav {
     display: flex;
     justify-content: space-between; 
@@ -54,31 +53,32 @@ nav {
 }
 
 .logo img {
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     border: 2px solid red;
-    box-shadow: 0 0 10px red;
+    box-shadow: 0 0 15px red;
 }
 
 .logo span {
     color: red;
     font-weight: 800;
-    font-size: 22px;
+    font-size: 24px;
     text-transform: uppercase;
 }
 
 .menu {
     display: flex;
-    gap: 20px;
+    gap: 25px;
     list-style: none;
 }
 
+/* Header Buttons: No Box, Clean Text */
 .menu li a {
     text-decoration: none;
     color: white;
     font-weight: 700;
-    font-size: 18px; /* High visibility Header Buttons */
+    font-size: 18px; 
     transition: 0.3s;
     white-space: nowrap;
 }
@@ -95,56 +95,51 @@ section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     padding: 180px 20px 80px 20px; 
-    border-bottom: 1px solid rgba(255,0,0,0.1);
+    border-bottom: 1px solid rgba(255,0,0,0.2);
 }
 
-/* SUB-BUTTONS (SMALLER) */
+/* SUB-BUTTONS (Original Design: Solid Red, but Smaller) */
 .btn {
     display: inline-block;
-    margin: 8px;
+    margin: 10px;
     padding: 10px 20px;
     background: red;
     color: white;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 6px;
     font-weight: 700;
-    font-size: 13px; /* Small Sub-button size */
-    text-transform: uppercase;
+    font-size: 14px; 
     transition: 0.3s;
     border: none;
+    min-width: 140px;
+    text-transform: uppercase;
 }
 
-/* VIDEO GRID - 10 SLOTS */
+.btn:hover {
+    box-shadow: 0 0 15px red;
+}
+
+/* VIDEO GRID - 10 VIDEOS */
 .video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     width: 100%;
-    max-width: 1300px;
-    margin-top: 40px;
+    max-width: 1200px;
+    margin-top: 30px;
 }
 
-.video-card {
-    position: relative;
-    background: #111;
-    border: 1px solid #333;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s, border-color 0.3s;
-}
-
-.video-card:hover {
-    transform: translateY(-5px);
-    border-color: red;
-}
-
-/* Responsive Iframe Container */
 .iframe-container {
     position: relative;
     width: 100%;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    padding-bottom: 56.25%;
     height: 0;
+    background: #111;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255,0,0,0.2);
 }
 
 .iframe-container iframe {
@@ -156,32 +151,31 @@ section {
     border: 0;
 }
 
-/* MOBILE FIXES */
+/* MOBILE OPTIMIZATION */
 @media (max-width: 768px) {
     nav {
-        flex-direction: column;
+        flex-direction: column; /* Logo Top */
         padding: 15px 5px;
-        gap: 12px;
+        gap: 15px;
     }
 
     .menu {
         width: 100%;
-        justify-content: center;
-        gap: 15px;
+        justify-content: center; /* Menu Below in one line */
+        gap: 12px;
     }
 
     .menu li a {
-        font-size: 14px; /* Balanced mobile header size */
+        font-size: 14px; /* Increased Header Button size for mobile */
     }
 
     .video-grid {
-        grid-template-columns: 1fr; /* Single column on phones for better video width */
+        grid-template-columns: 1fr; /* Stacked for best watchability */
         gap: 15px;
     }
-    
-    section {
-        padding-top: 150px;
-    }
+
+    .logo img { width: 40px; height: 40px; }
+    .logo span { font-size: 18px; }
 }
 </style>
 </head>
@@ -199,6 +193,7 @@ section {
     </div>
     <ul class="menu">
         <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#videos">Videos</a></li>
         <li><a href="#community">Join</a></li>
         <li><a href="#comments">Feedback</a></li>
@@ -206,53 +201,61 @@ section {
 </nav>
 
 <section id="home">
-    <h1 style="font-size: 3rem; color: red;">DV VILLAIN</h1>
-    <p style="margin-bottom: 20px; font-weight: 300;">THE ULTIMATE GAMING EXPERIENCE</p>
+    <h1 style="font-size: 2.5rem; margin-bottom: 10px;">Welcome to DV Villain</h1>
+    <p style="margin-bottom: 20px;">Gaming | Entertainment | Streaming</p>
     <div class="btn-container">
-        <a href="#videos" class="btn">Watch Now</a>
-        <a href="#" class="btn" style="background: transparent; border: 1px solid red;">Subscribe</a>
+        <a href="#" class="btn">Subscribe Now</a>
+        <a href="https://instagram.com" target="_blank" class="btn" style="background:transparent; border: 1px solid red;">Follow IG</a>
     </div>
 </section>
 
 <section id="videos">
-    <h2 style="color: red; text-transform: uppercase; letter-spacing: 2px;">Latest Content</h2>
+    <h2 style="margin-bottom: 20px; color: red;">LATEST VIDEOS</h2>
     <div class="video-grid">
-        <div class="video-card"><div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe></div></div>
-        <div class="video-card"><div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe></div></div>
-        <div class="video-card"><div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe></div></div>
-        <div class="video-card"><div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe></div></div>
-        <div class="video-card"><div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe></div></div>
-        <div class="video-card"><div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe></div></div>
-        <div class="video-card"><div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe></div></div>
-        <div class="video-card"><div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe></div></div>
-        <div class="video-card"><div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe></div></div>
-        <div class="video-card"><div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe></div></div>
+        <div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
+        <div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
+        <div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
+        <div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
+        <div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
+        <div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
+        <div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
+        <div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
+        <div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
+        <div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
+    </div>
+</section>
+
+<section id="community">
+    <h2>JOIN OUR COMMUNITY</h2>
+    <div class="btn-container">
+        <a href="https://chat.whatsapp.com" target="_blank" class="btn">WhatsApp</a>
+        <a href="https://t.me" target="_blank" class="btn">Telegram</a>
     </div>
 </section>
 
 <section id="comments">
-    <h2>COMMUNITY FEEDBACK</h2>
+    <h2>FEEDBACK</h2>
     <div style="width: 100%; max-width: 600px; margin-top: 20px;">
-        <textarea id="commentInput" rows="4" placeholder="Type your message..." style="width:100%; padding:15px; border-radius:8px; background:#111; color:white; border:1px solid #444; resize:none;"></textarea>
-        <button class="btn" onclick="addComment()" style="width:100%; margin-top: 10px;">Post Comment</button>
+        <textarea id="commentInput" rows="4" placeholder="Write your suggestion..." style="width:100%; padding:15px; border-radius:6px; background:#111; color:white; border:1px solid #333; resize:none;"></textarea>
+        <button class="btn" onclick="addComment()" style="margin-top:10px; width:100%;">Post Comment</button>
     </div>
-    <div id="comments-list" style="width: 100%; max-width: 600px; margin-top: 20px;"></div>
+    <div id="comments-list" style="width: 100%; max-width: 600px; margin-top: 20px; text-align: left;"></div>
 </section>
 
 <script>
     function addComment(){
-        let input = document.getElementById("commentInput");
-        let text = input.value.trim();
-        if(text === "") return;
-        let div = document.createElement("div");
-        div.style.background = "rgba(255,0,0,0.05)";
-        div.style.padding = "15px";
-        div.style.marginBottom = "10px";
-        div.style.borderLeft = "4px solid red";
-        div.style.borderRadius = "4px";
-        div.innerText = text;
+        let input=document.getElementById("commentInput");
+        let text=input.value.trim();
+        if(text==="") return;
+        let div=document.createElement("div");
+        div.style.background="rgba(17,17,17,0.9)";
+        div.style.margin="10px auto";
+        div.style.padding="15px";
+        div.style.borderRadius="6px";
+        div.style.borderLeft="3px solid red";
+        div.innerText=text;
         document.getElementById("comments-list").prepend(div);
-        input.value = "";
+        input.value="";
     }
 </script>
 
