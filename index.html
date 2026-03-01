@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DV VILLAIN YT</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Orbitron',sans-serif;
+}
+
+body{
+    background:#0f0f0f;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+nav{
+    display:flex;
+    justify-content:space-between;
+    padding:20px 50px;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(10px);
+    position:fixed;
+    width:100%;
+    z-index:1000;
+}
+
+nav h1{
+    color:#00f7ff;
+    text-shadow:0 0 10px #00f7ff;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+}
+
+nav ul li{
+    margin-left:30px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:#00f7ff;
+    text-shadow:0 0 10px #00f7ff;
+}
+
+/* HERO SECTION */
+.hero{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    background:linear-gradient(135deg,#000000,#0d1b2a);
+}
+
+.hero h2{
+    font-size:60px;
+    animation:glow 2s infinite alternate;
+}
+
+.hero p{
+    margin-top:20px;
+    font-size:18px;
+    color:#ccc;
+}
+
+.hero button{
+    margin-top:30px;
+    padding:15px 40px;
+    border:none;
+    background:#00f7ff;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:30px;
+    transition:0.3s;
+}
+
+.hero button:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 20px #00f7ff;
+}
+
+/* ABOUT */
+.about{
+    padding:100px 50px;
+    text-align:center;
+}
+
+.about h2{
+    margin-bottom:30px;
+    color:#00f7ff;
+}
+
+/* VIDEOS */
+.videos{
+    padding:50px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.video-card{
+    background:#111;
+    padding:20px;
+    border-radius:15px;
+    transition:0.4s;
+    box-shadow:0 0 10px rgba(0,247,255,0.2);
+}
+
+.video-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 25px #00f7ff;
+}
+
+.video-card img{
+    width:100%;
+    border-radius:10px;
+}
+
+/* FOOTER */
+footer{
+    padding:20px;
+    text-align:center;
+    background:#000;
+    color:#777;
+}
+
+/* ANIMATION */
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px #00f7ff,0 0 20px #00f7ff;
+    }
+    to{
+        text-shadow:0 0 20px #00f7ff,0 0 40px #00f7ff;
+    }
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <h1>DV VILLAIN YT</h1>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#videos">Videos</a></li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <h2>WELCOME TO DV VILLAIN</h2>
+    <p>Gaming | Entertainment | Power Content</p>
+    <button onclick="subscribe()">Subscribe Now</button>
+</section>
+
+<section id="about" class="about">
+    <h2>About My Channel</h2>
+    <p>I create high-energy gaming and entertainment content. Join the villain squad and level up with me!</p>
+</section>
+
+<section id="videos" class="videos">
+    <div class="video-card">
+        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg">
+        <h3>Latest Video 1</h3>
+    </div>
+    <div class="video-card">
+        <img src="https://img.youtube.com/vi/9bZkp7q19f0/maxresdefault.jpg">
+        <h3>Latest Video 2</h3>
+    </div>
+    <div class="video-card">
+        <img src="https://img.youtube.com/vi/l482T0yNkeo/maxresdefault.jpg">
+        <h3>Latest Video 3</h3>
+    </div>
+</section>
+
+<footer>
+    © 2026 DV VILLAIN YT | All Rights Reserved
+</footer>
+
+<script>
+function subscribe(){
+    window.open("https://www.youtube.com/@DV_VILLAIN_YT/featured","_blank");
+}
+
+/* Scroll animation */
+window.addEventListener("scroll",function(){
+    let cards=document.querySelectorAll(".video-card");
+    cards.forEach(card=>{
+        let position=card.getBoundingClientRect().top;
+        let screenHeight=window.innerHeight;
+        if(position<screenHeight-100){
+            card.style.opacity="1";
+            card.style.transform="translateY(0)";
+        }
+    });
+});
+</script>
+
+</body>
+</html>
