@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DV VILLAIN YT</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -20,9 +20,10 @@ scroll-behavior:smooth;
 body{
 color:white;
 overflow-x:hidden;
+background:black;
 }
 
-/* 🔥 VIDEO BACKGROUND */
+/* 🎥 ATTRACTIVE BACKGROUND VIDEO */
 .bg-video{
 position:fixed;
 top:0;
@@ -31,6 +32,7 @@ width:100%;
 height:100%;
 object-fit:cover;
 z-index:-2;
+filter:brightness(0.4) contrast(1.2);
 }
 
 .overlay{
@@ -39,7 +41,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.75);
+background:linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.9));
 z-index:-1;
 }
 
@@ -53,7 +55,7 @@ background:rgba(0,0,0,0.85);
 position:fixed;
 width:100%;
 z-index:1000;
-border-bottom:1px solid rgba(255,0,0,0.4);
+border-bottom:1px solid rgba(255,0,0,0.5);
 }
 
 /* LOGO */
@@ -67,14 +69,14 @@ gap:10px;
 width:50px;
 height:50px;
 border-radius:50%;
-border:2px solid #ff0000;
-box-shadow:0 0 20px #ff0000;
+border:2px solid red;
+box-shadow:0 0 20px red;
 }
 
 .logo span{
 font-weight:800;
 font-size:20px;
-color:#ff0000;
+color:red;
 }
 
 /* MENU */
@@ -87,17 +89,21 @@ list-style:none;
 .menu li a{
 text-decoration:none;
 color:white;
-font-weight:500;
+font-weight:600;
+padding:6px 10px;
 transition:0.3s;
+border-radius:6px;
 }
 
 .menu li a:hover{
-color:#ff0000;
+background:red;
+color:white;
+box-shadow:0 0 15px red;
 }
 
 /* SECTIONS */
 section{
-padding:140px 10%;
+padding:150px 10% 100px;
 min-height:100vh;
 text-align:center;
 }
@@ -105,8 +111,8 @@ text-align:center;
 /* HOME */
 .home h1{
 font-size:50px;
-color:#ff0000;
-text-shadow:0 0 25px #ff0000;
+color:red;
+text-shadow:0 0 25px red;
 }
 
 .home p{
@@ -125,29 +131,57 @@ transition:0.3s;
 }
 
 .subscribe-btn{
-background:#ff0000;
+background:red;
 color:white;
 }
 
 .subscribe-btn:hover{
-box-shadow:0 0 25px #ff0000;
+box-shadow:0 0 25px red;
+transform:scale(1.05);
 }
 
 .community-btn{
 background:black;
-border:1px solid #ff0000;
-color:#ff0000;
+border:1px solid red;
+color:red;
 }
 
 .community-btn:hover{
-background:#ff0000;
+background:red;
 color:white;
+}
+
+/* RESPONSIVE FIX FOR ANDROID */
+@media(max-width:768px){
+
+nav{
+flex-direction:column;
+align-items:center;
+padding:15px;
+}
+
+.menu{
+margin-top:10px;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+}
+
+.menu li a{
+font-size:14px;
+padding:8px 12px;
+}
+
+.home h1{
+font-size:30px;
+}
+
 }
 
 /* VIDEOS */
 iframe{
 width:100%;
-height:300px;
+height:280px;
 margin-top:30px;
 border-radius:15px;
 box-shadow:0 0 20px rgba(255,0,0,0.5);
@@ -163,12 +197,17 @@ flex-wrap:wrap;
 }
 
 .join-btn{
-background:#ff0000;
+background:red;
 color:white;
 padding:12px 25px;
 border-radius:25px;
 border:none;
 cursor:pointer;
+transition:0.3s;
+}
+
+.join-btn:hover{
+box-shadow:0 0 20px red;
 }
 
 /* COMMENTS */
@@ -190,7 +229,7 @@ height:90px;
 .comment-box button{
 margin-top:10px;
 padding:8px 20px;
-background:#ff0000;
+background:red;
 color:white;
 border:none;
 border-radius:20px;
@@ -198,31 +237,11 @@ cursor:pointer;
 }
 
 .comment{
-background:#1a1a1a;
+background:#111;
 padding:10px 15px;
 border-radius:10px;
 margin-top:10px;
-box-shadow:0 0 10px rgba(255,0,0,0.3);
-}
-
-/* 🔥 RESPONSIVE */
-@media(max-width:768px){
-
-nav{
-flex-direction:column;
-align-items:flex-start;
-}
-
-.menu{
-width:100%;
-justify-content:space-between;
-margin-top:10px;
-}
-
-.home h1{
-font-size:32px;
-}
-
+box-shadow:0 0 10px rgba(255,0,0,0.4);
 }
 
 footer{
@@ -237,16 +256,15 @@ color:#aaa;
 
 <body>
 
-<!-- 🔥 BACKGROUND VIDEO -->
-<video autoplay muted loop class="bg-video">
-<source src="https://cdn.coverr.co/videos/coverr-gaming-setup-1573/1080p.mp4" type="video/mp4">
+<!-- 🎥 Attractive Gaming Background Video -->
+<video autoplay muted loop playsinline class="bg-video">
+<source src="https://cdn.coverr.co/videos/coverr-neon-gaming-room-0713/1080p.mp4" type="video/mp4">
 </video>
 <div class="overlay"></div>
 
-<!-- NAVBAR -->
 <nav>
 <div class="logo">
-<img src="logo.png" alt="Logo">
+<img src="https://yt3.googleusercontent.com/gUJZ4pWALV-SjNGN-RBgK35c1lTvCYB27HDFz3snXv6J6syUXLRuhOt-c57XKsE7YyaOLf2xyQ=s160-c-k-c0x00ffffff-no-rj" alt="Logo">
 <span>DV VILLAIN YT</span>
 </div>
 
@@ -276,7 +294,7 @@ Join Community
 
 <section id="about">
 <h2>About The Channel</h2>
-<p>Epic gaming edits, powerful gameplay, and villain attitude content.</p>
+<p>Epic gaming edits, intense gameplay, and villain attitude content.</p>
 </section>
 
 <section id="videos">
