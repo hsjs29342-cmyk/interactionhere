@@ -1,18 +1,262 @@
-<section id="comments" style="padding-bottom: 40px;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DV Villain - Official</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <style>
+        /* RESET & BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            color: white;
+            background-color: #000;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* BACKGROUND VIDEO */
+        .bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100dvh; 
+            object-fit: cover;
+            z-index: -3;
+            filter: brightness(30%);
+        }
+
+        /* NAVIGATION */
+        nav {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            padding: 10px 60px;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid red;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid red;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+        }
+
+        .logo span {
+            color: red;
+            font-weight: 900;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+
+        .menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .menu li a {
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 18px; 
+            transition: 0.3s ease;
+            position: relative;
+        }
+
+        .menu li a:hover {
+            color: red;
+        }
+
+        /* SECTIONS */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 80px 20px; 
+            border-bottom: 1px solid rgba(255, 0, 0, 0.1);
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 14px 28px;
+            background: red;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 800;
+            font-size: 15px; 
+            transition: all 0.3s ease;
+            border: 2px solid red;
+            min-width: 170px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: red;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+
+        /* VIDEO GRID */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 40px;
+        }
+
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            background: #111;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: transform 0.3s ease;
+        }
+
+        .iframe-container:hover {
+            transform: scale(1.03);
+            border-color: red;
+        }
+
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* FOOTER AREA INSIDE COMMENTS */
+        .footer-copyright {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 0, 0, 0.2);
+            width: 100%;
+            max-width: 800px;
+            color: #888;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        /* MOBILE FIXES */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column; 
+                padding: 15px 10px;
+                gap: 10px;
+            }
+            .menu { gap: 15px; }
+            .menu li a { font-size: 15px; }
+            .logo span { font-size: 20px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <video autoplay muted loop playsinline webkit-playsinline class="bg-video">
+        <source src="https://giffiles.alphacoders.com/219/thumb-440-219892.mp4" type="video/mp4">
+    </video>
+
+    <nav>
+        <div class="logo">
+            <img src="https://i.imgur.com/7k12EPD.png" alt="Logo">
+            <span>DV Villain Yt</span>
+        </div>
+        <ul class="menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#videos">Videos</a></li>
+            <li><a href="#community">Community</a></li>
+            <li><a href="#comments">Comments</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <h1 style="font-size: 4rem; color: red; text-shadow: 0 0 20px rgba(255,0,0,0.5);">DV VILLAIN</h1>
+        <p style="font-size: 1.4rem; margin-bottom: 30px; letter-spacing: 2px;">GAMING | ENTERTAINMENT | STREAMING</p>
+        <div class="btn-container">
+            <a href="https://www.youtube.com/@DV_VILLAIN_YT" target="_blank" class="btn">Subscribe Now</a>
+            <a href="https://instagram.com" target="_blank" class="btn" style="background:transparent; color: white; border: 2px solid white;">Follow IG</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 style="font-size: 2.5rem; color: red; margin-bottom: 20px;">ABOUT CHANNEL</h2>
+        <p style="font-size: 1.2rem; max-width: 850px; line-height: 1.8; color: #ddd;">
+            Welcome to <strong>DV VILLAIN YT</strong> – where information meets entertainment. I’m a creator studying at Geeta University, delivering high-energy gaming and funny content.
+        </p>
+    </section>
+
+    <section id="videos">
+        <h2 style="margin-bottom: 30px; color: red; font-size: 2.5rem;">Latest Videos</h2>
+        <div class="video-grid">
+            <div class="iframe-container"><iframe src="https://www.youtube.com/embed/lRXVOeGQXQs" allowfullscreen></iframe></div>
+            <div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQJgvOXFbHU" allowfullscreen></iframe></div>
+            <div class="iframe-container"><iframe src="https://www.youtube.com/embed/tRBX0P2wlSM" allowfullscreen></iframe></div>
+            <div class="iframe-container"><iframe src="https://www.youtube.com/embed/PgJFCOEBzkA" allowfullscreen></iframe></div>
+            <div class="iframe-container"><iframe src="https://www.youtube.com/embed/Q1AGL7Jlorg" allowfullscreen></iframe></div>
+            <div class="iframe-container"><iframe src="https://www.youtube.com/embed/XBPtW9bhu5c" allowfullscreen></iframe></div>
+            <div class="iframe-container"><iframe src="https://www.youtube.com/embed/banJ6QbSGgw" allowfullscreen></iframe></div>
+            <div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
+            <div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
+            <div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
+        </div>
+    </section>
+
+    <section id="community">
+        <h2 style="font-size: 2.5rem; margin-bottom: 15px;">JOIN THE SQUAD</h2>
+        <div class="btn-container">
+            <a href="https://chat.whatsapp.com" target="_blank" class="btn">WhatsApp</a>
+            <a href="https://t.me" target="_blank" class="btn" style="background:#0088cc; border-color: #0088cc;">Telegram</a>
+        </div>
+    </section>
+
+    <section id="comments">
         <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: red;">FEEDBACK</h2>
-        
         <div style="width: 100%; max-width: 650px;">
             <textarea id="commentInput" rows="4" placeholder="Share your suggestions..." style="width:100%; padding:15px; border-radius:4px; background:#111; color:white; border:1px solid #444; resize:none; font-size: 16px; outline: none;"></textarea>
             <button class="btn" onclick="addComment()" style="margin-top:20px; width:100%;">Post Comment</button>
         </div>
+        <div id="comments-list" style="width: 100%; max-width: 650px; margin-top: 30px; text-align: left;"></div>
 
-        <div id="comments-list" style="width: 100%; max-width: 650px; margin-top: 30px; text-align: left; min-height: 50px;"></div>
-
-        <div style="margin-top: 80px; border-top: 1px solid rgba(255,0,0,0.3); width: 100%; max-width: 800px; padding-top: 30px;">
-            <p style="color: #888; font-size: 14px; letter-spacing: 1px;">
-                &copy; 2026 <span style="color: red; font-weight: bold;">DV VILLAIN YT</span> | ALL RIGHTS RESERVED
-            </p>
-            <a href="#home" style="color: #555; text-decoration: none; font-size: 12px; display: inline-block; margin-top: 10px; text-transform: uppercase;">Back to top ↑</a>
+        <div class="footer-copyright">
+            &copy; 2026 <span style="color: red;">DV VILLAIN YT</span> | ALL RIGHTS RESERVED
         </div>
     </section>
 
@@ -20,18 +264,22 @@
         function addComment(){
             const input = document.getElementById("commentInput");
             const text = input.value.trim();
-            if(text === "") return;
-            
+            if(text === "") {
+                alert("Please enter a comment first!");
+                return;
+            }
             const div = document.createElement("div");
             div.style.background = "rgba(40, 40, 40, 0.8)";
             div.style.margin = "15px 0";
             div.style.padding = "20px";
             div.style.borderRadius = "8px";
             div.style.borderLeft = "5px solid red";
-            div.style.transition = "0.5s";
+            div.style.animation = "fadeIn 0.5s ease";
             div.innerText = text;
-            
             document.getElementById("comments-list").prepend(div);
             input.value = "";
         }
     </script>
+
+</body>
+</html>
