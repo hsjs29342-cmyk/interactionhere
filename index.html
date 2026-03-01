@@ -3,226 +3,224 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Villain Knowledge Hub</title>
+<title>Knowledge Hub</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins', sans-serif;
-    scroll-behavior:smooth;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
-    background:#0f0f0f;
-    color:white;
-    overflow-x:hidden;
+background:#0f0f1a;
+color:white;
+overflow-x:hidden;
 }
 
-/* ===== Animated Background Glow ===== */
+/* Animated Background */
 body::before{
-    content:"";
-    position:fixed;
-    width:600px;
-    height:600px;
-    background:radial-gradient(circle,#ff000050,transparent);
-    top:-200px;
-    left:-200px;
-    animation:moveGlow 8s infinite alternate;
-    z-index:-1;
+content:'';
+position:fixed;
+width:100%;
+height:100%;
+background:url('https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1920&q=80');
+background-size:cover;
+background-position:center;
+opacity:0.08;
+animation:zoom 20s infinite alternate;
+z-index:-1;
 }
 
-@keyframes moveGlow{
-    from{transform:translate(0,0);}
-    to{transform:translate(200px,200px);}
+@keyframes zoom{
+0%{transform:scale(1);}
+100%{transform:scale(1.2);}
 }
 
-/* ===== LOGO ===== */
-.top-logo{
-    position:fixed;
-    top:15px;
-    left:20px;
-    width:70px;
-    height:70px;
-    border-radius:50%;
-    border:3px solid #ff0000;
-    box-shadow:0 0 20px #ff0000;
-    animation:pulse 2s infinite;
-    z-index:1200;
-}
-
-@keyframes pulse{
-    0%{box-shadow:0 0 10px #ff0000;}
-    50%{box-shadow:0 0 30px #ff0000;}
-    100%{box-shadow:0 0 10px #ff0000;}
-}
-
-/* ===== NAV ===== */
+/* Navbar */
 nav{
-    position:fixed;
-    top:0;
-    width:100%;
-    background:#181818;
-    display:flex;
-    justify-content:center;
-    padding:20px 0;
-    border-bottom:2px solid #ff0000;
-    z-index:1000;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 60px;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(15px);
+position:fixed;
+width:100%;
+z-index:1000;
+border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
-nav a{
-    color:white;
-    margin:0 35px;
-    text-decoration:none;
-    font-weight:600;
-    transition:0.3s;
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
 }
 
-nav a:hover{
-    color:#ff0000;
-    transform:scale(1.1);
+.logo img{
+width:50px;
+height:50px;
+border-radius:50%;
+border:2px solid #00f2ff;
+box-shadow:0 0 15px #00f2ff;
+transition:0.4s;
 }
 
-/* ===== SECTION ANIMATION ===== */
+.logo img:hover{
+transform:scale(1.1) rotate(10deg);
+box-shadow:0 0 25px #ff00ff;
+}
+
+.logo span{
+font-size:20px;
+font-weight:600;
+color:#00f2ff;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:25px;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+font-weight:500;
+transition:0.3s;
+position:relative;
+}
+
+nav ul li a::after{
+content:'';
+position:absolute;
+width:0%;
+height:2px;
+left:0;
+bottom:-5px;
+background:#00f2ff;
+transition:0.4s;
+}
+
+nav ul li a:hover{
+color:#00f2ff;
+}
+
+nav ul li a:hover::after{
+width:100%;
+}
+
+/* Sections */
 section{
-    opacity:0;
-    transform:translateY(50px);
-    animation:fadeIn 1s forwards;
+padding:120px 10%;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
 }
 
-@keyframes fadeIn{
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+/* Welcome Section */
+.home h1{
+font-size:50px;
+background:linear-gradient(90deg,#00f2ff,#ff00ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:fadeIn 2s ease;
 }
 
-/* ===== HOME ===== */
-.home-section{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    padding-top:120px;
+.home p{
+margin:20px 0;
+font-size:18px;
+color:#ccc;
 }
 
-.home-container{
-    width:85%;
-    margin:auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.home-left, .home-right{
-    width:48%;
-}
-
-.home-left h1{
-    font-size:48px;
-    color:#ff0000;
-    margin-bottom:20px;
-    text-shadow:0 0 15px #ff0000;
-}
-
-.home-left p{
-    color:#ccc;
-    margin-bottom:25px;
-    line-height:1.7;
-}
-
-/* ===== BUTTONS ===== */
 .btn{
-    display:inline-block;
-    padding:12px 30px;
-    margin:10px 10px 0 0;
-    border-radius:30px;
-    text-decoration:none;
-    font-weight:bold;
-    background:#ff0000;
-    color:white;
-    transition:0.3s;
+padding:12px 30px;
+margin:10px;
+border-radius:30px;
+border:none;
+background:linear-gradient(90deg,#00f2ff,#ff00ff);
+color:white;
+cursor:pointer;
+font-weight:600;
+transition:0.4s;
+box-shadow:0 0 15px #00f2ff;
 }
 
 .btn:hover{
-    background:#cc0000;
-    transform:scale(1.08);
-    box-shadow:0 0 20px #ff0000;
+transform:translateY(-5px);
+box-shadow:0 0 25px #ff00ff;
 }
 
-/* ===== COMMUNITY CARD ===== */
-.home-right{
-    background:#181818;
-    padding:40px;
-    border-radius:15px;
-    border:1px solid #ff0000;
-    box-shadow:0 0 20px #ff000050;
-    text-align:center;
+/* Join Section */
+.join{
+background:rgba(255,255,255,0.03);
+border-radius:20px;
+padding:40px;
+backdrop-filter:blur(10px);
+box-shadow:0 0 20px rgba(0,255,255,0.1);
 }
 
-.home-right h2{
-    margin-bottom:20px;
-    color:#ff0000;
+.join h2{
+margin-bottom:20px;
+color:#00f2ff;
 }
 
-/* ===== ABOUT ===== */
-#about{
-    padding:120px 10%;
-    background:#121212;
-    text-align:center;
+/* Extra Buttons Area */
+.button-area{
+margin-top:30px;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
 }
 
-#about h2{
-    color:#ff0000;
-    margin-bottom:20px;
+.button-area button{
+padding:10px 25px;
+border-radius:25px;
+border:1px solid #00f2ff;
+background:transparent;
+color:#00f2ff;
+cursor:pointer;
+transition:0.4s;
 }
 
-/* ===== VIDEOS ===== */
-#videos{
-    padding:120px 5%;
-    background:#0f0f0f;
-    text-align:center;
+.button-area button:hover{
+background:#00f2ff;
+color:black;
+transform:scale(1.05);
 }
 
-#videos h2{
-    color:#ff0000;
-    margin-bottom:40px;
+/* Footer */
+footer{
+padding:20px;
+text-align:center;
+background:rgba(0,0,0,0.6);
+color:#aaa;
 }
 
-.video-grid{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:35px;
+/* Animation */
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(40px);}
+to{opacity:1;transform:translateY(0);}
 }
 
-.video-grid iframe{
-    width:360px;
-    height:210px;
-    border-radius:10px;
-    border:2px solid #ff0000;
-    transition:0.3s;
+/* Responsive */
+@media(max-width:768px){
+nav{
+flex-direction:column;
+gap:10px;
 }
-
-.video-grid iframe:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 20px #ff0000;
+.home h1{
+font-size:35px;
 }
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:900px){
-    .home-container{
-        flex-direction:column;
-        text-align:center;
-    }
-    .home-left, .home-right{
-        width:100%;
-        margin-bottom:40px;
-    }
-    .video-grid iframe{
-        width:95%;
-    }
 }
 
 </style>
@@ -230,48 +228,73 @@ section{
 
 <body>
 
-<img src="logo.png" class="top-logo">
-
 <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#videos">Videos</a>
+<div class="logo">
+<img src="your-logo.png" alt="Channel Logo">
+<span>Knowledge Hub</span>
+</div>
+
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#videos">Videos</a></li>
+<li><a href="#community">Community</a></li>
+<li><a href="#courses">Courses</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
 </nav>
 
-<section id="home" class="home-section">
-    <div class="home-container">
+<section id="home" class="home">
+<h1>Welcome To My Knowledge Community</h1>
+<p>Learn • Share • Interact • Grow Together</p>
 
-        <div class="home-left">
-            <h1>Welcome to Villain Knowledge Hub</h1>
-            <p>Powerful knowledge. Strong mindset. Real growth.</p>
-
-            <a href="YOUR_CHANNEL_LINK" class="btn" target="_blank">Subscribe</a>
-            <a href="YOUR_INSTAGRAM_LINK" class="btn" target="_blank">Instagram</a>
-        </div>
-
-        <div class="home-right">
-            <h2>Join Community</h2>
-            <a href="YOUR_TELEGRAM_LINK" class="btn" target="_blank">Telegram</a>
-            <a href="YOUR_WHATSAPP_LINK" class="btn" target="_blank">WhatsApp</a>
-            <a href="mailto:YOUREMAIL@gmail.com" class="btn">Contact</a>
-        </div>
-
-    </div>
+<button class="btn" onclick="window.open('https://youtube.com/yourchannel')">Subscribe Now</button>
+<button class="btn" onclick="location.href='#community'">Join Community</button>
 </section>
 
 <section id="about">
-    <h2>About Channel</h2>
-    <p>Villain Knowledge Hub helps students grow with mindset, facts, and clarity.</p>
+<h2>About Us</h2>
+<p>We share facts, knowledge, discussions, video talks and interactive learning for students.</p>
 </section>
 
 <section id="videos">
-    <h2>Latest Videos</h2>
-    <div class="video-grid">
-        <iframe src="https://www.youtube.com/embed/tRBX0P2wlSM" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/lRXVOeGQXQs" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/dQJgvOXFbHU" allowfullscreen></iframe>
-    </div>
+<h2>Latest Videos</h2>
+<div class="button-area">
+<button>Tech Talks</button>
+<button>Business Learning</button>
+<button>Motivation</button>
+<button>Live Sessions</button>
+<button>Trending Topics</button>
+</div>
 </section>
+
+<section id="community" class="join">
+<h2>Join Our Community</h2>
+<p>Be part of our growing knowledge network.</p>
+
+<button class="btn" onclick="window.open('https://t.me/yourtelegram')">Join Telegram</button>
+<button class="btn" onclick="window.open('https://chat.whatsapp.com/yourlink')">Join WhatsApp</button>
+
+</section>
+
+<section id="courses">
+<h2>Premium Courses</h2>
+<div class="button-area">
+<button>Financial Management</button>
+<button>Business Ethics</button>
+<button>HRM</button>
+<button>Excel Mastery</button>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact Us</h2>
+<p>Email: yourmail@gmail.com</p>
+</section>
+
+<footer>
+© 2026 Knowledge Hub | Designed Futuristic
+</footer>
 
 </body>
 </html>
