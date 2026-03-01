@@ -21,7 +21,7 @@ scroll-behavior:smooth;
 overflow-x:hidden;
 }
 
-/* BACKGROUND VIDEO */
+/* BACKGROUND VIDEO - Restricted to Content Area */
 .bg-video{
 position:fixed;
 right:0;
@@ -29,8 +29,9 @@ bottom:0;
 min-width:100%;
 min-height:100%;
 object-fit:cover;
-z-index:-3;
+z-index:-3; /* Sits behind everything */
 filter:brightness(40%);
+transform: translate3d(0,0,0);
 }
 
 /* SUBTLE SIDE LIGHT */
@@ -53,7 +54,7 @@ animation: moveLight 6s ease-in-out infinite alternate;
 100%{ transform:translateX(20px); opacity:1; }
 }
 
-/* --- ADJUSTED FLOATING ANIMATION --- */
+/* --- HOME CONTENT FLOATING --- */
 @keyframes homeFloat {
     0% { transform: translate3d(0, 0, 0); }
     50% { transform: translate3d(0, -20px, 0); } 
@@ -64,54 +65,23 @@ animation: moveLight 6s ease-in-out infinite alternate;
     display: block; 
     animation: homeFloat 3.5s ease-in-out infinite;
     will-change: transform;
-    perspective: 1000px;
 }
 
 #home p { animation-delay: 0.4s; }
 #home .btn-container { animation-delay: 0.8s; }
 
-/* --- BUTTON BACKGROUND ANIMATION --- */
-@keyframes buttonGlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-.btn {
-    display: inline-block;
-    margin: 10px;
-    padding: 12px 24px;
-    /* Animated Gradient Background */
-    background: linear-gradient(-45deg, #ff0000, #990000, #ff4d4d, #ff0000);
-    background-size: 300% 300%;
-    animation: buttonGlow 3s ease infinite;
-    
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: 0.3s;
-    border: none;
-    cursor: pointer;
-}
-
-.btn:hover {
-    box-shadow: 0 0 20px red;
-    transform: scale(1.05);
-}
-
-/* NAVBAR */
+/* NAVBAR - Solid Background to block video */
 nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:15px 60px;
-background:rgba(0,0,0,0.85);
+background: #000000; /* Solid black, no transparency */
 position:fixed;
 width:100%;
 top:0;
-z-index:1000;
-border-bottom:1px solid red;
+z-index:1000; /* Stays on top of video */
+border-bottom:2px solid red;
 }
 
 .logo{
@@ -156,6 +126,7 @@ box-shadow:0 0 10px red;
 
 /* SECTIONS */
 section{
+position: relative;
 min-height:100vh;
 display:flex;
 flex-direction:column;
@@ -164,6 +135,8 @@ align-items:center;
 text-align:center;
 padding:120px 20px 80px 20px;
 border-bottom:1px solid rgba(255,0,0,0.2);
+/* This ensures the video only shows "through" the sections */
+background: transparent; 
 }
 
 #home {
@@ -175,6 +148,24 @@ h1,h2,p{
 text-align:center;
 max-width:800px;
 margin-bottom:20px;
+}
+
+/* BUTTONS */
+.btn{
+display:inline-block;
+margin:10px;
+padding:10px 20px;
+background:red;
+color:white;
+text-decoration:none;
+border-radius:6px;
+transition:0.3s;
+font-weight: bold;
+}
+
+.btn:hover{
+box-shadow:0 0 15px red;
+transform: scale(1.05);
 }
 
 /* VIDEO GRID */
@@ -191,7 +182,7 @@ iframe{
 width:100%;
 height:200px;
 border-radius:10px;
-border: 1px solid rgba(255,0,0,0.3);
+border: 1px solid rgba(255,0,0,0.2);
 }
 
 /* COMMENTS */
@@ -207,19 +198,20 @@ padding:10px;
 border-radius:6px;
 border:none;
 resize:none;
-background: #1a1a1a;
+background: #111;
 color: white;
 border: 1px solid #333;
 }
 
 .comment-box button{
 margin-top:10px;
+cursor: pointer;
 }
 
 .comment{
-background:#111;
+background:rgba(17, 17, 17, 0.9);
 margin:10px auto;
-padding:10px;
+padding:15px;
 width:100%;
 max-width:600px;
 border-radius:6px;
@@ -231,15 +223,15 @@ text-align: left;
 @media(max-width:768px){
 nav{
 flex-direction:column;
-padding:15px 10px;
+padding:10px;
 }
 .menu{
-margin-top:15px;
-gap:12px;
+margin-top:10px;
+gap:10px;
 }
 .menu li a{
-font-size:13px;
-padding:6px 8px;
+font-size:12px;
+padding:5px 8px;
 }
 }
 
