@@ -1,83 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>DV Villain - 10 Videos</title>
+<title>DV Villain - Video Portal</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <style>
-
-/* RESET */
+/* RESET & GLOBAL */
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
 }
 
 body{
-color:white;
-background-color: #000;
-scroll-behavior:smooth;
-overflow-x:hidden;
-overscroll-behavior-y: none;
+    color:white;
+    background-color: #000;
+    scroll-behavior:smooth;
+    overflow-x:hidden;
 }
 
 /* BACKGROUND VIDEO */
 .bg-video{
-position:fixed;
-top: 0;
-left: 0;
-width: 100vw;
-height: 100dvh; 
-object-fit: cover;
-z-index: -3;
-filter: brightness(40%);
-transform: translate3d(0,0,0);
--webkit-transform: translate3d(0,0,0);
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100dvh; 
+    object-fit: cover;
+    z-index: -3;
+    filter: brightness(35%);
+    transform: translate3d(0,0,0);
 }
 
-/* SUBTLE SIDE LIGHT */
-.light-overlay{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-pointer-events:none;
-z-index:-2;
-background:
-linear-gradient(90deg, rgba(255,0,0,0.08), transparent 40%),
-linear-gradient(270deg, rgba(255,0,0,0.08), transparent 40%);
-animation: moveLight 6s ease-in-out infinite alternate;
-}
-
-@keyframes moveLight{
-0%{ transform:translateX(-20px); opacity:0.6; }
-100%{ transform:translateX(20px); opacity:1; }
-}
-
-/* HOME CONTENT FLOATING */
-@keyframes homeFloat {
-    0% { transform: translate3d(0, 0, 0); }
-    50% { transform: translate3d(0, -15px, 0); } 
-    100% { transform: translate3d(0, 0, 0); }
-}
-
-#home h1, #home p, #home .btn-container {
-    animation: homeFloat 3.5s ease-in-out infinite;
-    will-change: transform;
-}
-
-#home p { animation-delay: 0.4s; }
-#home .btn-container { animation-delay: 0.8s; }
-
-/* --- NAVIGATION DESIGN --- */
+/* NAVIGATION (LOGO TOP, MENU BELOW ON MOBILE) */
 nav {
     display: flex;
     justify-content: space-between; 
     align-items: center;
     padding: 15px 60px;
-    background: #000000; 
+    background: #000; 
     position: fixed;
     width: 100%;
     top: 0;
@@ -92,8 +54,8 @@ nav {
 }
 
 .logo img {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     border: 2px solid red;
     box-shadow: 0 0 10px red;
@@ -102,13 +64,13 @@ nav {
 .logo span {
     color: red;
     font-weight: 800;
-    font-size: 24px;
+    font-size: 22px;
     text-transform: uppercase;
 }
 
 .menu {
     display: flex;
-    gap: 25px;
+    gap: 20px;
     list-style: none;
 }
 
@@ -116,9 +78,8 @@ nav {
     text-decoration: none;
     color: white;
     font-weight: 700;
-    padding: 8px 5px;
+    font-size: 18px; /* High visibility Header Buttons */
     transition: 0.3s;
-    font-size: 18px; /* Large Header Buttons */
     white-space: nowrap;
 }
 
@@ -134,184 +95,165 @@ section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    padding: 160px 20px 80px 20px; 
-    border-bottom: 1px solid rgba(255,0,0,0.2);
-    background: transparent; 
+    padding: 180px 20px 80px 20px; 
+    border-bottom: 1px solid rgba(255,0,0,0.1);
 }
 
-/* --- DECREASED SUB-BUTTON SIZE --- */
+/* SUB-BUTTONS (SMALLER) */
 .btn {
     display: inline-block;
     margin: 8px;
-    padding: 8px 16px; /* Smaller Sub-buttons */
+    padding: 10px 20px;
     background: red;
     color: white;
     text-decoration: none;
-    border-radius: 6px;
-    transition: 0.3s;
+    border-radius: 5px;
     font-weight: 700;
-    font-size: 13px; /* Smaller font */
-    border: none;
-    min-width: 120px;
+    font-size: 13px; /* Small Sub-button size */
     text-transform: uppercase;
+    transition: 0.3s;
+    border: none;
 }
 
-.btn:hover {
-    box-shadow: 0 0 15px red;
-    transform: scale(1.05);
-}
-
-/* --- UPDATED VIDEO GRID (10 VIDEOS) --- */
+/* VIDEO GRID - 10 SLOTS */
 .video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
     width: 100%;
-    max-width: 1200px;
-    margin-top: 30px;
+    max-width: 1300px;
+    margin-top: 40px;
 }
 
 .video-card {
-    background: rgba(255, 0, 0, 0.05);
-    border: 1px solid rgba(255, 0, 0, 0.2);
-    border-radius: 12px;
+    position: relative;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
     overflow: hidden;
-    transition: 0.3s;
+    transition: transform 0.3s, border-color 0.3s;
 }
 
 .video-card:hover {
+    transform: translateY(-5px);
     border-color: red;
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
 }
 
-iframe {
+/* Responsive Iframe Container */
+.iframe-container {
+    position: relative;
     width: 100%;
-    aspect-ratio: 16 / 9;
-    border: none;
-    display: block;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
 }
 
-/* MOBILE OPTIMIZATION */
+.iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* MOBILE FIXES */
 @media (max-width: 768px) {
     nav {
-        flex-direction: column; 
-        padding: 12px 5px;
+        flex-direction: column;
+        padding: 15px 5px;
         gap: 12px;
     }
 
-    .logo img { width: 40px; height: 40px; }
-    .logo span { font-size: 18px; }
-
     .menu {
         width: 100%;
-        justify-content: center; 
-        gap: 10px;
+        justify-content: center;
+        gap: 15px;
     }
 
     .menu li a {
-        font-size: 13px; /* Head buttons on mobile */
+        font-size: 14px; /* Balanced mobile header size */
     }
 
     .video-grid {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Two columns on mobile */
-        gap: 10px;
+        grid-template-columns: 1fr; /* Single column on phones for better video width */
+        gap: 15px;
+    }
+    
+    section {
+        padding-top: 150px;
     }
 }
-
 </style>
 </head>
 
 <body>
 
 <video autoplay muted loop playsinline webkit-playsinline class="bg-video">
-<source src="https://giffiles.alphacoders.com/219/thumb-440-219892.mp4" type="video/mp4">
+    <source src="https://giffiles.alphacoders.com/219/thumb-440-219892.mp4" type="video/mp4">
 </video>
 
-<div class="light-overlay"></div>
-
 <nav>
-<div class="logo">
-<img src="https://i.imgur.com/7k12EPD.png">
-<span>DV Villain</span>
-</div>
-
-<ul class="menu">
-<li><a href="#home">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#community">Community</a></li>
-<li><a href="#videos">Videos</a></li>
-<li><a href="#comments">Feedback</a></li>
-</ul>
+    <div class="logo">
+        <img src="https://i.imgur.com/7k12EPD.png">
+        <span>DV Villain</span>
+    </div>
+    <ul class="menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#community">Join</a></li>
+        <li><a href="#comments">Feedback</a></li>
+    </ul>
 </nav>
 
 <section id="home">
-    <h1>Welcome to DV Villain</h1>
-    <p>Gaming | Entertainment | Streaming</p>
+    <h1 style="font-size: 3rem; color: red;">DV VILLAIN</h1>
+    <p style="margin-bottom: 20px; font-weight: 300;">THE ULTIMATE GAMING EXPERIENCE</p>
     <div class="btn-container">
-        <a href="#" class="btn">Subscribe Now</a>
-        <a href="https://instagram.com" target="_blank" class="btn" style="background:transparent; border: 1px solid red;">Follow IG</a>
+        <a href="#videos" class="btn">Watch Now</a>
+        <a href="#" class="btn" style="background: transparent; border: 1px solid red;">Subscribe</a>
     </div>
 </section>
 
-<section id="about">
-<h2>About Channel</h2>
-<p>Gaming gameplay, live streams, and high-energy entertainment content.</p>
-</section>
-
-<section id="community">
-<h2>Join Our Community</h2>
-<div class="btn-container">
-    <a href="https://chat.whatsapp.com" target="_blank" class="btn">WhatsApp</a>
-    <a href="https://t.me" target="_blank" class="btn">Telegram</a>
-</div>
-</section>
-
 <section id="videos">
-<h2>Watch My Videos</h2>
-<div class="video-grid">
-    <div class="video-card"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
-    <div class="video-card"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
-    <div class="video-card"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
-    <div class="video-card"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
-    <div class="video-card"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
-    <div class="video-card"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
-    <div class="video-card"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
-    <div class="video-card"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
-    <div class="video-card"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
-    <div class="video-card"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
-</div>
+    <h2 style="color: red; text-transform: uppercase; letter-spacing: 2px;">Latest Content</h2>
+    <div class="video-grid">
+        <div class="video-card"><div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe></div></div>
+        <div class="video-card"><div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe></div></div>
+        <div class="video-card"><div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe></div></div>
+        <div class="video-card"><div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe></div></div>
+        <div class="video-card"><div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe></div></div>
+        <div class="video-card"><div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe></div></div>
+        <div class="video-card"><div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe></div></div>
+        <div class="video-card"><div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe></div></div>
+        <div class="video-card"><div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe></div></div>
+        <div class="video-card"><div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe></div></div>
+    </div>
 </section>
 
 <section id="comments">
-<h2>Leave Your Feedback</h2>
-<div class="comment-box" style="width:100%; max-width:600px;">
-<textarea id="commentInput" rows="4" placeholder="Write your suggestion..." style="width:100%; padding:10px; border-radius:6px; background:#111; color:white; border:1px solid #333; resize:none;"></textarea>
-<button class="btn" onclick="addComment()" style="margin-top:10px; width:100%;">Post Comment</button>
-</div>
-<div id="comments-list"></div>
+    <h2>COMMUNITY FEEDBACK</h2>
+    <div style="width: 100%; max-width: 600px; margin-top: 20px;">
+        <textarea id="commentInput" rows="4" placeholder="Type your message..." style="width:100%; padding:15px; border-radius:8px; background:#111; color:white; border:1px solid #444; resize:none;"></textarea>
+        <button class="btn" onclick="addComment()" style="width:100%; margin-top: 10px;">Post Comment</button>
+    </div>
+    <div id="comments-list" style="width: 100%; max-width: 600px; margin-top: 20px;"></div>
 </section>
 
 <script>
-function addComment(){
-let input=document.getElementById("commentInput");
-let text=input.value.trim();
-if(text==="") return;
-
-let div=document.createElement("div");
-div.className="comment";
-div.style.background="rgba(17,17,17,0.9)";
-div.style.margin="10px auto";
-div.style.padding="15px";
-div.style.borderRadius="6px";
-div.style.borderLeft="3px solid red";
-div.style.textAlign="left";
-div.style.maxWidth="600px";
-div.innerText=text;
-
-document.getElementById("comments-list").prepend(div);
-input.value="";
-}
+    function addComment(){
+        let input = document.getElementById("commentInput");
+        let text = input.value.trim();
+        if(text === "") return;
+        let div = document.createElement("div");
+        div.style.background = "rgba(255,0,0,0.05)";
+        div.style.padding = "15px";
+        div.style.marginBottom = "10px";
+        div.style.borderLeft = "4px solid red";
+        div.style.borderRadius = "4px";
+        div.innerText = text;
+        document.getElementById("comments-list").prepend(div);
+        input.value = "";
+    }
 </script>
 
 </body>
