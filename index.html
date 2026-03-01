@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>DV Villain</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <style>
 
@@ -19,19 +19,23 @@ color:white;
 background-color: #000;
 scroll-behavior:smooth;
 overflow-x:hidden;
+/* Prevents horizontal pull-to-refresh bounce on Android */
+overscroll-behavior-y: none;
 }
 
-/* BACKGROUND VIDEO - Restricted to Content Area */
+/* BACKGROUND VIDEO - OPTIMIZED FOR ANDROID SCREEN SIZES */
 .bg-video{
 position:fixed;
-right:0;
-bottom:0;
-min-width:100%;
-min-height:100%;
-object-fit:cover;
-z-index:-3; /* Sits behind everything */
-filter:brightness(40%);
+top: 0;
+left: 0;
+width: 100vw;
+height: 100dvh; /* Uses Dynamic Viewport Height for Android Chrome */
+object-fit: cover;
+z-index: -3;
+filter: brightness(40%);
+/* Hardware acceleration for mobile */
 transform: translate3d(0,0,0);
+-webkit-transform: translate3d(0,0,0);
 }
 
 /* SUBTLE SIDE LIGHT */
@@ -57,12 +61,11 @@ animation: moveLight 6s ease-in-out infinite alternate;
 /* --- HOME CONTENT FLOATING --- */
 @keyframes homeFloat {
     0% { transform: translate3d(0, 0, 0); }
-    50% { transform: translate3d(0, -20px, 0); } 
+    50% { transform: translate3d(0, -15px, 0); } 
     100% { transform: translate3d(0, 0, 0); }
 }
 
 #home h1, #home p, #home .btn-container {
-    display: block; 
     animation: homeFloat 3.5s ease-in-out infinite;
     will-change: transform;
 }
@@ -76,11 +79,11 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:15px 60px;
-background: #000000; /* Solid black, no transparency */
+background: #000000; 
 position:fixed;
 width:100%;
 top:0;
-z-index:1000; /* Stays on top of video */
+z-index:1000;
 border-bottom:2px solid red;
 }
 
@@ -126,7 +129,6 @@ box-shadow:0 0 10px red;
 
 /* SECTIONS */
 section{
-position: relative;
 min-height:100vh;
 display:flex;
 flex-direction:column;
@@ -135,7 +137,6 @@ align-items:center;
 text-align:center;
 padding:120px 20px 80px 20px;
 border-bottom:1px solid rgba(255,0,0,0.2);
-/* This ensures the video only shows "through" the sections */
 background: transparent; 
 }
 
@@ -154,13 +155,14 @@ margin-bottom:20px;
 .btn{
 display:inline-block;
 margin:10px;
-padding:10px 20px;
+padding:12px 24px;
 background:red;
 color:white;
 text-decoration:none;
 border-radius:6px;
 transition:0.3s;
 font-weight: bold;
+border: none;
 }
 
 .btn:hover{
@@ -171,7 +173,7 @@ transform: scale(1.05);
 /* VIDEO GRID */
 .video-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:20px;
 width:100%;
 max-width:1100px;
@@ -180,7 +182,7 @@ margin-top:20px;
 
 iframe{
 width:100%;
-height:200px;
+height:210px;
 border-radius:10px;
 border: 1px solid rgba(255,0,0,0.2);
 }
@@ -194,13 +196,12 @@ max-width:600px;
 
 .comment-box textarea{
 width:100%;
-padding:10px;
+padding:12px;
 border-radius:6px;
-border:none;
-resize:none;
 background: #111;
 color: white;
 border: 1px solid #333;
+resize: none;
 }
 
 .comment-box button{
@@ -219,7 +220,7 @@ border-left:3px solid red;
 text-align: left;
 }
 
-/* MOBILE */
+/* MOBILE OPTIMIZATION FOR ANDROID */
 @media(max-width:768px){
 nav{
 flex-direction:column;
@@ -227,12 +228,14 @@ padding:10px;
 }
 .menu{
 margin-top:10px;
-gap:10px;
+gap:5px;
 }
 .menu li a{
-font-size:12px;
-padding:5px 8px;
+font-size:11px;
+padding:6px 5px;
 }
+.logo img { width: 40px; height: 40px; }
+.logo span { font-size: 16px; }
 }
 
 </style>
@@ -240,8 +243,15 @@ padding:5px 8px;
 
 <body>
 
-<video autoplay muted loop playsinline webkit-playsinline class="bg-video">
-<source src="https://giffiles.alphacoders.com/219/thumb-440-219892.mp4" type="video/mp4">
+<video 
+    autoplay 
+    muted 
+    loop 
+    playsinline 
+    webkit-playsinline 
+    preload="auto"
+    class="bg-video">
+    <source src="https://giffiles.alphacoders.com/219/thumb-440-219892.mp4" type="video/mp4">
 </video>
 
 <div class="light-overlay"></div>
@@ -266,7 +276,7 @@ padding:5px 8px;
     <p>Gaming | Entertainment | Streaming</p>
     <div class="btn-container">
         <a href="#" class="btn">Subscribe Now</a>
-        <a href="https://instagram.com" target="_blank" class="btn">Follow on Instagram</a>
+        <a href="https://instagram.com" target="_blank" class="btn" style="background:transparent; border: 1px solid red;">Follow IG</a>
     </div>
 </section>
 
@@ -278,16 +288,14 @@ padding:5px 8px;
 <section id="community">
 <h2>Join Our Community</h2>
 <div class="btn-container">
-    <a href="https://chat.whatsapp.com" target="_blank" class="btn">WhatsApp Community</a>
-    <a href="https://t.me" target="_blank" class="btn">Telegram Group</a>
+    <a href="https://chat.whatsapp.com" target="_blank" class="btn">WhatsApp</a>
+    <a href="https://t.me" target="_blank" class="btn">Telegram</a>
 </div>
 </section>
 
 <section id="videos">
 <h2>Watch My Videos</h2>
 <div class="video-grid">
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
 <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
 <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
 </div>
