@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
@@ -30,7 +30,7 @@
             height: 100dvh; 
             object-fit: cover;
             z-index: -3;
-            filter: brightness(30%);
+            filter: brightness(25%);
         }
 
         /* NAVIGATION */
@@ -39,7 +39,7 @@
             justify-content: space-between; 
             align-items: center;
             padding: 10px 60px;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
@@ -79,13 +79,13 @@
             text-decoration: none;
             color: white;
             font-weight: 700;
-            font-size: 18px; 
+            font-size: 17px; 
             transition: 0.3s ease;
-            position: relative;
         }
 
         .menu li a:hover {
             color: red;
+            text-shadow: 0 0 10px red;
         }
 
         /* SECTIONS */
@@ -96,15 +96,15 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 120px 20px 80px 20px; 
-            border-bottom: 1px solid rgba(255, 0, 0, 0.1);
+            padding: 140px 20px 80px 20px; 
+            border-bottom: 1px solid rgba(255, 0, 0, 0.15);
         }
 
         /* BUTTONS */
         .btn {
             display: inline-block;
             margin: 10px;
-            padding: 14px 28px;
+            padding: 14px 30px;
             background: red;
             color: white;
             text-decoration: none;
@@ -113,7 +113,7 @@
             font-size: 15px; 
             transition: all 0.3s ease;
             border: 2px solid red;
-            min-width: 170px;
+            min-width: 180px;
             text-transform: uppercase;
             cursor: pointer;
         }
@@ -121,7 +121,7 @@
         .btn:hover {
             background: transparent;
             color: red;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
             transform: translateY(-3px);
         }
 
@@ -144,11 +144,11 @@
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid #333;
-            transition: transform 0.3s ease;
+            transition: 0.3s;
         }
 
         .iframe-container:hover {
-            transform: scale(1.03);
+            transform: scale(1.02);
             border-color: red;
         }
 
@@ -161,16 +161,16 @@
             border: 0;
         }
 
-        /* FOOTER AREA INSIDE COMMENTS */
+        /* FOOTER AREA */
         .footer-copyright {
-            margin-top: 60px;
+            margin-top: 80px;
             padding-top: 30px;
             border-top: 1px solid rgba(255, 0, 0, 0.2);
             width: 100%;
             max-width: 800px;
-            color: #888;
+            color: #777;
             font-size: 14px;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
 
         /* MOBILE FIXES */
@@ -178,18 +178,19 @@
             nav {
                 flex-direction: column; 
                 padding: 15px 10px;
-                gap: 10px;
+                gap: 15px;
             }
-            .menu { gap: 15px; }
-            .menu li a { font-size: 15px; }
+            .menu { gap: 12px; }
+            .menu li a { font-size: 14px; }
             .logo span { font-size: 20px; }
+            section { padding-top: 180px; }
         }
     </style>
 </head>
 
 <body>
 
-    <video autoplay muted loop playsinline webkit-playsinline class="bg-video">
+    <video autoplay muted loop playsinline class="bg-video">
         <source src="https://giffiles.alphacoders.com/219/thumb-440-219892.mp4" type="video/mp4">
     </video>
 
@@ -208,23 +209,36 @@
     </nav>
 
     <section id="home">
-        <h1 style="font-size: 4rem; color: red; text-shadow: 0 0 20px rgba(255,0,0,0.5);">DV VILLAIN</h1>
-        <p style="font-size: 1.4rem; margin-bottom: 30px; letter-spacing: 2px;">GAMING | ENTERTAINMENT | STREAMING</p>
+        <h1 style="font-size: clamp(3rem, 8vw, 5rem); color: red; text-shadow: 0 0 30px rgba(255,0,0,0.6); font-weight: 900; margin-bottom: 10px;">DV VILLAIN</h1>
+        <p style="font-size: 1.3rem; margin-bottom: 25px; letter-spacing: 4px; color: #eee; text-transform: uppercase; font-weight: 300;">
+            Defying Limits. Entertaining Minds. Breaking the Game.
+        </p>
+        <p style="max-width: 700px; margin-bottom: 40px; color: #bbb; line-height: 1.6; font-size: 1.1rem;">
+            Welcome to the official hub of the <strong>Villain Squad</strong>. Whether you're here for high-octane gameplay or sharp insights, you've just entered the elite circle of digital entertainment.
+        </p>
         <div class="btn-container">
             <a href="https://www.youtube.com/@DV_VILLAIN_YT" target="_blank" class="btn">Subscribe Now</a>
             <a href="https://instagram.com" target="_blank" class="btn" style="background:transparent; color: white; border: 2px solid white;">Follow IG</a>
         </div>
     </section>
 
-    <section id="about">
-        <h2 style="font-size: 2.5rem; color: red; margin-bottom: 20px;">ABOUT CHANNEL</h2>
-        <p style="font-size: 1.2rem; max-width: 850px; line-height: 1.8; color: #ddd;">
-            Welcome to <strong>DV VILLAIN YT</strong> – where information meets entertainment. I’m a creator studying at Geeta University, delivering high-energy gaming and funny content.
-        </p>
+    <section id="about" style="background: rgba(0,0,0,0.4);">
+        <h2 style="font-size: 2.8rem; color: red; margin-bottom: 30px;">THE VILLAIN'S ORIGIN</h2>
+        <div style="max-width: 850px; text-align: left; background: rgba(20,20,20,0.6); padding: 40px; border-radius: 12px; border: 1px solid rgba(255,0,0,0.1);">
+            <p style="font-size: 1.2rem; line-height: 1.8; color: #ddd; margin-bottom: 20px;">
+                I am a 20-year-old creator currently pursuing my studies at <strong>Geeta University</strong>. While my textbooks teach me the world, my channel allows me to redefine it. <strong>DV VILLAIN YT</strong> isn't just a gaming channel; it's a movement where curiosity meets the controller.
+            </p>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: #ccc; margin-bottom: 20px;">
+                My journey started with a simple idea: that "Villains" are just people who refuse to follow the boring path. On this channel, I blend <strong>Informative deep-dives</strong> with <strong>Competitive Gaming</strong> and <strong>Real-world Commentary</strong>. 
+            </p>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: #ccc;">
+                Balancing student life and content creation isn't easy, but the energy from the <strong>Villain Squad</strong> keeps me moving. This is where gaming meets madness, and everyone is invited to the chaos.
+            </p>
+        </div>
     </section>
 
     <section id="videos">
-        <h2 style="margin-bottom: 30px; color: red; font-size: 2.5rem;">Latest Videos</h2>
+        <h2 style="margin-bottom: 30px; color: red; font-size: 2.5rem; text-transform: uppercase;">Latest Missions</h2>
         <div class="video-grid">
             <div class="iframe-container"><iframe src="https://www.youtube.com/embed/lRXVOeGQXQs" allowfullscreen></iframe></div>
             <div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQJgvOXFbHU" allowfullscreen></iframe></div>
@@ -240,23 +254,27 @@
     </section>
 
     <section id="community">
-        <h2 style="font-size: 2.5rem; margin-bottom: 15px;">JOIN THE SQUAD</h2>
+        <h2 style="font-size: 2.8rem; margin-bottom: 20px; color: red;">JOIN THE LEGION</h2>
+        <p style="font-size: 1.3rem; color: #fff; font-weight: 700; margin-bottom: 15px;">WE DON'T HAVE FANS, WE HAVE A SQUAD.</p>
+        <p style="max-width: 700px; color: #ccc; margin-bottom: 40px; line-height: 1.6;">
+            The best way to influence the content is to be part of the conversation. Join our private groups to get early access to video updates, participate in exclusive polls, and chat directly with me.
+        </p>
         <div class="btn-container">
-            <a href="https://chat.whatsapp.com" target="_blank" class="btn">WhatsApp</a>
-            <a href="https://t.me" target="_blank" class="btn" style="background:#0088cc; border-color: #0088cc;">Telegram</a>
+            <a href="https://chat.whatsapp.com" target="_blank" class="btn" style="background: #25D366; border-color: #25D366;">WhatsApp Group</a>
+            <a href="https://t.me" target="_blank" class="btn" style="background:#0088cc; border-color: #0088cc;">Telegram Channel</a>
         </div>
     </section>
 
     <section id="comments">
         <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: red;">FEEDBACK</h2>
         <div style="width: 100%; max-width: 650px;">
-            <textarea id="commentInput" rows="4" placeholder="Share your suggestions..." style="width:100%; padding:15px; border-radius:4px; background:#111; color:white; border:1px solid #444; resize:none; font-size: 16px; outline: none;"></textarea>
+            <textarea id="commentInput" rows="4" placeholder="Leave a suggestion for the Squad..." style="width:100%; padding:15px; border-radius:6px; background:#111; color:white; border:1px solid #444; resize:none; font-size: 16px; outline: none;"></textarea>
             <button class="btn" onclick="addComment()" style="margin-top:20px; width:100%;">Post Comment</button>
         </div>
         <div id="comments-list" style="width: 100%; max-width: 650px; margin-top: 30px; text-align: left;"></div>
 
         <div class="footer-copyright">
-            &copy; 2026 <span style="color: red;">DV VILLAIN YT</span> | ALL RIGHTS RESERVED
+            &copy; 2026 <span style="color: red; font-weight: 900;">DV VILLAIN YT</span> | ALL RIGHTS RESERVED
         </div>
     </section>
 
@@ -265,16 +283,16 @@
             const input = document.getElementById("commentInput");
             const text = input.value.trim();
             if(text === "") {
-                alert("Please enter a comment first!");
+                alert("The Villain Squad likes words! Please type something before posting.");
                 return;
             }
             const div = document.createElement("div");
-            div.style.background = "rgba(40, 40, 40, 0.8)";
+            div.style.background = "rgba(30, 30, 30, 0.9)";
             div.style.margin = "15px 0";
             div.style.padding = "20px";
             div.style.borderRadius = "8px";
             div.style.borderLeft = "5px solid red";
-            div.style.animation = "fadeIn 0.5s ease";
+            div.style.boxShadow = "0 4px 15px rgba(0,0,0,0.5)";
             div.innerText = text;
             document.getElementById("comments-list").prepend(div);
             input.value = "";
