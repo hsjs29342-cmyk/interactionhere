@@ -23,7 +23,7 @@ color:white;
 overflow-x:hidden;
 }
 
-/* 🎥 VIDEO BACKGROUND */
+/* VIDEO BACKGROUND */
 .bg-video{
 position:fixed;
 top:0;
@@ -44,7 +44,7 @@ background:rgba(0,0,0,0.65);
 z-index:-2;
 }
 
-/* ✨ FLOATING PARTICLES */
+/* PARTICLES */
 .particles{
 position:fixed;
 top:0;
@@ -70,8 +70,7 @@ opacity:0.7;
 100%{ transform:translateY(-10vh) scale(1); }
 }
 
-/* ================= NAVBAR ================= */
-
+/* NAVBAR */
 nav{
 display:flex;
 justify-content:space-between;
@@ -84,7 +83,6 @@ z-index:1000;
 border-bottom:1px solid red;
 }
 
-/* LOGO */
 .logo{
 display:flex;
 align-items:center;
@@ -105,13 +103,11 @@ font-size:18px;
 color:red;
 }
 
-/* MENU */
 .menu{
 display:flex;
 gap:25px;
 list-style:none;
-align-items:center;
-white-space:nowrap; /* Prevent wrapping */
+white-space:nowrap;
 }
 
 .menu li a{
@@ -129,8 +125,7 @@ background:red;
 box-shadow:0 0 10px red;
 }
 
-/* ================= SECTIONS ================= */
-
+/* SECTIONS */
 section{
 min-height:100vh;
 padding:170px 10% 100px;
@@ -166,10 +161,10 @@ margin:20px 0;
 font-size:18px;
 }
 
-/* BUTTON */
+/* BUTTONS */
 .btn{
 padding:10px 24px;
-margin-top:20px;
+margin:10px;
 border:none;
 border-radius:25px;
 cursor:pointer;
@@ -184,12 +179,39 @@ box-shadow:0 0 20px red;
 transform:scale(1.05);
 }
 
-/* ================= MOBILE ================= */
+/* FORM */
+form{
+display:flex;
+flex-direction:column;
+gap:15px;
+width:100%;
+max-width:400px;
+margin-top:20px;
+}
 
+input, textarea{
+padding:10px;
+border-radius:8px;
+border:1px solid red;
+background:black;
+color:white;
+outline:none;
+}
+
+textarea{
+resize:none;
+height:100px;
+}
+
+input:focus, textarea:focus{
+box-shadow:0 0 10px red;
+}
+
+/* MOBILE */
 @media(max-width:768px){
 
 nav{
-flex-direction:column; /* Stack logo and menu */
+flex-direction:column;
 align-items:center;
 padding:15px 20px;
 }
@@ -264,28 +286,55 @@ color:#aaa;
 </ul>
 </nav>
 
+<!-- HOME -->
 <section id="home" class="home">
 <h1>WELCOME TO DV VILLAIN YT</h1>
 <p>Gaming • Entertainment • Power Content</p>
+
 <button class="btn"
 onclick="window.open('https://www.youtube.com/@DV_VILLAIN_YT?sub_confirmation=1')">
 Subscribe Now
 </button>
+
+<button class="btn"
+onclick="window.open('https://instagram.com/YOUR_INSTAGRAM_USERNAME')">
+Follow on Instagram
+</button>
 </section>
 
+<!-- ABOUT -->
 <section id="about">
 <h2>About Channel</h2>
 <p>Epic gaming edits and villain-style cinematic content for true gaming lovers.</p>
 </section>
 
+<!-- COMMUNITY -->
 <section id="community">
 <h2>Community</h2>
-<p>Join our Telegram and WhatsApp community to stay updated with latest uploads.</p>
+<p>Join our official communities to stay connected and updated.</p>
+
+<button class="btn"
+onclick="window.open('https://chat.whatsapp.com/YOUR_WHATSAPP_LINK')">
+Join WhatsApp
+</button>
+
+<button class="btn"
+onclick="window.open('https://t.me/YOUR_TELEGRAM_LINK')">
+Join Telegram
+</button>
 </section>
 
+<!-- COMMENTS -->
 <section id="comments">
-<h2>Comments</h2>
-<p>Drop your thoughts and gaming challenges below.</p>
+<h2>Comments & Feedback</h2>
+<p>Send your feedback or suggestions below.</p>
+
+<form onsubmit="alert('Thank you for your feedback!'); return false;">
+<input type="text" placeholder="Your Name" required>
+<textarea placeholder="Your Message..." required></textarea>
+<button type="submit" class="btn">Submit</button>
+</form>
+
 </section>
 
 <footer>
