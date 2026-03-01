@@ -1,0 +1,34 @@
+body {
+    font-family: Arial;
+    text-align: center;
+    background: #f2f2f2;
+}
+
+.join-section input {
+    padding: 8px;
+    margin: 5px;
+}
+
+.video-section {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+video {
+    width: 300px;
+    margin: 10px;
+    border: 2px solid #333;
+}
+
+.chat-section {
+    margin-top: 20px;
+}
+
+#messages {
+    height: 150px;
+    overflow-y: scroll;
+    background: white;
+    padding: 10px;
+    margin: 10px;
+}
