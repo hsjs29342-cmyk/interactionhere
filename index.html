@@ -1,182 +1,67 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>KnowShare - Public Knowledge Platform</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-        }
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const http = require("http");
+const { Server } = require("socket.io");
 
-        header {
-            background: #1e90ff;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            font-size: 22px;
-            font-weight: bold;
-        }
+const app = express();
+const server = http.createServer(app);
+const io = new Server(server);
 
-        .container {
-            width: 60%;
-            margin: 20px auto;
-        }
+app.use(cors());
+app.use(express.json());
+app.use(express.static("public"));
 
-        .post-box {
-            background: white;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
-        }
+mongoose.connect("mongodb://127.0.0.1:27017/knowshare")
+.then(() => console.log("MongoDB Connected"))
+.catch(err => console.log(err));
 
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            resize: none;
-        }
+const postSchema = new mongoose.Schema({
+    content: String,
+    likes: { type: Number, default: 0 },
+    comments: [String]
+});
 
-        button {
-            margin-top: 10px;
-            padding: 8px 15px;
-            border: none;
-            border-radius: 5px;
-            background: #1e90ff;
-            color: white;
-            cursor: pointer;
-        }
+const Post = mongoose.model("Post", postSchema);
 
-        .post {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
-        }
+// Create Post
+app.post("/posts", async (req, res) => {
+    const post = new Post({ content: req.body.content });
+    await post.save();
+    res.json(post);
+});
 
-        .like-btn {
-            background: #ff4757;
-        }
+// Get Posts
+app.get("/posts", async (req, res) => {
+    const posts = await Post.find().sort({ _id: -1 });
+    res.json(posts);
+});
 
-        .chat-section {
-            position: fixed;
-            bottom: 0;
-            right: 0;
-            width: 300px;
-            background: white;
-            border: 1px solid #ccc;
-        }
+// Like Post
+app.put("/like/:id", async (req, res) => {
+    const post = await Post.findById(req.params.id);
+    post.likes++;
+    await post.save();
+    res.json(post);
+});
 
-        .chat-header {
-            background: #1e90ff;
-            color: white;
-            padding: 10px;
-            text-align: center;
-        }
+// Add Comment
+app.put("/comment/:id", async (req, res) => {
+    const post = await Post.findById(req.params.id);
+    post.comments.push(req.body.comment);
+    await post.save();
+    res.json(post);
+});
 
-        .chat-messages {
-            height: 200px;
-            overflow-y: auto;
-            padding: 10px;
-        }
+// Socket Chat
+io.on("connection", (socket) => {
+    console.log("User Connected");
 
-        .chat-input {
-            display: flex;
-        }
+    socket.on("chat message", (msg) => {
+        io.emit("chat message", msg);
+    });
+});
 
-        .chat-input input {
-            flex: 1;
-            padding: 8px;
-            border: none;
-            border-top: 1px solid #ccc;
-        }
-
-        .chat-input button {
-            border-radius: 0;
-        }
-    </style>
-</head>
-
-<body>
-
-<header>KnowShare - Learn & Share Facts</header>
-
-<div class="container">
-
-    <div class="post-box">
-        <h3>Create Post</h3>
-        <textarea id="postContent" rows="3" placeholder="Share a fact or knowledge..."></textarea>
-        <button onclick="addPost()">Post</button>
-    </div>
-
-    <div id="posts"></div>
-
-</div>
-
-<div class="chat-section">
-    <div class="chat-header">Public Chat</div>
-    <div class="chat-messages" id="chatMessages"></div>
-    <div class="chat-input">
-        <input type="text" id="chatInput" placeholder="Type message...">
-        <button onclick="sendMessage()">Send</button>
-    </div>
-</div>
-
-<script>
-
-    function addPost() {
-        let content = document.getElementById("postContent").value;
-        if(content === "") return;
-
-        let postDiv = document.createElement("div");
-        postDiv.className = "post";
-
-        postDiv.innerHTML = `
-            <p>${content}</p>
-            <button class="like-btn" onclick="likePost(this)">❤️ Like (<span>0</span>)</button>
-            <div>
-                <input type="text" placeholder="Add comment..." onkeydown="addComment(event, this)">
-                <div class="comments"></div>
-            </div>
-        `;
-
-        document.getElementById("posts").prepend(postDiv);
-        document.getElementById("postContent").value = "";
-    }
-
-    function likePost(btn) {
-        let span = btn.querySelector("span");
-        span.innerText = parseInt(span.innerText) + 1;
-    }
-
-    function addComment(event, input) {
-        if(event.key === "Enter" && input.value !== "") {
-            let commentDiv = input.nextElementSibling;
-            let p = document.createElement("p");
-            p.innerText = input.value;
-            commentDiv.appendChild(p);
-            input.value = "";
-        }
-    }
-
-    function sendMessage() {
-        let input = document.getElementById("chatInput");
-        let message = input.value;
-        if(message === "") return;
-
-        let msgDiv = document.createElement("div");
-        msgDiv.innerText = message;
-        document.getElementById("chatMessages").appendChild(msgDiv);
-
-        input.value = "";
-    }
-
-</script>
-
-</body>
-</html>
+server.listen(3000, () => {
+    console.log("Server running on port 3000");
+});
