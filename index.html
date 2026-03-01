@@ -49,13 +49,13 @@
             50% { transform: translateY(-10px); }
         }
 
-        /* NAVIGATION - MASSIVE HEAD BUTTONS */
+        /* NAVIGATION - UPDATED MASSIVE HEAD BUTTONS */
         nav {
             display: flex;
             justify-content: space-between; 
             align-items: center;
-            padding: 20px 60px;
-            background: rgba(0, 0, 0, 0.95);
+            padding: 15px 40px; /* Adjusted padding to accommodate larger text */
+            background: rgba(0, 0, 0, 0.96);
             backdrop-filter: blur(15px);
             position: fixed;
             width: 100%;
@@ -67,13 +67,13 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             flex-shrink: 0;
         }
 
         .logo img {
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             border: 2px solid red;
             box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
@@ -82,35 +82,37 @@
         .logo span {
             color: red;
             font-weight: 900;
-            font-size: 28px;
+            font-size: 26px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
 
         .menu {
             display: flex;
-            gap: 45px; /* Huge gap for laptop */
+            gap: 30px; /* Balanced gap for the larger font size */
             list-style: none;
+            align-items: center;
         }
 
         .menu li a {
             text-decoration: none;
             color: white;
-            font-weight: 800; /* Bold */
-            font-size: 22px; /* Extra Large */
+            font-weight: 900; /* Max Boldness */
+            font-size: 25px; /* INCREASED SIZE AS REQUESTED */
             transition: 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             position: relative;
-            padding: 8px 0;
+            padding: 5px 0;
+            white-space: nowrap; /* Forces text to stay on one line */
         }
 
         .menu li a::after {
             content: '';
             position: absolute;
             width: 0;
-            height: 3px;
-            bottom: 0;
+            height: 4px;
+            bottom: -2px;
             left: 0;
             background-color: red;
             transition: 0.3s;
@@ -118,7 +120,7 @@
 
         .menu li a:hover {
             color: red;
-            text-shadow: 0 0 15px red;
+            text-shadow: 0 0 20px red;
         }
 
         .menu li a:hover::after {
@@ -133,11 +135,11 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 160px 20px 80px 20px; 
+            padding: 180px 20px 80px 20px; 
             border-bottom: 1px solid rgba(255, 0, 0, 0.15);
         }
 
-        /* HOME CONTENT ANIMATION CLASSES */
+        /* HOME CONTENT ANIMATION */
         .home-title { animation: titleGlow 3s infinite ease-in-out, fadeInUp 1s ease-out; }
         .home-text { animation: fadeInUp 1s ease-out 0.4s both; }
         .home-btns { animation: fadeInUp 1s ease-out 0.8s both; }
@@ -194,8 +196,8 @@
         .iframe-container:hover { transform: scale(1.03); border-color: red; }
         .iframe-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-        /* MOBILE OPTIMIZATION - SINGLE LINE LARGE BUTTONS */
-        @media (max-width: 950px) {
+        /* MOBILE OPTIMIZATION - MAINTAINING SINGLE ROW */
+        @media (max-width: 1100px) {
             nav {
                 flex-direction: column; 
                 padding: 15px 5px;
@@ -206,20 +208,19 @@
                 gap: 25px;
                 width: 100%;
                 justify-content: flex-start;
-                overflow-x: auto; /* Enable horizontal swiping */
+                overflow-x: auto; /* Swipe to see all large buttons */
                 padding: 0 20px 10px 20px;
                 -webkit-overflow-scrolling: touch;
             }
 
-            .menu::-webkit-scrollbar { display: none; } /* Clean look */
+            .menu::-webkit-scrollbar { display: none; }
 
             .menu li a {
-                font-size: 18px; /* Big enough to tap easily */
-                white-space: nowrap;
+                font-size: 20px; /* Slightly smaller for mobile row, but still large */
             }
 
             .logo span { font-size: 24px; }
-            section { padding-top: 220px; }
+            section { padding-top: 240px; }
         }
 
         .footer-copyright {
@@ -260,9 +261,6 @@
         <p class="home-text" style="font-size: 1.4rem; margin-bottom: 30px; letter-spacing: 5px; color: #eee; text-transform: uppercase;">
             Defying Limits • Breaking the Game
         </p>
-        <p class="home-text" style="max-width: 750px; margin-bottom: 45px; color: #bbb; line-height: 1.7; font-size: 1.2rem;">
-            Welcome to the official hub of the <strong>Villain Squad</strong>. Experience high-octane content, expert gaming strategies, and a community built for those who refuse to follow the rules.
-        </p>
         <div class="btn-container home-btns">
             <a href="https://www.youtube.com/@DV_VILLAIN_YT" target="_blank" class="btn btn-animate">Subscribe Now</a>
             <a href="https://instagram.com" target="_blank" class="btn btn-animate" style="background:transparent; color: white; border: 2px solid white; animation-delay: 1s;">Follow IG</a>
@@ -271,12 +269,12 @@
 
     <section id="about" style="background: rgba(0,0,0,0.5);">
         <h2 style="font-size: 3rem; color: red; margin-bottom: 40px;">THE VILLAIN'S STORY</h2>
-        <div style="max-width: 850px; text-align: left; background: rgba(15,15,15,0.7); padding: 50px; border-radius: 15px; border: 1px solid rgba(255,0,0,0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+        <div style="max-width: 850px; text-align: left; background: rgba(15,15,15,0.7); padding: 50px; border-radius: 15px; border: 1px solid rgba(255,0,0,0.2);">
             <p style="font-size: 1.25rem; line-height: 1.8; color: #ddd; margin-bottom: 25px;">
                 I am a 20-year-old creator currently carving my path at <strong>Geeta University</strong>. My channel, <strong>DV VILLAIN YT</strong>, is where digital chaos meets professional gameplay.
             </p>
             <p style="font-size: 1.15rem; line-height: 1.8; color: #ccc;">
-                In a world of followers, I chose to be the Villain. I blend competitive skills with insightful commentary to bring you content that doesn't just entertain—it dominates. Join the Squad, and let's break the cycle together.
+                In a world of followers, I chose to be the Villain. I blend competitive skills with insightful commentary to bring you content that doesn't just entertain—it dominates.
             </p>
         </div>
     </section>
@@ -295,7 +293,6 @@
     <section id="community">
         <h2 style="font-size: 3rem; margin-bottom: 25px; color: red;">JOIN THE LEGION</h2>
         <p style="font-size: 1.4rem; color: #fff; font-weight: 700; margin-bottom: 20px;">NOT FANS. JUST THE SQUAD.</p>
-        <p style="max-width: 600px; color: #bbb; margin-bottom: 40px;">Get exclusive updates, early access to videos, and direct contact with the Villain himself.</p>
         <div class="btn-container">
             <a href="https://chat.whatsapp.com" target="_blank" class="btn" style="background: #25D366; border-color: #25D366;">WhatsApp</a>
             <a href="https://t.me" target="_blank" class="btn" style="background:#0088cc; border-color: #0088cc;">Telegram</a>
@@ -319,10 +316,7 @@
         function addComment(){
             const input = document.getElementById("commentInput");
             const text = input.value.trim();
-            if(text === "") {
-                alert("The Villain Squad demands words! Say something.");
-                return;
-            }
+            if(text === "") return;
             const div = document.createElement("div");
             div.style.background = "rgba(25, 25, 25, 0.9)";
             div.style.margin = "15px 0";
@@ -330,7 +324,6 @@
             div.style.borderRadius = "10px";
             div.style.borderLeft = "6px solid red";
             div.style.animation = "fadeInUp 0.6s ease-out";
-            div.style.boxShadow = "0 5px 15px rgba(0,0,0,0.4)";
             div.innerText = text;
             document.getElementById("comments-list").prepend(div);
             input.value = "";
