@@ -8,25 +8,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
     font-family:'Orbitron',sans-serif;
+    scroll-behavior:smooth;
 }
 
 body{
     background:#0f0f0f;
     color:white;
-    overflow-x:hidden;
 }
 
 /* NAVBAR */
 nav{
     display:flex;
     justify-content:space-between;
-    padding:20px 50px;
-    background:rgba(0,0,0,0.6);
+    align-items:center;
+    padding:20px 40px;
+    background:rgba(0,0,0,0.7);
     backdrop-filter:blur(10px);
     position:fixed;
     width:100%;
@@ -44,7 +46,7 @@ nav ul{
 }
 
 nav ul li{
-    margin-left:30px;
+    margin-left:25px;
 }
 
 nav ul li a{
@@ -55,28 +57,34 @@ nav ul li a{
 
 nav ul li a:hover{
     color:#00f7ff;
-    text-shadow:0 0 10px #00f7ff;
 }
 
-/* HERO SECTION */
-.hero{
-    height:100vh;
+/* SECTION FULL PAGE GAP */
+section{
+    min-height:100vh;
+    padding-top:120px;
     display:flex;
     justify-content:center;
     align-items:center;
     flex-direction:column;
     text-align:center;
+    padding-left:20px;
+    padding-right:20px;
+}
+
+/* HERO */
+.hero{
     background:linear-gradient(135deg,#000000,#0d1b2a);
 }
 
 .hero h2{
-    font-size:60px;
+    font-size:50px;
     animation:glow 2s infinite alternate;
 }
 
 .hero p{
     margin-top:20px;
-    font-size:18px;
+    max-width:700px;
     color:#ccc;
 }
 
@@ -99,8 +107,7 @@ nav ul li a:hover{
 
 /* ABOUT */
 .about{
-    padding:100px 50px;
-    text-align:center;
+    background:#111;
 }
 
 .about h2{
@@ -110,47 +117,61 @@ nav ul li a:hover{
 
 /* VIDEOS */
 .videos{
-    padding:50px;
+    background:#0a0a0a;
+}
+
+.video-container{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
     gap:30px;
-}
-
-.video-card{
-    background:#111;
-    padding:20px;
-    border-radius:15px;
-    transition:0.4s;
-    box-shadow:0 0 10px rgba(0,247,255,0.2);
-}
-
-.video-card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 0 25px #00f7ff;
-}
-
-.video-card img{
     width:100%;
-    border-radius:10px;
+    max-width:1100px;
+}
+
+.video-container iframe{
+    width:100%;
+    height:250px;
+    border-radius:15px;
+    box-shadow:0 0 20px rgba(0,247,255,0.3);
+    transition:0.4s;
+}
+
+.video-container iframe:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 30px #00f7ff;
 }
 
 /* FOOTER */
 footer{
+    background:black;
     padding:20px;
     text-align:center;
-    background:#000;
     color:#777;
 }
 
 /* ANIMATION */
 @keyframes glow{
     from{
-        text-shadow:0 0 10px #00f7ff,0 0 20px #00f7ff;
+        text-shadow:0 0 10px #00f7ff;
     }
     to{
-        text-shadow:0 0 20px #00f7ff,0 0 40px #00f7ff;
+        text-shadow:0 0 30px #00f7ff;
     }
 }
+
+/* MOBILE RESPONSIVE */
+@media(max-width:768px){
+    nav{
+        flex-direction:column;
+    }
+    nav ul{
+        margin-top:10px;
+    }
+    .hero h2{
+        font-size:35px;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -158,43 +179,40 @@ footer{
 <nav>
     <h1>DV VILLAIN YT</h1>
     <ul>
-        <li><a href="#">Home</a></li>
+        <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#videos">Videos</a></li>
     </ul>
 </nav>
 
-<section class="hero">
+<!-- HOME SECTION -->
+<section id="home" class="hero">
     <h2>WELCOME TO DV VILLAIN</h2>
-    <p>Gaming | Entertainment | Power Content</p>
+    <p>Informative | Funny | Gaming Content <br>
+    Built by a 20-year-old creator from Geeta University ready to dominate YouTube.</p>
     <button onclick="subscribe()">Subscribe Now</button>
 </section>
 
+<!-- ABOUT SECTION -->
 <section id="about" class="about">
     <h2>About My Channel</h2>
-    <p>Welcome to DV VILLAIN YT – where information meets entertainment and gaming meets madness.
-
-I’m a 20-year-old creator currently studying at Geeta University, balancing student life and content creation. This channel is my space to share informative content, funny moments, and high-energy gaming videos that keep things real and relatable.
-
-From smart facts and trending topics to intense gaming sessions and fun commentary — this channel is built for people who want to learn something new and laugh at the same time.
-
-I’m just getting started, but I’m preparing to take this channel seriously and consistently deliver powerful, entertaining content. If you’re ready to grow, laugh, and level up together — you’re in the right place.
-
-Welcome to the Villain Squad.</p>
+    <p>
+        DV VILLAIN YT is where knowledge meets humor and gaming energy. 
+        I create informative videos, funny content, and intense gaming experiences. 
+        I’m currently studying at Geeta University and preparing to work on this channel seriously 
+        with consistent, high-quality uploads. This is just the beginning.
+    </p>
 </section>
 
+<!-- VIDEOS SECTION -->
 <section id="videos" class="videos">
-    <div class="video-card">
-        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg">
-        <h3>Latest Video 1</h3>
-    </div>
-    <div class="video-card">
-        <img src="https://img.youtube.com/vi/9bZkp7q19f0/maxresdefault.jpg">
-        <h3>Latest Video 2</h3>
-    </div>
-    <div class="video-card">
-        <img src="https://img.youtube.com/vi/l482T0yNkeo/maxresdefault.jpg">
-        <h3>Latest Video 3</h3>
+    <h2 style="margin-bottom:40px;color:#00f7ff;">My Latest Videos</h2>
+
+    <div class="video-container">
+        <!-- Replace VIDEO_ID with your real video IDs -->
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" allowfullscreen></iframe>
     </div>
 </section>
 
@@ -206,19 +224,6 @@ Welcome to the Villain Squad.</p>
 function subscribe(){
     window.open("https://www.youtube.com/@DV_VILLAIN_YT/featured","_blank");
 }
-
-/* Scroll animation */
-window.addEventListener("scroll",function(){
-    let cards=document.querySelectorAll(".video-card");
-    cards.forEach(card=>{
-        let position=card.getBoundingClientRect().top;
-        let screenHeight=window.innerHeight;
-        if(position<screenHeight-100){
-            card.style.opacity="1";
-            card.style.transform="translateY(0)";
-        }
-    });
-});
 </script>
 
 </body>
