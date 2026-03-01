@@ -16,28 +16,24 @@ font-family:Arial, sans-serif;
 
 body{
 color:white;
-background-color: #000; /* Fallback for Android battery saver */
+background-color: #000;
 scroll-behavior:smooth;
 overflow-x:hidden;
 }
 
-/* BACKGROUND VIDEO - ANDROID OPTIMIZED */
+/* BACKGROUND VIDEO */
 .bg-video{
 position:fixed;
 right:0;
 bottom:0;
 min-width:100%;
 min-height:100%;
-width: auto;
-height: auto;
 object-fit:cover;
 z-index:-3;
 filter:brightness(40%);
-/* Prevents flickering on some Android Chrome versions */
-backface-visibility: hidden;
 }
 
-/* SUBTLE SIDE LIGHT ANIMATION */
+/* SUBTLE SIDE LIGHT */
 .light-overlay{
 position:fixed;
 top:0;
@@ -53,32 +49,26 @@ animation: moveLight 6s ease-in-out infinite alternate;
 }
 
 @keyframes moveLight{
-0%{
-transform:translateX(-20px);
-opacity:0.6;
-}
-100%{
-transform:translateX(20px);
-opacity:1;
-}
+0%{ transform:translateX(-20px); opacity:0.6; }
+100%{ transform:translateX(20px); opacity:1; }
 }
 
-/* FLOATING ANIMATION - HARDWARE ACCELERATED FOR MOBILE */
+/* --- ADJUSTED FLOATING ANIMATION --- */
 @keyframes homeFloat {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); }
-    100% { transform: translateY(0px); }
+    0% { transform: translate3d(0, 0, 0); }
+    50% { transform: translate3d(0, -20px, 0); } /* Increased to 20px for visibility */
+    100% { transform: translate3d(0, 0, 0); }
 }
 
-#home h1, #home p, #home .btn {
-    display: inline-block;
-    animation: homeFloat 4s ease-in-out infinite;
-    /* This line helps Android render smoothly */
+#home h1, #home p, #home .btn-container {
+    display: block; /* Changed to block for better alignment on mobile */
+    animation: homeFloat 3.5s ease-in-out infinite;
     will-change: transform;
+    perspective: 1000px;
 }
 
-#home p { animation-delay: 0.5s; }
-#home .btn { animation-delay: 1s; }
+#home p { animation-delay: 0.4s; }
+#home .btn-container { animation-delay: 0.8s; }
 
 /* NAVBAR */
 nav{
@@ -94,7 +84,6 @@ z-index:1000;
 border-bottom:1px solid red;
 }
 
-/* LOGO */
 .logo{
 display:flex;
 align-items:center;
@@ -115,7 +104,6 @@ font-weight:800;
 font-size:20px;
 }
 
-/* MENU */
 .menu{
 display:flex;
 gap:30px;
@@ -148,10 +136,16 @@ padding:120px 20px 80px 20px;
 border-bottom:1px solid rgba(255,0,0,0.2);
 }
 
+/* Specifically added space for Home so it doesn't clip */
+#home {
+    padding-top: 150px;
+    padding-bottom: 100px;
+}
+
 h1,h2,p{
 text-align:center;
 max-width:800px;
-margin-bottom:15px;
+margin-bottom:20px;
 }
 
 /* BUTTONS */
@@ -199,8 +193,6 @@ padding:10px;
 border-radius:6px;
 border:none;
 resize:none;
-background: #222;
-color: white;
 }
 
 .comment-box button{
@@ -226,29 +218,18 @@ text-align: left;
 
 /* MOBILE */
 @media(max-width:768px){
-
 nav{
 flex-direction:column;
-align-items:center;
-padding:10px 5px;
+padding:15px 10px;
 }
-
-.logo img { width: 40px; height: 40px; }
-.logo span { font-size: 18px; }
-
 .menu{
-margin-top:10px;
-flex-direction:row;
-flex-wrap:nowrap;
-justify-content:center;
-gap:8px;
+margin-top:15px;
+gap:12px;
 }
-
 .menu li a{
-font-size:11px;
-padding:5px 6px;
+font-size:13px;
+padding:6px 8px;
 }
-
 }
 
 </style>
@@ -278,12 +259,12 @@ padding:5px 6px;
 </nav>
 
 <section id="home">
-<h1>Welcome to DV Villain</h1>
-<p>Gaming | Entertainment | Streaming</p>
-<div>
-<a href="#" class="btn">Subscribe Now</a>
-<a href="https://instagram.com" target="_blank" class="btn">Follow on Instagram</a>
-</div>
+    <h1>Welcome to DV Villain</h1>
+    <p>Gaming | Entertainment | Streaming</p>
+    <div class="btn-container">
+        <a href="#" class="btn">Subscribe Now</a>
+        <a href="https://instagram.com" target="_blank" class="btn">Follow on Instagram</a>
+    </div>
 </section>
 
 <section id="about">
@@ -300,12 +281,6 @@ padding:5px 6px;
 <section id="videos">
 <h2>Watch My Videos</h2>
 <div class="video-grid">
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
 <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
 <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
 <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
