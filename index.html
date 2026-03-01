@@ -10,7 +10,6 @@
 <style>
 
 /* ===== GLOBAL ===== */
-
 *{
     margin:0;
     padding:0;
@@ -26,7 +25,6 @@ body{
 }
 
 /* ===== NAVBAR ===== */
-
 nav{
     position:fixed;
     width:100%;
@@ -34,7 +32,7 @@ nav{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    background:rgba(0,0,0,0.8);
+    background:rgba(0,0,0,0.85);
     backdrop-filter:blur(12px);
     z-index:1000;
     border-bottom:1px solid #ff000033;
@@ -53,19 +51,13 @@ nav{
     object-fit:cover;
     margin-right:15px;
     border:3px solid #ff0000;
-    box-shadow:
-        0 0 10px #ff0000,
-        0 0 20px #ff0000,
-        0 0 40px #ff0000;
+    box-shadow:0 0 15px #ff0000;
     transition:0.4s;
 }
 
 .logo img:hover{
     transform:scale(1.1);
-    box-shadow:
-        0 0 20px #ff0000,
-        0 0 40px #ff0000,
-        0 0 60px #ff0000;
+    box-shadow:0 0 35px #ff0000;
 }
 
 nav ul{
@@ -89,7 +81,6 @@ nav ul li a:hover{
 }
 
 /* ===== SECTIONS ===== */
-
 section{
     min-height:100vh;
     padding-top:120px;
@@ -103,7 +94,6 @@ section{
 }
 
 /* ===== HERO ===== */
-
 .hero h2{
     font-size:60px;
     color:#ff1a1a;
@@ -113,8 +103,9 @@ section{
 
 .hero p{
     margin-top:20px;
-    max-width:700px;
+    max-width:800px;
     color:#cccccc;
+    line-height:1.7;
 }
 
 .hero button{
@@ -136,7 +127,6 @@ section{
 }
 
 /* ===== ABOUT ===== */
-
 .about{
     background:#0a0000;
 }
@@ -147,14 +137,86 @@ section{
     text-shadow:0 0 15px #ff0000;
 }
 
-.about p{
-    max-width:900px;
+.about-content{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+    gap:40px;
+    max-width:1200px;
+}
+
+.about-text{
+    flex:1 1 500px;
     line-height:1.8;
     color:#dddddd;
 }
 
-/* ===== VIDEOS ===== */
+.about-image{
+    flex:1 1 400px;
+}
 
+.about-image img{
+    width:100%;
+    border-radius:20px;
+    box-shadow:0 0 25px #ff000055;
+}
+
+/* ===== COMMUNITY SECTION ===== */
+.community{
+    background:#000;
+}
+
+.community h2{
+    color:#ff1a1a;
+    margin-bottom:30px;
+}
+
+.community p{
+    max-width:800px;
+    color:#ccc;
+    margin-bottom:30px;
+}
+
+.community a{
+    padding:15px 40px;
+    background:#ff0000;
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+    transition:0.3s;
+}
+
+.community a:hover{
+    box-shadow:0 0 25px #ff0000;
+}
+
+/* ===== GALLERY SECTION ===== */
+.gallery{
+    background:#0a0000;
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    max-width:1100px;
+    width:100%;
+}
+
+.gallery-grid img{
+    width:100%;
+    border-radius:15px;
+    transition:0.4s;
+    box-shadow:0 0 15px #ff000033;
+}
+
+.gallery-grid img:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 30px #ff0000;
+}
+
+/* ===== VIDEOS ===== */
 .videos{
     background:#000000;
 }
@@ -187,7 +249,6 @@ section{
 }
 
 /* ===== FOOTER ===== */
-
 footer{
     padding:20px;
     text-align:center;
@@ -197,13 +258,10 @@ footer{
 }
 
 /* ===== ANIMATION ===== */
-
 @keyframes glow{
     from{ text-shadow:0 0 10px #ff0000; }
     to{ text-shadow:0 0 40px #ff0000; }
 }
-
-/* ===== MOBILE ===== */
 
 @media(max-width:768px){
     nav{
@@ -221,7 +279,6 @@ footer{
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav>
  <div class="logo">
     <img src="https://yt3.googleusercontent.com/gUJZ4pWALV-SjNGN-RBgK35c1lTvCYB27HDFz3snXv6J6syUXLRuhOt-c57XKsE7YyaOLf2xyQ=s160-c-k-c0x00ffffff-no-rj" alt="DV Villain Logo">
@@ -230,37 +287,65 @@ footer{
     <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#community">Community</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#videos">Videos</a></li>
     </ul>
 </nav>
 
-<!-- HOME -->
 <section id="home" class="hero">
     <h2>WELCOME TO THE VILLAIN ZONE</h2>
     <p>
-        Informative. Funny. Gaming Power.<br>
-        Built by a 20-year-old creator from Geeta University.
-        This is not just content — this is energy.
+        DV VILLAIN YT is where knowledge meets humor and gaming energy.  
+        I create informative content, funny videos, and high-energy gaming experiences.  
+        Built by a 20-year-old creator from Geeta University, this channel is focused on growth,
+        consistency, and delivering powerful content that entertains and informs.
     </p>
     <button onclick="subscribe()">SUBSCRIBE NOW</button>
 </section>
 
-<!-- ABOUT -->
 <section id="about" class="about">
     <h2>ABOUT DV VILLAIN YT</h2>
-    <p>
-        DV VILLAIN YT is a fusion of knowledge, humor, and high-energy gaming.
-        I create informative videos that make you smarter, funny content that keeps you entertained,
-        and intense gaming sessions that bring real reactions.
-        <br><br>
-        Currently studying at Geeta University, I’m preparing to work on this channel professionally
-        and consistently. This is just the beginning of something bigger.
-        <br><br>
-        Welcome to the Villain Squad.
-    </p>
+
+    <div class="about-content">
+        <div class="about-text">
+            DV VILLAIN YT is more than just a gaming channel.  
+            It’s a space where information becomes interesting and entertainment becomes meaningful.  
+            I combine informative topics, humor, and gaming to create a unique experience.
+            <br><br>
+            As a student at Geeta University, I’m building this channel step by step,
+            aiming to improve content quality, editing, creativity, and audience engagement.
+            <br><br>
+            This is just the beginning of something bigger.  
+            The Villain Squad is growing.
+        </div>
+
+        <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437d1" alt="Gaming Setup">
+        </div>
+    </div>
 </section>
 
-<!-- VIDEOS -->
+<section id="community" class="community">
+    <h2>JOIN THE COMMUNITY</h2>
+    <p>
+        Want to be part of upcoming videos, gaming challenges, or informative content ideas?  
+        Submit your suggestions and feedback using the form below.
+    </p>
+    <a href="https://forms.google.com" target="_blank">Submit Your Response</a>
+</section>
+
+<section id="gallery" class="gallery">
+    <h2 style="color:#ff1a1a;margin-bottom:40px;">CHANNEL GALLERY</h2>
+
+    <div class="gallery-grid">
+        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420" alt="Gaming">
+        <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8" alt="PC Setup">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" alt="Streaming">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" alt="Tech">
+    </div>
+</section>
+
 <section id="videos" class="videos">
     <h2>MY LATEST VIDEOS</h2>
 
