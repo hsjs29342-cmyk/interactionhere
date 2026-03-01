@@ -53,7 +53,7 @@ nav {
 }
 
 .logo img {
-    width: 55px; /* Slightly larger logo */
+    width: 55px;
     height: 55px;
     border-radius: 50%;
     border: 2px solid red;
@@ -69,16 +69,15 @@ nav {
 
 .menu {
     display: flex;
-    gap: 30px; /* Increased gap */
+    gap: 30px;
     list-style: none;
 }
 
-/* HEADER BUTTONS - INCREASED SIZE */
 .menu li a {
     text-decoration: none;
     color: white;
     font-weight: 700;
-    font-size: 20px; /* Increased from 18px */
+    font-size: 20px;
     transition: 0.3s;
     white-space: nowrap;
 }
@@ -100,20 +99,19 @@ section {
     border-bottom: 1px solid rgba(255,0,0,0.2);
 }
 
-/* SUB-BUTTONS - INCREASED SIZE */
 .btn {
     display: inline-block;
     margin: 10px;
-    padding: 12px 24px; /* Increased padding */
+    padding: 12px 24px;
     background: red;
     color: white;
     text-decoration: none;
     border-radius: 6px;
     font-weight: 700;
-    font-size: 16px; /* Increased from 14px */
+    font-size: 16px;
     transition: 0.3s;
     border: none;
-    min-width: 160px; /* Increased width */
+    min-width: 160px;
     text-transform: uppercase;
 }
 
@@ -122,7 +120,6 @@ section {
     transform: translateY(-2px);
 }
 
-/* VIDEO GRID */
 .video-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -152,7 +149,6 @@ section {
     border: 0;
 }
 
-/* MOBILE OPTIMIZATION */
 @media (max-width: 768px) {
     nav {
         flex-direction: column; 
@@ -167,11 +163,11 @@ section {
     }
 
     .menu li a {
-        font-size: 16px; /* Larger mobile header buttons */
+        font-size: 16px;
     }
 
     .btn {
-        width: 90%; /* Fill more screen on mobile */
+        width: 90%;
         font-size: 15px;
         padding: 14px;
     }
@@ -211,6 +207,14 @@ section {
     </div>
 </section>
 
+<section id="about">
+    <h2 style="font-size: 2.5rem; color: red; margin-bottom: 15px;">ABOUT ME</h2>
+    <p style="font-size: 1.2rem; max-width: 800px; line-height: 1.6;">
+        Welcome to the official DV Villain channel. I specialize in high-energy gaming 
+        content, live streams, and the latest entertainment in the gaming world.
+    </p>
+</section>
+
 <section id="videos">
     <h2 style="margin-bottom: 25px; color: red; font-size: 2rem;">LATEST VIDEOS</h2>
     <div class="video-grid">
@@ -236,7 +240,7 @@ section {
 </section>
 
 <section id="comments">
-    <h2 style="font-size: 2rem;">comment</h2>
+    <h2 style="font-size: 2rem;">COMMENT</h2>
     <div style="width: 100%; max-width: 650px; margin-top: 25px;">
         <textarea id="commentInput" rows="4" placeholder="Write your suggestion..." style="width:100%; padding:15px; border-radius:8px; background:#111; color:white; border:1px solid #333; resize:none; font-size: 16px;"></textarea>
         <button class="btn" onclick="addComment()" style="margin-top:15px; width:100%;">Post Comment</button>
