@@ -41,39 +41,39 @@
 
         @keyframes titleGlow {
             0%, 100% { text-shadow: 0 0 20px rgba(255,0,0,0.6); transform: scale(1); }
-            50% { text-shadow: 0 0 40px rgba(255,0,0,0.9); transform: scale(1.02); }
+            50% { text-shadow: 0 0 45px rgba(255,0,0,1); transform: scale(1.03); }
         }
 
         @keyframes buttonFloat {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+            50% { transform: translateY(-10px); }
         }
 
-        /* NAVIGATION - RESPONSIVE HEADER */
+        /* NAVIGATION - MASSIVE HEAD BUTTONS */
         nav {
             display: flex;
             justify-content: space-between; 
             align-items: center;
-            padding: 15px 60px;
+            padding: 20px 60px;
             background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(15px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 2px solid red;
-            transition: 0.3s;
+            border-bottom: 3px solid red;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
+            flex-shrink: 0;
         }
 
         .logo img {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             border: 2px solid red;
             box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
@@ -82,34 +82,35 @@
         .logo span {
             color: red;
             font-weight: 900;
-            font-size: 24px;
+            font-size: 28px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
 
         .menu {
             display: flex;
-            gap: 35px;
+            gap: 45px; /* Huge gap for laptop */
             list-style: none;
         }
 
         .menu li a {
             text-decoration: none;
             color: white;
-            font-weight: 700;
-            font-size: 19px; /* Increased size for Laptop */
+            font-weight: 800; /* Bold */
+            font-size: 22px; /* Extra Large */
             transition: 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             position: relative;
+            padding: 8px 0;
         }
 
         .menu li a::after {
             content: '';
             position: absolute;
             width: 0;
-            height: 2px;
-            bottom: -5px;
+            height: 3px;
+            bottom: 0;
             left: 0;
             background-color: red;
             transition: 0.3s;
@@ -117,6 +118,7 @@
 
         .menu li a:hover {
             color: red;
+            text-shadow: 0 0 15px red;
         }
 
         .menu li a:hover::after {
@@ -131,29 +133,29 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 140px 20px 80px 20px; 
+            padding: 160px 20px 80px 20px; 
             border-bottom: 1px solid rgba(255, 0, 0, 0.15);
         }
 
-        /* HOME CONTENT STYLING */
+        /* HOME CONTENT ANIMATION CLASSES */
         .home-title { animation: titleGlow 3s infinite ease-in-out, fadeInUp 1s ease-out; }
         .home-text { animation: fadeInUp 1s ease-out 0.4s both; }
         .home-btns { animation: fadeInUp 1s ease-out 0.8s both; }
 
-        /* BUTTONS (GENERAL) */
+        /* BODY BUTTONS */
         .btn {
             display: inline-block;
             margin: 10px;
-            padding: 14px 30px;
+            padding: 16px 35px;
             background: red;
             color: white;
             text-decoration: none;
             border-radius: 4px;
             font-weight: 800;
-            font-size: 15px; 
+            font-size: 17px; 
             transition: all 0.3s ease;
             border: 2px solid red;
-            min-width: 180px;
+            min-width: 200px;
             text-transform: uppercase;
             cursor: pointer;
         }
@@ -174,7 +176,7 @@
             gap: 25px;
             width: 100%;
             max-width: 1200px;
-            margin-top: 40px;
+            margin-top: 50px;
         }
 
         .iframe-container {
@@ -183,59 +185,52 @@
             padding-bottom: 56.25%;
             height: 0;
             background: #111;
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
             border: 1px solid #333;
             transition: 0.3s;
         }
 
-        .iframe-container:hover { transform: scale(1.02); border-color: red; }
+        .iframe-container:hover { transform: scale(1.03); border-color: red; }
+        .iframe-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-        .iframe-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        /* FOOTER AREA */
-        .footer-copyright {
-            margin-top: 80px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 0, 0, 0.2);
-            width: 100%;
-            max-width: 800px;
-            color: #777;
-            font-size: 14px;
-            letter-spacing: 2px;
-        }
-
-        /* MOBILE FIXES - HEADER ADJUSTMENTS */
-        @media (max-width: 850px) {
+        /* MOBILE OPTIMIZATION - SINGLE LINE LARGE BUTTONS */
+        @media (max-width: 950px) {
             nav {
                 flex-direction: column; 
                 padding: 15px 5px;
-                gap: 15px;
+                gap: 20px;
             }
-
-            .logo { margin-bottom: 0px; }
 
             .menu {
-                gap: 12px; /* Smaller gap for mobile line */
+                gap: 25px;
                 width: 100%;
-                justify-content: center;
-                flex-wrap: nowrap; /* Forces one single line */
+                justify-content: flex-start;
+                overflow-x: auto; /* Enable horizontal swiping */
+                padding: 0 20px 10px 20px;
+                -webkit-overflow-scrolling: touch;
             }
 
+            .menu::-webkit-scrollbar { display: none; } /* Clean look */
+
             .menu li a {
-                font-size: 14px; /* Scaled down for mobile row */
+                font-size: 18px; /* Big enough to tap easily */
                 white-space: nowrap;
             }
 
-            .logo span { font-size: 22px; }
-            section { padding-top: 200px; }
+            .logo span { font-size: 24px; }
+            section { padding-top: 220px; }
+        }
+
+        .footer-copyright {
+            margin-top: 80px;
+            padding: 30px;
+            border-top: 1px solid rgba(255,0,0,0.2);
+            width: 100%;
+            max-width: 800px;
+            color: #555;
+            font-size: 14px;
+            letter-spacing: 2px;
         }
     </style>
 </head>
@@ -261,12 +256,12 @@
     </nav>
 
     <section id="home">
-        <h1 class="home-title" style="font-size: clamp(3rem, 8vw, 5rem); color: red; font-weight: 900; margin-bottom: 10px;">DV VILLAIN</h1>
-        <p class="home-text" style="font-size: 1.3rem; margin-bottom: 25px; letter-spacing: 4px; color: #eee; text-transform: uppercase; font-weight: 300;">
-            Defying Limits. Entertaining Minds. Breaking the Game.
+        <h1 class="home-title" style="font-size: clamp(3.5rem, 10vw, 6rem); color: red; font-weight: 900; margin-bottom: 15px;">DV VILLAIN</h1>
+        <p class="home-text" style="font-size: 1.4rem; margin-bottom: 30px; letter-spacing: 5px; color: #eee; text-transform: uppercase;">
+            Defying Limits • Breaking the Game
         </p>
-        <p class="home-text" style="max-width: 700px; margin-bottom: 40px; color: #bbb; line-height: 1.6; font-size: 1.1rem;">
-            Welcome to the official hub of the <strong>Villain Squad</strong>. Join the elite circle of digital entertainment and high-octane content.
+        <p class="home-text" style="max-width: 750px; margin-bottom: 45px; color: #bbb; line-height: 1.7; font-size: 1.2rem;">
+            Welcome to the official hub of the <strong>Villain Squad</strong>. Experience high-octane content, expert gaming strategies, and a community built for those who refuse to follow the rules.
         </p>
         <div class="btn-container home-btns">
             <a href="https://www.youtube.com/@DV_VILLAIN_YT" target="_blank" class="btn btn-animate">Subscribe Now</a>
@@ -274,37 +269,33 @@
         </div>
     </section>
 
-    <section id="about" style="background: rgba(0,0,0,0.4);">
-        <h2 style="font-size: 2.8rem; color: red; margin-bottom: 30px;">ABOUT CHANNEL</h2>
-        <div style="max-width: 850px; text-align: left; background: rgba(20,20,20,0.6); padding: 40px; border-radius: 12px; border: 1px solid rgba(255,0,0,0.1);">
-            <p style="font-size: 1.2rem; line-height: 1.8; color: #ddd; margin-bottom: 20px;">
-                I am a 20-year-old creator studying at <strong>Geeta University</strong>. <strong>DV VILLAIN YT</strong> is where high-energy gaming meets madness.
+    <section id="about" style="background: rgba(0,0,0,0.5);">
+        <h2 style="font-size: 3rem; color: red; margin-bottom: 40px;">THE VILLAIN'S STORY</h2>
+        <div style="max-width: 850px; text-align: left; background: rgba(15,15,15,0.7); padding: 50px; border-radius: 15px; border: 1px solid rgba(255,0,0,0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+            <p style="font-size: 1.25rem; line-height: 1.8; color: #ddd; margin-bottom: 25px;">
+                I am a 20-year-old creator currently carving my path at <strong>Geeta University</strong>. My channel, <strong>DV VILLAIN YT</strong>, is where digital chaos meets professional gameplay.
             </p>
-            <p style="font-size: 1.1rem; line-height: 1.8; color: #ccc;">
-                Balancing student life and content creation, I blend competitive gaming with real-world commentary. Everyone is invited to the chaos.
+            <p style="font-size: 1.15rem; line-height: 1.8; color: #ccc;">
+                In a world of followers, I chose to be the Villain. I blend competitive skills with insightful commentary to bring you content that doesn't just entertain—it dominates. Join the Squad, and let's break the cycle together.
             </p>
         </div>
     </section>
 
     <section id="videos">
-        <h2 style="margin-bottom: 30px; color: red; font-size: 2.5rem; text-transform: uppercase;">LATEST VIDEOS</h2>
+        <h2 style="margin-bottom: 40px; color: red; font-size: 3rem; text-transform: uppercase;">LATEST MISSIONS</h2>
         <div class="video-grid">
             <div class="iframe-container"><iframe src="https://www.youtube.com/embed/lRXVOeGQXQs" allowfullscreen></iframe></div>
             <div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQJgvOXFbHU" allowfullscreen></iframe></div>
             <div class="iframe-container"><iframe src="https://www.youtube.com/embed/tRBX0P2wlSM" allowfullscreen></iframe></div>
             <div class="iframe-container"><iframe src="https://www.youtube.com/embed/PgJFCOEBzkA" allowfullscreen></iframe></div>
             <div class="iframe-container"><iframe src="https://www.youtube.com/embed/Q1AGL7Jlorg" allowfullscreen></iframe></div>
-            <div class="iframe-container"><iframe src="https://www.youtube.com/embed/XBPtW9bhu5c" allowfullscreen></iframe></div>
-            <div class="iframe-container"><iframe src="https://www.youtube.com/embed/banJ6QbSGgw" allowfullscreen></iframe></div>
-            <div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
-            <div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
-            <div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
         </div>
     </section>
 
     <section id="community">
-        <h2 style="font-size: 2.8rem; margin-bottom: 20px; color: red;">JOIN COMMUNITY</h2>
-        <p style="font-size: 1.3rem; color: #fff; font-weight: 700; margin-bottom: 15px;">WE DON'T HAVE FANS, WE HAVE A SQUAD.</p>
+        <h2 style="font-size: 3rem; margin-bottom: 25px; color: red;">JOIN THE LEGION</h2>
+        <p style="font-size: 1.4rem; color: #fff; font-weight: 700; margin-bottom: 20px;">NOT FANS. JUST THE SQUAD.</p>
+        <p style="max-width: 600px; color: #bbb; margin-bottom: 40px;">Get exclusive updates, early access to videos, and direct contact with the Villain himself.</p>
         <div class="btn-container">
             <a href="https://chat.whatsapp.com" target="_blank" class="btn" style="background: #25D366; border-color: #25D366;">WhatsApp</a>
             <a href="https://t.me" target="_blank" class="btn" style="background:#0088cc; border-color: #0088cc;">Telegram</a>
@@ -312,12 +303,12 @@
     </section>
 
     <section id="comments">
-        <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: red;">COMMENTS</h2>
-        <div style="width: 100%; max-width: 650px;">
-            <textarea id="commentInput" rows="4" placeholder="Leave a suggestion for the Squad..." style="width:100%; padding:15px; border-radius:6px; background:#111; color:white; border:1px solid #444; resize:none; font-size: 16px; outline: none;"></textarea>
-            <button class="btn" onclick="addComment()" style="margin-top:20px; width:100%;">Post Comment</button>
+        <h2 style="font-size: 2.8rem; margin-bottom: 30px; color: red;">SQUAD FEEDBACK</h2>
+        <div style="width: 100%; max-width: 700px;">
+            <textarea id="commentInput" rows="4" placeholder="Drop your suggestions..." style="width:100%; padding:20px; border-radius:8px; background:#111; color:white; border:1px solid #444; font-size: 17px; outline: none; border-left: 5px solid red;"></textarea>
+            <button class="btn" onclick="addComment()" style="margin-top:25px; width:100%;">Deploy Comment</button>
         </div>
-        <div id="comments-list" style="width: 100%; max-width: 650px; margin-top: 30px; text-align: left;"></div>
+        <div id="comments-list" style="width: 100%; max-width: 700px; margin-top: 40px; text-align: left;"></div>
 
         <div class="footer-copyright">
             © 2026 <span style="color: red; font-weight: 900;">DV VILLAIN YT</span> | ALL RIGHTS RESERVED
@@ -329,16 +320,17 @@
             const input = document.getElementById("commentInput");
             const text = input.value.trim();
             if(text === "") {
-                alert("Please type something before posting!");
+                alert("The Villain Squad demands words! Say something.");
                 return;
             }
             const div = document.createElement("div");
-            div.style.background = "rgba(30, 30, 30, 0.9)";
+            div.style.background = "rgba(25, 25, 25, 0.9)";
             div.style.margin = "15px 0";
-            div.style.padding = "20px";
-            div.style.borderRadius = "8px";
-            div.style.borderLeft = "5px solid red";
-            div.style.animation = "fadeInUp 0.5s ease-out";
+            div.style.padding = "25px";
+            div.style.borderRadius = "10px";
+            div.style.borderLeft = "6px solid red";
+            div.style.animation = "fadeInUp 0.6s ease-out";
+            div.style.boxShadow = "0 5px 15px rgba(0,0,0,0.4)";
             div.innerText = text;
             document.getElementById("comments-list").prepend(div);
             input.value = "";
