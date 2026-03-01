@@ -19,21 +19,19 @@ color:white;
 background-color: #000;
 scroll-behavior:smooth;
 overflow-x:hidden;
-/* Prevents horizontal pull-to-refresh bounce on Android */
 overscroll-behavior-y: none;
 }
 
-/* BACKGROUND VIDEO - OPTIMIZED FOR ANDROID SCREEN SIZES */
+/* BACKGROUND VIDEO */
 .bg-video{
 position:fixed;
 top: 0;
 left: 0;
 width: 100vw;
-height: 100dvh; /* Uses Dynamic Viewport Height for Android Chrome */
+height: 100dvh; 
 object-fit: cover;
 z-index: -3;
 filter: brightness(40%);
-/* Hardware acceleration for mobile */
 transform: translate3d(0,0,0);
 -webkit-transform: translate3d(0,0,0);
 }
@@ -73,7 +71,7 @@ animation: moveLight 6s ease-in-out infinite alternate;
 #home p { animation-delay: 0.4s; }
 #home .btn-container { animation-delay: 0.8s; }
 
-/* NAVBAR - Solid Background to block video */
+/* NAVBAR */
 nav{
 display:flex;
 justify-content:space-between;
@@ -151,22 +149,26 @@ max-width:800px;
 margin-bottom:20px;
 }
 
-/* BUTTONS */
+/* --- ADJUSTED LARGER BUTTONS --- */
 .btn{
 display:inline-block;
 margin:10px;
-padding:12px 24px;
+padding:16px 32px; /* Increased padding for better touch */
 background:red;
 color:white;
 text-decoration:none;
-border-radius:6px;
+border-radius:8px;
 transition:0.3s;
-font-weight: bold;
+font-weight: 800; /* Bolder text */
+font-size: 18px; /* Larger text */
 border: none;
+min-width: 200px; /* Ensures buttons have a strong presence */
+text-transform: uppercase;
+letter-spacing: 1px;
 }
 
 .btn:hover{
-box-shadow:0 0 15px red;
+box-shadow:0 0 20px red;
 transform: scale(1.05);
 }
 
@@ -196,17 +198,18 @@ max-width:600px;
 
 .comment-box textarea{
 width:100%;
-padding:12px;
-border-radius:6px;
+padding:15px;
+border-radius:8px;
 background: #111;
 color: white;
 border: 1px solid #333;
 resize: none;
+font-size: 16px;
 }
 
 .comment-box button{
-margin-top:10px;
-cursor: pointer;
+margin-top:15px;
+width: 100%; /* Full width button on mobile */
 }
 
 .comment{
@@ -220,7 +223,7 @@ border-left:3px solid red;
 text-align: left;
 }
 
-/* MOBILE OPTIMIZATION FOR ANDROID */
+/* MOBILE OPTIMIZATION */
 @media(max-width:768px){
 nav{
 flex-direction:column;
@@ -234,8 +237,19 @@ gap:5px;
 font-size:11px;
 padding:6px 5px;
 }
-.logo img { width: 40px; height: 40px; }
-.logo span { font-size: 16px; }
+
+/* Stack buttons vertically on mobile for better visibility */
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.btn {
+    width: 80%; /* Larger buttons on mobile */
+    margin: 8px 0;
+}
 }
 
 </style>
@@ -243,15 +257,8 @@ padding:6px 5px;
 
 <body>
 
-<video 
-    autoplay 
-    muted 
-    loop 
-    playsinline 
-    webkit-playsinline 
-    preload="auto"
-    class="bg-video">
-    <source src="https://giffiles.alphacoders.com/219/thumb-440-219892.mp4" type="video/mp4">
+<video autoplay muted loop playsinline webkit-playsinline preload="auto" class="bg-video">
+<source src="https://giffiles.alphacoders.com/219/thumb-440-219892.mp4" type="video/mp4">
 </video>
 
 <div class="light-overlay"></div>
@@ -276,7 +283,7 @@ padding:6px 5px;
     <p>Gaming | Entertainment | Streaming</p>
     <div class="btn-container">
         <a href="#" class="btn">Subscribe Now</a>
-        <a href="https://instagram.com" target="_blank" class="btn" style="background:transparent; border: 1px solid red;">Follow IG</a>
+        <a href="https://instagram.com" target="_blank" class="btn" style="background:transparent; border: 2px solid red;">Follow IG</a>
     </div>
 </section>
 
