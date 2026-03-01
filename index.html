@@ -32,7 +32,7 @@ body{
     filter: brightness(40%);
 }
 
-/* --- NAVIGATION (LOGO TOP, MENU BELOW ON ANDROID) --- */
+/* NAVIGATION */
 nav {
     display: flex;
     justify-content: space-between; 
@@ -53,8 +53,8 @@ nav {
 }
 
 .logo img {
-    width: 50px;
-    height: 50px;
+    width: 55px; /* Slightly larger logo */
+    height: 55px;
     border-radius: 50%;
     border: 2px solid red;
     box-shadow: 0 0 15px red;
@@ -63,29 +63,29 @@ nav {
 .logo span {
     color: red;
     font-weight: 800;
-    font-size: 24px;
+    font-size: 26px;
     text-transform: uppercase;
 }
 
 .menu {
     display: flex;
-    gap: 25px;
+    gap: 30px; /* Increased gap */
     list-style: none;
 }
 
-/* Header Buttons: No Box, Clean Text */
+/* HEADER BUTTONS - INCREASED SIZE */
 .menu li a {
     text-decoration: none;
     color: white;
     font-weight: 700;
-    font-size: 18px; 
+    font-size: 20px; /* Increased from 18px */
     transition: 0.3s;
     white-space: nowrap;
 }
 
 .menu li a:hover {
     color: red;
-    text-shadow: 0 0 10px red;
+    text-shadow: 0 0 12px red;
 }
 
 /* SECTIONS */
@@ -100,28 +100,29 @@ section {
     border-bottom: 1px solid rgba(255,0,0,0.2);
 }
 
-/* SUB-BUTTONS (Original Design: Solid Red, but Smaller) */
+/* SUB-BUTTONS - INCREASED SIZE */
 .btn {
     display: inline-block;
     margin: 10px;
-    padding: 10px 20px;
+    padding: 12px 24px; /* Increased padding */
     background: red;
     color: white;
     text-decoration: none;
     border-radius: 6px;
     font-weight: 700;
-    font-size: 14px; 
+    font-size: 16px; /* Increased from 14px */
     transition: 0.3s;
     border: none;
-    min-width: 140px;
+    min-width: 160px; /* Increased width */
     text-transform: uppercase;
 }
 
 .btn:hover {
-    box-shadow: 0 0 15px red;
+    box-shadow: 0 0 18px red;
+    transform: translateY(-2px);
 }
 
-/* VIDEO GRID - 10 VIDEOS */
+/* VIDEO GRID */
 .video-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -154,28 +155,29 @@ section {
 /* MOBILE OPTIMIZATION */
 @media (max-width: 768px) {
     nav {
-        flex-direction: column; /* Logo Top */
+        flex-direction: column; 
         padding: 15px 5px;
         gap: 15px;
     }
 
     .menu {
         width: 100%;
-        justify-content: center; /* Menu Below in one line */
-        gap: 12px;
-    }
-
-    .menu li a {
-        font-size: 14px; /* Increased Header Button size for mobile */
-    }
-
-    .video-grid {
-        grid-template-columns: 1fr; /* Stacked for best watchability */
+        justify-content: center; 
         gap: 15px;
     }
 
-    .logo img { width: 40px; height: 40px; }
-    .logo span { font-size: 18px; }
+    .menu li a {
+        font-size: 16px; /* Larger mobile header buttons */
+    }
+
+    .btn {
+        width: 90%; /* Fill more screen on mobile */
+        font-size: 15px;
+        padding: 14px;
+    }
+
+    .logo img { width: 45px; height: 45px; }
+    .logo span { font-size: 20px; }
 }
 </style>
 </head>
@@ -201,16 +203,16 @@ section {
 </nav>
 
 <section id="home">
-    <h1 style="font-size: 2.5rem; margin-bottom: 10px;">Welcome to DV Villain</h1>
-    <p style="margin-bottom: 20px;">Gaming | Entertainment | Streaming</p>
+    <h1 style="font-size: 3rem; margin-bottom: 10px;">Welcome to DV Villain</h1>
+    <p style="font-size: 1.2rem; margin-bottom: 25px;">Gaming | Entertainment | Streaming</p>
     <div class="btn-container">
         <a href="#" class="btn">Subscribe Now</a>
-        <a href="https://instagram.com" target="_blank" class="btn" style="background:transparent; border: 1px solid red;">Follow IG</a>
+        <a href="https://instagram.com" target="_blank" class="btn" style="background:transparent; border: 2px solid red;">Follow IG</a>
     </div>
 </section>
 
 <section id="videos">
-    <h2 style="margin-bottom: 20px; color: red;">LATEST VIDEOS</h2>
+    <h2 style="margin-bottom: 25px; color: red; font-size: 2rem;">LATEST VIDEOS</h2>
     <div class="video-grid">
         <div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
         <div class="iframe-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
@@ -226,7 +228,7 @@ section {
 </section>
 
 <section id="community">
-    <h2>JOIN OUR COMMUNITY</h2>
+    <h2 style="font-size: 2rem;">JOIN OUR COMMUNITY</h2>
     <div class="btn-container">
         <a href="https://chat.whatsapp.com" target="_blank" class="btn">WhatsApp</a>
         <a href="https://t.me" target="_blank" class="btn">Telegram</a>
@@ -234,12 +236,12 @@ section {
 </section>
 
 <section id="comments">
-    <h2>FEEDBACK</h2>
-    <div style="width: 100%; max-width: 600px; margin-top: 20px;">
-        <textarea id="commentInput" rows="4" placeholder="Write your suggestion..." style="width:100%; padding:15px; border-radius:6px; background:#111; color:white; border:1px solid #333; resize:none;"></textarea>
-        <button class="btn" onclick="addComment()" style="margin-top:10px; width:100%;">Post Comment</button>
+    <h2 style="font-size: 2rem;">FEEDBACK</h2>
+    <div style="width: 100%; max-width: 650px; margin-top: 25px;">
+        <textarea id="commentInput" rows="4" placeholder="Write your suggestion..." style="width:100%; padding:15px; border-radius:8px; background:#111; color:white; border:1px solid #333; resize:none; font-size: 16px;"></textarea>
+        <button class="btn" onclick="addComment()" style="margin-top:15px; width:100%;">Post Comment</button>
     </div>
-    <div id="comments-list" style="width: 100%; max-width: 600px; margin-top: 20px; text-align: left;"></div>
+    <div id="comments-list" style="width: 100%; max-width: 650px; margin-top: 25px; text-align: left;"></div>
 </section>
 
 <script>
@@ -249,10 +251,11 @@ section {
         if(text==="") return;
         let div=document.createElement("div");
         div.style.background="rgba(17,17,17,0.9)";
-        div.style.margin="10px auto";
-        div.style.padding="15px";
-        div.style.borderRadius="6px";
-        div.style.borderLeft="3px solid red";
+        div.style.margin="12px auto";
+        div.style.padding="18px";
+        div.style.borderRadius="8px";
+        div.style.borderLeft="4px solid red";
+        div.style.fontSize="16px";
         div.innerText=text;
         document.getElementById("comments-list").prepend(div);
         input.value="";
