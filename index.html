@@ -18,107 +18,95 @@ scroll-behavior:smooth;
 }
 
 body{
-background:#0b0b0f;
 color:white;
 overflow-x:hidden;
 }
 
-/* Animated Background */
-body::before{
-content:'';
+/* 🔥 VIDEO BACKGROUND */
+.bg-video{
 position:fixed;
-width:200%;
-height:200%;
-background:linear-gradient(45deg,#000,#1a0000,#000,#330000);
-background-size:400% 400%;
-animation:bgMove 15s infinite linear;
-z-index:-1;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
 }
 
-@keyframes bgMove{
-0%{transform:translate(0,0);}
-50%{transform:translate(-25%,-25%);}
-100%{transform:translate(0,0);}
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.75);
+z-index:-1;
 }
 
 /* NAVBAR */
 nav{
 display:flex;
+justify-content:space-between;
 align-items:center;
-padding:12px 30px;
-background:rgba(0,0,0,0.9);
-backdrop-filter:blur(10px);
+padding:15px 40px;
+background:rgba(0,0,0,0.85);
 position:fixed;
 width:100%;
 z-index:1000;
 border-bottom:1px solid rgba(255,0,0,0.4);
 }
 
-/* Logo */
+/* LOGO */
 .logo{
 display:flex;
 align-items:center;
 gap:10px;
-margin-right:30px;
 }
 
 .logo img{
-width:45px;
-height:45px;
+width:50px;
+height:50px;
 border-radius:50%;
 border:2px solid #ff0000;
-box-shadow:0 0 15px #ff0000;
+box-shadow:0 0 20px #ff0000;
 }
 
 .logo span{
 font-weight:800;
+font-size:20px;
 color:#ff0000;
-font-size:18px;
-white-space:nowrap;
 }
 
-/* Menu */
-nav ul{
+/* MENU */
+.menu{
 display:flex;
+gap:30px;
 list-style:none;
-gap:25px;
-white-space:nowrap;
-overflow-x:auto;
-scrollbar-width:none;
 }
 
-nav ul::-webkit-scrollbar{
-display:none;
-}
-
-nav ul li{
-flex:0 0 auto;
-}
-
-nav ul li a{
+.menu li a{
 text-decoration:none;
 color:white;
 font-weight:500;
 transition:0.3s;
 }
 
-nav ul li a:hover{
+.menu li a:hover{
 color:#ff0000;
 }
 
-/* SECTION */
+/* SECTIONS */
 section{
-padding:120px 8%;
+padding:140px 10%;
 min-height:100vh;
 text-align:center;
 }
 
 /* HOME */
 .home h1{
-font-size:48px;
-font-weight:900;
+font-size:50px;
 color:#ff0000;
-text-shadow:0 0 20px #ff0000;
+text-shadow:0 0 25px #ff0000;
 }
 
 .home p{
@@ -142,14 +130,13 @@ color:white;
 }
 
 .subscribe-btn:hover{
-box-shadow:0 0 20px #ff0000;
-transform:scale(1.05);
+box-shadow:0 0 25px #ff0000;
 }
 
 .community-btn{
-background:#111;
-color:#ff0000;
+background:black;
 border:1px solid #ff0000;
+color:#ff0000;
 }
 
 .community-btn:hover{
@@ -160,10 +147,10 @@ color:white;
 /* VIDEOS */
 iframe{
 width:100%;
-height:250px;
-border-radius:15px;
-box-shadow:0 0 20px rgba(255,0,0,0.4);
+height:300px;
 margin-top:30px;
+border-radius:15px;
+box-shadow:0 0 20px rgba(255,0,0,0.5);
 }
 
 /* COMMUNITY */
@@ -184,7 +171,7 @@ border:none;
 cursor:pointer;
 }
 
-/* COMMENT SECTION */
+/* COMMENTS */
 .comment-box{
 max-width:600px;
 margin:40px auto;
@@ -197,7 +184,7 @@ padding:12px;
 border-radius:10px;
 border:none;
 resize:none;
-height:80px;
+height:90px;
 }
 
 .comment-box button{
@@ -210,40 +197,39 @@ border-radius:20px;
 cursor:pointer;
 }
 
-.comments-list{
-margin-top:20px;
-}
-
 .comment{
 background:#1a1a1a;
 padding:10px 15px;
 border-radius:10px;
-margin-bottom:10px;
+margin-top:10px;
 box-shadow:0 0 10px rgba(255,0,0,0.3);
 }
 
-/* MOBILE FIX */
+/* 🔥 RESPONSIVE */
 @media(max-width:768px){
+
+nav{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.menu{
+width:100%;
+justify-content:space-between;
+margin-top:10px;
+}
 
 .home h1{
 font-size:32px;
 }
 
-nav{
-padding:12px 15px;
-}
-
-.logo span{
-font-size:14px;
-}
-
 }
 
 footer{
+background:black;
 padding:20px;
-background:#000;
-color:#aaa;
 text-align:center;
+color:#aaa;
 }
 
 </style>
@@ -251,13 +237,20 @@ text-align:center;
 
 <body>
 
+<!-- 🔥 BACKGROUND VIDEO -->
+<video autoplay muted loop class="bg-video">
+<source src="https://cdn.coverr.co/videos/coverr-gaming-setup-1573/1080p.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
+
+<!-- NAVBAR -->
 <nav>
 <div class="logo">
-<img src="logo.png" alt="Channel Logo">
+<img src="https://yt3.googleusercontent.com/gUJZ4pWALV-SjNGN-RBgK35c1lTvCYB27HDFz3snXv6J6syUXLRuhOt-c57XKsE7YyaOLf2xyQ=s160-c-k-c0x00ffffff-no-rj" alt="Logo">
 <span>DV VILLAIN YT</span>
 </div>
 
-<ul>
+<ul class="menu">
 <li><a href="#home">Home</a></li>
 <li><a href="#about">About Channel</a></li>
 <li><a href="#videos">Videos</a></li>
@@ -283,7 +276,7 @@ Join Community
 
 <section id="about">
 <h2>About The Channel</h2>
-<p>Epic gaming content, powerful edits, and entertaining videos. Stay tuned and join the villain army.</p>
+<p>Epic gaming edits, powerful gameplay, and villain attitude content.</p>
 </section>
 
 <section id="videos">
@@ -293,7 +286,6 @@ Join Community
 
 <section id="community">
 <h2>Join Our Community</h2>
-
 <div class="community-box">
 <button class="join-btn" onclick="window.open('YOUR_TELEGRAM_LINK')">Join Telegram</button>
 <button class="join-btn" onclick="window.open('YOUR_WHATSAPP_LINK')">Join WhatsApp</button>
@@ -302,11 +294,10 @@ Join Community
 
 <section id="comments">
 <h2>Comments</h2>
-
 <div class="comment-box">
 <textarea id="commentInput" placeholder="Write your comment..."></textarea>
 <button onclick="addComment()">Post Comment</button>
-<div class="comments-list" id="commentsList"></div>
+<div id="commentsList"></div>
 </div>
 </section>
 
