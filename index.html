@@ -71,10 +71,10 @@ animation: moveLight 6s ease-in-out infinite alternate;
 #home p { animation-delay: 0.4s; }
 #home .btn-container { animation-delay: 0.8s; }
 
-/* --- UPDATED NAVIGATION (LARGER FOR ANDROID) --- */
+/* --- NAVIGATION DESIGN --- */
 nav{
 display:flex;
-justify-content:space-between;
+justify-content: space-between; /* Logo left, Menu right */
 align-items:center;
 padding:15px 60px;
 background: #000000; 
@@ -89,6 +89,7 @@ border-bottom:2px solid red;
 display:flex;
 align-items:center;
 gap:10px;
+flex-shrink: 0; /* Prevents logo from shrinking on mobile */
 }
 
 .logo img{
@@ -96,36 +97,35 @@ width:50px;
 height:50px;
 border-radius:50%;
 border:2px solid red;
-box-shadow:0 0 15px red;
+box-shadow:0 0-15px red;
 }
 
 .logo span{
 color:red;
 font-weight:800;
 font-size:22px;
-letter-spacing: 1px;
 }
 
 .menu{
 display:flex;
 gap:20px;
 list-style:none;
+margin-left: auto; /* Pushes menu to the right corner on laptop */
 }
 
 .menu li a{
 text-decoration:none;
 color:white;
-font-weight:700;
-padding:10px 18px; /* Larger desktop padding */
-border-radius:6px;
+font-weight:600;
+padding:8px 12px;
 transition:0.3s;
 font-size: 16px;
-text-transform: uppercase;
+white-space: nowrap; /* Forces text to stay in one line */
 }
 
 .menu li a:hover{
-background:red;
-box-shadow:0 0-10px red;
+color: red; /* Text turns red on hover instead of a box */
+text-shadow: 0 0 10px red;
 }
 
 /* SECTIONS */
@@ -165,7 +165,7 @@ transition:0.3s;
 font-weight: 800;
 font-size: 18px;
 border: none;
-min-width: 200px;
+min-width: 180px;
 text-transform: uppercase;
 }
 
@@ -191,59 +191,26 @@ border-radius:10px;
 border: 1px solid rgba(255,0,0,0.2);
 }
 
-/* COMMENTS */
-.comment-box{
-margin-top:20px;
-width:100%;
-max-width:600px;
-}
-
-.comment-box textarea{
-width:100%;
-padding:15px;
-border-radius:8px;
-background: #111;
-color: white;
-border: 1px solid #333;
-resize: none;
-font-size: 16px;
-}
-
-.comment{
-background:rgba(17, 17, 17, 0.9);
-margin:10px auto;
-padding:15px;
-width:100%;
-max-width:600px;
-border-radius:6px;
-border-left:3px solid red;
-text-align: left;
-}
-
-/* --- MOBILE OPTIMIZATION FOR NAVIGATION --- */
+/* MOBILE OPTIMIZATION */
 @media(max-width:768px){
 nav{
-flex-direction:column;
-padding:15px 10px;
+padding: 10px 15px;
+flex-direction: row; /* Keeps logo and menu on the same line */
+justify-content: space-between;
 }
 
-.logo img { width: 45px; height: 45px; }
-.logo span { font-size: 18px; margin-bottom: 10px; }
+.logo img { width: 35px; height: 35px; }
+.logo span { font-size: 14px; }
 
 .menu{
-margin-top:10px;
-display: flex;
-flex-wrap: wrap; /* Allows menu items to wrap to a second line if needed */
-justify-content: center;
-gap: 10px;
-width: 100%;
+gap: 5px; /* Tight gap to fit everything in one line */
+margin-left: 10px;
 }
 
 .menu li a{
-font-size: 14px; /* Increased from 11px */
-padding: 10px 12px; /* Much larger tap area */
-background: rgba(255, 0, 0, 0.1); /* Subtle background to show buttons clearly */
-border: 1px solid rgba(255, 0, 0, 0.3);
+font-size: 10px; /* Smaller font for mobile fit */
+padding: 5px 4px;
+font-weight: 700;
 }
 
 .btn-container {
@@ -254,7 +221,7 @@ border: 1px solid rgba(255, 0, 0, 0.3);
 }
 
 .btn {
-    width: 85%;
+    width: 90%;
     margin: 8px 0;
 }
 }
@@ -264,7 +231,7 @@ border: 1px solid rgba(255, 0, 0, 0.3);
 
 <body>
 
-<video autoplay muted loop playsinline webkit-playsinline preload="auto" class="bg-video">
+<video autoplay muted loop playsinline webkit-playsinline class="bg-video">
 <source src="https://giffiles.alphacoders.com/219/thumb-440-219892.mp4" type="video/mp4">
 </video>
 
@@ -318,8 +285,8 @@ border: 1px solid rgba(255, 0, 0, 0.3);
 <section id="comments">
 <h2>Leave Your Feedback</h2>
 <div class="comment-box">
-<textarea id="commentInput" rows="4" placeholder="Write your suggestion..."></textarea>
-<button class="btn" onclick="addComment()">Post Comment</button>
+<textarea id="commentInput" rows="4" placeholder="Write your suggestion..." style="width:100%; padding:10px; border-radius:6px; background:#111; color:white; border:1px solid #333;"></textarea>
+<button class="btn" onclick="addComment()" style="margin-top:10px; width:100%;">Post Comment</button>
 </div>
 <div id="comments-list"></div>
 </section>
@@ -332,6 +299,12 @@ if(text==="") return;
 
 let div=document.createElement("div");
 div.className="comment";
+div.style.background="rgba(17,17,17,0.9)";
+div.style.margin="10px auto";
+div.style.padding="15px";
+div.style.borderRadius="6px";
+div.style.borderLeft="3px solid red";
+div.style.textAlign="left";
 div.innerText=text;
 
 document.getElementById("comments-list").prepend(div);
