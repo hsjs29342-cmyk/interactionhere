@@ -72,158 +72,155 @@ animation: moveLight 6s ease-in-out infinite alternate;
 #home .btn-container { animation-delay: 0.8s; }
 
 /* --- NAVIGATION DESIGN --- */
-nav{
-display:flex;
-justify-content: space-between; /* Logo left, Menu right */
-align-items:center;
-padding:15px 60px;
-background: #000000; 
-position:fixed;
-width:100%;
-top:0;
-z-index:1000;
-border-bottom:2px solid red;
+nav {
+    display: flex;
+    justify-content: space-between; /* Desktop: Logo left, Menu right */
+    align-items: center;
+    padding: 10px 60px;
+    background: #000000; 
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid red;
 }
 
-.logo{
-display:flex;
-align-items:center;
-gap:10px;
-flex-shrink: 0; /* Prevents logo from shrinking on mobile */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.logo img{
-width:50px;
-height:50px;
-border-radius:50%;
-border:2px solid red;
-box-shadow:0 0-15px red;
+.logo img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid red;
+    box-shadow: 0 0 10px red;
 }
 
-.logo span{
-color:red;
-font-weight:800;
-font-size:22px;
+.logo span {
+    color: red;
+    font-weight: 800;
+    font-size: 20px;
+    text-transform: uppercase;
 }
 
-.menu{
-display:flex;
-gap:20px;
-list-style:none;
-margin-left: auto; /* Pushes menu to the right corner on laptop */
+.menu {
+    display: flex;
+    gap: 20px;
+    list-style: none;
 }
 
-.menu li a{
-text-decoration:none;
-color:white;
-font-weight:600;
-padding:8px 12px;
-transition:0.3s;
-font-size: 16px;
-white-space: nowrap; /* Forces text to stay in one line */
+.menu li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    padding: 8px 5px;
+    transition: 0.3s;
+    font-size: 15px;
+    white-space: nowrap;
 }
 
-.menu li a:hover{
-color: red; /* Text turns red on hover instead of a box */
-text-shadow: 0 0 10px red;
+.menu li a:hover {
+    color: red;
+    text-shadow: 0 0 8px red;
 }
 
 /* SECTIONS */
-section{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:120px 20px 80px 20px;
-border-bottom:1px solid rgba(255,0,0,0.2);
-background: transparent; 
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 140px 20px 80px 20px; /* Space for the taller mobile nav */
+    border-bottom: 1px solid rgba(255,0,0,0.2);
+    background: transparent; 
 }
 
-#home {
-    padding-top: 150px;
-    padding-bottom: 100px;
-}
-
-h1,h2,p{
-text-align:center;
-max-width:800px;
-margin-bottom:20px;
+h1, h2, p {
+    text-align: center;
+    max-width: 800px;
+    margin-bottom: 20px;
 }
 
 /* CONTENT BUTTONS */
-.btn{
-display:inline-block;
-margin:10px;
-padding:16px 32px;
-background:red;
-color:white;
-text-decoration:none;
-border-radius:8px;
-transition:0.3s;
-font-weight: 800;
-font-size: 18px;
-border: none;
-min-width: 180px;
-text-transform: uppercase;
+.btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 15px 30px;
+    background: red;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s;
+    font-weight: 800;
+    font-size: 17px;
+    border: none;
+    min-width: 180px;
+    text-transform: uppercase;
 }
 
-.btn:hover{
-box-shadow:0 0 20px red;
-transform: scale(1.05);
+.btn:hover {
+    box-shadow: 0 0 20px red;
+    transform: scale(1.05);
 }
 
 /* VIDEO GRID */
-.video-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:20px;
-width:100%;
-max-width:1100px;
-margin-top:20px;
-}
-
-iframe{
-width:100%;
-height:210px;
-border-radius:10px;
-border: 1px solid rgba(255,0,0,0.2);
-}
-
-/* MOBILE OPTIMIZATION */
-@media(max-width:768px){
-nav{
-padding: 10px 15px;
-flex-direction: row; /* Keeps logo and menu on the same line */
-justify-content: space-between;
-}
-
-.logo img { width: 35px; height: 35px; }
-.logo span { font-size: 14px; }
-
-.menu{
-gap: 5px; /* Tight gap to fit everything in one line */
-margin-left: 10px;
-}
-
-.menu li a{
-font-size: 10px; /* Smaller font for mobile fit */
-padding: 5px 4px;
-font-weight: 700;
-}
-
-.btn-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
     width: 100%;
+    max-width: 1100px;
+    margin-top: 20px;
 }
 
-.btn {
-    width: 90%;
-    margin: 8px 0;
+iframe {
+    width: 100%;
+    height: 210px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,0,0,0.2);
 }
+
+/* --- MOBILE OPTIMIZATION (BUTTONS BELOW LOGO) --- */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Logo on top, Menu below */
+        padding: 10px 5px;
+        gap: 8px;
+    }
+
+    .logo {
+        margin-bottom: 2px;
+    }
+
+    .logo img { width: 35px; height: 35px; }
+    .logo span { font-size: 16px; }
+
+    .menu {
+        width: 100%;
+        justify-content: center; /* Center buttons horizontally */
+        gap: 12px;
+    }
+
+    .menu li a {
+        font-size: 11px;
+        padding: 5px 2px;
+    }
+
+    .btn-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .btn {
+        width: 85%;
+    }
 }
 
 </style>
@@ -284,8 +281,8 @@ font-weight: 700;
 
 <section id="comments">
 <h2>Leave Your Feedback</h2>
-<div class="comment-box">
-<textarea id="commentInput" rows="4" placeholder="Write your suggestion..." style="width:100%; padding:10px; border-radius:6px; background:#111; color:white; border:1px solid #333;"></textarea>
+<div class="comment-box" style="width:100%; max-width:600px;">
+<textarea id="commentInput" rows="4" placeholder="Write your suggestion..." style="width:100%; padding:10px; border-radius:6px; background:#111; color:white; border:1px solid #333; resize:none;"></textarea>
 <button class="btn" onclick="addComment()" style="margin-top:10px; width:100%;">Post Comment</button>
 </div>
 <div id="comments-list"></div>
@@ -305,6 +302,7 @@ div.style.padding="15px";
 div.style.borderRadius="6px";
 div.style.borderLeft="3px solid red";
 div.style.textAlign="left";
+div.style.maxWidth="600px";
 div.innerText=text;
 
 document.getElementById("comments-list").prepend(div);
