@@ -16,20 +16,25 @@ font-family:Arial, sans-serif;
 
 body{
 color:white;
+background-color: #000; /* Fallback for Android battery saver */
 scroll-behavior:smooth;
 overflow-x:hidden;
 }
 
-/* BACKGROUND VIDEO */
+/* BACKGROUND VIDEO - ANDROID OPTIMIZED */
 .bg-video{
 position:fixed;
 right:0;
 bottom:0;
 min-width:100%;
 min-height:100%;
+width: auto;
+height: auto;
 object-fit:cover;
 z-index:-3;
 filter:brightness(40%);
+/* Prevents flickering on some Android Chrome versions */
+backface-visibility: hidden;
 }
 
 /* SUBTLE SIDE LIGHT ANIMATION */
@@ -58,7 +63,7 @@ opacity:1;
 }
 }
 
-/* NEW: FLOATING ANIMATION FOR HOME CONTENT ONLY */
+/* FLOATING ANIMATION - HARDWARE ACCELERATED FOR MOBILE */
 @keyframes homeFloat {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-12px); }
@@ -68,6 +73,8 @@ opacity:1;
 #home h1, #home p, #home .btn {
     display: inline-block;
     animation: homeFloat 4s ease-in-out infinite;
+    /* This line helps Android render smoothly */
+    will-change: transform;
 }
 
 #home p { animation-delay: 0.5s; }
@@ -192,6 +199,8 @@ padding:10px;
 border-radius:6px;
 border:none;
 resize:none;
+background: #222;
+color: white;
 }
 
 .comment-box button{
@@ -212,6 +221,7 @@ width:100%;
 max-width:600px;
 border-radius:6px;
 border-left:3px solid red;
+text-align: left;
 }
 
 /* MOBILE */
@@ -220,20 +230,23 @@ border-left:3px solid red;
 nav{
 flex-direction:column;
 align-items:center;
-padding:15px 10px;
+padding:10px 5px;
 }
 
+.logo img { width: 40px; height: 40px; }
+.logo span { font-size: 18px; }
+
 .menu{
-margin-top:15px;
+margin-top:10px;
 flex-direction:row;
 flex-wrap:nowrap;
 justify-content:center;
-gap:12px;
+gap:8px;
 }
 
 .menu li a{
-font-size:13px;
-padding:6px 8px;
+font-size:11px;
+padding:5px 6px;
 }
 
 }
@@ -243,7 +256,7 @@ padding:6px 8px;
 
 <body>
 
-<video autoplay muted loop playsinline class="bg-video">
+<video autoplay muted loop playsinline webkit-playsinline class="bg-video">
 <source src="https://giffiles.alphacoders.com/219/thumb-440-219892.mp4" type="video/mp4">
 </video>
 
@@ -319,7 +332,7 @@ let div=document.createElement("div");
 div.className="comment";
 div.innerText=text;
 
-document.getElementById("comments-list").appendChild(div);
+document.getElementById("comments-list").prepend(div);
 input.value="";
 }
 </script>
