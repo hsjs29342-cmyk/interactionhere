@@ -1,47 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
+<title>DV Villain</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DV VILLAIN YT</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
 
-*{
+/* GENERAL */
+body{
 margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+font-family:Arial, sans-serif;
+background:black;
+color:white;
 scroll-behavior:smooth;
 }
 
-body{
-background:black;
-color:white;
-overflow-x:hidden;
+section{
+padding:100px 20px;
+text-align:center;
 }
 
-/* VIDEO BACKGROUND */
-.bg-video{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-object-fit:cover;
-z-index:-3;
-}
-
-.overlay{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.7);
-z-index:-2;
+h1,h2,p{
+text-align:center;
 }
 
 /* NAVBAR */
@@ -49,7 +29,7 @@ nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 50px;
+padding:15px 60px;
 background:rgba(0,0,0,0.9);
 position:fixed;
 width:100%;
@@ -57,6 +37,7 @@ z-index:1000;
 border-bottom:1px solid red;
 }
 
+/* LOGO */
 .logo{
 display:flex;
 align-items:center;
@@ -64,69 +45,52 @@ gap:10px;
 }
 
 .logo img{
-width:45px;
-height:45px;
+width:50px;
+height:50px;
 border-radius:50%;
 border:2px solid red;
+box-shadow:0 0 15px red;
 }
 
 .logo span{
-font-weight:800;
-font-size:18px;
 color:red;
+font-weight:800;
+font-size:20px;
 }
 
+/* MENU */
 .menu{
 display:flex;
-gap:20px;
+gap:30px;
 list-style:none;
-white-space:nowrap;
+margin:0;
+padding:0;
 }
 
 .menu li a{
 text-decoration:none;
 color:white;
 font-weight:600;
-font-size:14px;
+padding:6px 14px;
+border-radius:6px;
+transition:0.3s;
 }
 
 .menu li a:hover{
-color:red;
+background:red;
+box-shadow:0 0 10px red;
 }
 
-/* MOBILE */
-@media(max-width:768px){
-nav{
-flex-direction:column;
-align-items:center;
-}
-.menu{
-margin-top:10px;
-justify-content:center;
-}
-}
-
-/* SECTIONS */
-section{
-min-height:100vh;
-padding:160px 10% 80px;
-text-align:center;
-}
-
-section h2{
-color:red;
-margin-bottom:20px;
-}
-
-/* BUTTON */
+/* BUTTONS */
 .btn{
+display:inline-block;
+margin:10px;
 padding:10px 20px;
 background:red;
 color:white;
-border:none;
-border-radius:20px;
-cursor:pointer;
-margin:10px;
+text-decoration:none;
+border-radius:6px;
+transition:0.3s;
 }
 
 .btn:hover{
@@ -136,9 +100,9 @@ box-shadow:0 0 15px red;
 /* VIDEO GRID */
 .video-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
-margin-top:30px;
+padding:20px;
 }
 
 iframe{
@@ -148,48 +112,58 @@ border-radius:10px;
 }
 
 /* COMMENT BOX */
-form{
-max-width:400px;
-margin:auto;
-display:flex;
-flex-direction:column;
-gap:15px;
+.comment-box{
+margin-top:20px;
 }
 
-input, textarea{
+.comment-box textarea{
+width:80%;
 padding:10px;
 border-radius:6px;
-border:1px solid red;
-background:black;
-color:white;
-}
-
-textarea{
-height:100px;
+border:none;
 resize:none;
 }
 
-.comment-list{
-margin-top:40px;
-max-width:600px;
-margin-left:auto;
-margin-right:auto;
-text-align:left;
+.comment-box button{
+margin-top:10px;
+padding:8px 15px;
+background:red;
+border:none;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+#comments-list{
+margin-top:20px;
 }
 
 .comment{
-background:rgba(255,0,0,0.1);
+background:#111;
+margin:10px auto;
 padding:10px;
-margin-bottom:10px;
+width:70%;
+border-radius:6px;
 border-left:3px solid red;
-border-radius:5px;
 }
 
-footer{
-padding:20px;
-text-align:center;
-background:black;
-color:#aaa;
+/* MOBILE */
+@media(max-width:768px){
+
+nav{
+flex-direction:column;
+align-items:center;
+padding:15px 10px;
+}
+
+.menu{
+margin-top:15px;
+flex-direction:row;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+}
+
 }
 
 </style>
@@ -199,12 +173,14 @@ color:#aaa;
 
 <nav>
 <div class="logo">
-<img src="logo.png">
-<span>DV VILLAIN YT</span>
+<img src="https://i.imgur.com/7k12EPD.png">
+<span>DV Villain</span>
 </div>
 
 <ul class="menu">
 <li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#community">Community</a></li>
 <li><a href="#videos">Videos</a></li>
 <li><a href="#comments">Comments</a></li>
 </ul>
@@ -212,11 +188,23 @@ color:#aaa;
 
 <!-- HOME -->
 <section id="home">
-<h2>WELCOME TO DV VILLAIN YT</h2>
-<p>Gaming • Entertainment • Power Content</p>
+<h1>Welcome to DV Villain</h1>
+<p>Gaming | Entertainment | Streaming</p>
+<a href="#" class="btn">Subscribe Now</a>
+<a href="https://instagram.com" target="_blank" class="btn">Follow on Instagram</a>
+</section>
 
-<button class="btn" onclick="window.open('https://www.youtube.com/@DV_VILLAIN_YT?sub_confirmation=1')">Subscribe</button>
-<button class="btn" onclick="window.open('https://instagram.com/YOUR_INSTAGRAM')">Follow Instagram</button>
+<!-- ABOUT -->
+<section id="about">
+<h2>About Channel</h2>
+<p>This is DV Villain gaming channel where you enjoy gameplay videos, live streams and entertainment content.</p>
+</section>
+
+<!-- COMMUNITY -->
+<section id="community">
+<h2>Join Our Community</h2>
+<a href="https://chat.whatsapp.com" target="_blank" class="btn">WhatsApp Community</a>
+<a href="https://t.me" target="_blank" class="btn">Telegram Group</a>
 </section>
 
 <!-- VIDEOS -->
@@ -225,79 +213,49 @@ color:#aaa;
 
 <div class="video-grid">
 
-<!-- Replace VIDEO_ID with real YouTube IDs -->
-
-<iframe src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/VIDEO_ID2" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/VIDEO_ID3" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/VIDEO_ID4" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/VIDEO_ID5" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/VIDEO_ID6" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/VIDEO_ID7" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/VIDEO_ID8" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/VIDEO_ID9" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/VIDEO_ID10" allowfullscreen></iframe>
+<!-- Replace VIDEO_ID with your real YouTube IDs -->
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
 
 </div>
+
 </section>
 
 <!-- COMMENTS -->
 <section id="comments">
-<h2>Comments & Feedback</h2>
+<h2>Leave Your Feedback</h2>
 
-<form id="commentForm">
-<input type="text" id="name" placeholder="Your Name" required>
-<textarea id="message" placeholder="Your Comment..." required></textarea>
-<button type="submit" class="btn">Post Comment</button>
-</form>
+<div class="comment-box">
+<textarea id="commentInput" rows="4" placeholder="Write your suggestion..."></textarea><br>
+<button onclick="addComment()">Post Comment</button>
+</div>
 
-<div class="comment-list" id="commentList"></div>
+<div id="comments-list"></div>
 
 </section>
 
-<footer>
-© 2026 DV VILLAIN YT
-</footer>
-
 <script>
+function addComment(){
+let input=document.getElementById("commentInput");
+let commentText=input.value.trim();
+if(commentText==="") return;
 
-/* Load Comments */
-document.addEventListener("DOMContentLoaded", function(){
-loadComments();
-});
+let div=document.createElement("div");
+div.className="comment";
+div.innerText=commentText;
 
-/* Post Comment */
-document.getElementById("commentForm").addEventListener("submit", function(e){
-e.preventDefault();
+document.getElementById("comments-list").appendChild(div);
 
-let name = document.getElementById("name").value;
-let message = document.getElementById("message").value;
-
-let comment = {name, message};
-
-let comments = JSON.parse(localStorage.getItem("comments")) || [];
-comments.push(comment);
-localStorage.setItem("comments", JSON.stringify(comments));
-
-displayComment(comment);
-
-document.getElementById("commentForm").reset();
-});
-
-/* Display Single Comment */
-function displayComment(comment){
-let div = document.createElement("div");
-div.classList.add("comment");
-div.innerHTML = "<strong>" + comment.name + "</strong><br>" + comment.message;
-document.getElementById("commentList").appendChild(div);
+input.value="";
 }
-
-/* Load All Comments */
-function loadComments(){
-let comments = JSON.parse(localStorage.getItem("comments")) || [];
-comments.forEach(displayComment);
-}
-
 </script>
 
 </body>
