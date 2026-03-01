@@ -23,13 +23,13 @@ color:white;
 overflow-x:hidden;
 }
 
-/* Animated Gradient Background */
+/* Animated Background */
 body::before{
 content:'';
 position:fixed;
 width:200%;
 height:200%;
-background:linear-gradient(45deg,#000000,#0f2027,#2c5364,#000000);
+background:linear-gradient(45deg,#000,#1a0000,#000,#330000);
 background-size:400% 400%;
 animation:bgMove 15s infinite linear;
 z-index:-1;
@@ -46,26 +46,47 @@ nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 60px;
-background:rgba(0,0,0,0.8);
+padding:12px 40px;
+background:rgba(0,0,0,0.85);
 backdrop-filter:blur(10px);
 position:fixed;
 width:100%;
 z-index:1000;
-border-bottom:1px solid rgba(255,0,0,0.3);
+border-bottom:1px solid rgba(255,0,0,0.4);
+flex-wrap:wrap;
 }
 
 .logo{
-font-size:22px;
-font-weight:900;
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.logo img{
+width:50px;
+height:50px;
+border-radius:50%;
+border:2px solid #ff0000;
+box-shadow:0 0 15px #ff0000;
+transition:0.3s;
+}
+
+.logo img:hover{
+transform:scale(1.1);
+box-shadow:0 0 25px #ff0000;
+}
+
+.logo span{
+font-weight:800;
 color:#ff0000;
-letter-spacing:2px;
+font-size:20px;
 }
 
 nav ul{
 display:flex;
 list-style:none;
-gap:25px;
+gap:20px;
+flex-wrap:wrap;
 }
 
 nav ul li a{
@@ -81,14 +102,14 @@ color:#ff0000;
 
 /* SECTION */
 section{
-padding:120px 10%;
+padding:120px 8%;
 min-height:100vh;
 text-align:center;
 }
 
 /* HOME */
 .home h1{
-font-size:50px;
+font-size:48px;
 font-weight:900;
 color:#ff0000;
 text-shadow:0 0 20px #ff0000;
@@ -96,15 +117,14 @@ text-shadow:0 0 20px #ff0000;
 
 .home p{
 margin:20px 0;
-font-size:18px;
 color:#ccc;
 }
 
 .btn{
-padding:12px 30px;
+padding:12px 28px;
 margin:10px;
 border:none;
-border-radius:30px;
+border-radius:25px;
 cursor:pointer;
 font-weight:600;
 transition:0.3s;
@@ -131,7 +151,7 @@ background:#ff0000;
 color:white;
 }
 
-/* VIDEO GRID */
+/* VIDEOS */
 .video-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
@@ -143,7 +163,7 @@ iframe{
 width:100%;
 height:250px;
 border-radius:15px;
-box-shadow:0 0 20px rgba(255,0,0,0.3);
+box-shadow:0 0 20px rgba(255,0,0,0.4);
 }
 
 /* COMMUNITY */
@@ -162,39 +182,49 @@ padding:12px 25px;
 border-radius:25px;
 border:none;
 cursor:pointer;
+transition:0.3s;
 }
 
 .join-btn:hover{
 box-shadow:0 0 20px #ff0000;
 }
 
-/* FEEDBACK */
-form{
-margin-top:40px;
-max-width:500px;
-margin-left:auto;
-margin-right:auto;
+/* COMMENT SECTION */
+.comment-box{
+max-width:600px;
+margin:40px auto;
+text-align:left;
 }
 
-input,textarea{
+.comment-box textarea{
 width:100%;
-padding:10px;
-margin:10px 0;
+padding:12px;
 border-radius:10px;
 border:none;
+resize:none;
+height:80px;
 }
 
-textarea{
-height:120px;
-}
-
-form button{
+.comment-box button{
+margin-top:10px;
+padding:8px 20px;
 background:#ff0000;
 color:white;
-padding:10px 25px;
 border:none;
 border-radius:20px;
 cursor:pointer;
+}
+
+.comments-list{
+margin-top:20px;
+}
+
+.comment{
+background:#1a1a1a;
+padding:10px 15px;
+border-radius:10px;
+margin-bottom:10px;
+box-shadow:0 0 10px rgba(255,0,0,0.3);
 }
 
 /* FOOTER */
@@ -204,14 +234,26 @@ background:#000;
 color:#aaa;
 }
 
+/* MOBILE */
 @media(max-width:768px){
+
 .home h1{
-font-size:35px;
+font-size:32px;
 }
+
 nav{
-flex-direction:column;
-gap:10px;
+padding:12px 15px;
 }
+
+nav ul{
+justify-content:center;
+margin-top:10px;
+}
+
+.logo span{
+font-size:16px;
+}
+
 }
 
 </style>
@@ -220,13 +262,17 @@ gap:10px;
 <body>
 
 <nav>
-<div class="logo">DV VILLAIN YT</div>
+<div class="logo">
+<img src="logo.png" alt="Channel Logo">
+<span>DV VILLAIN YT</span>
+</div>
+
 <ul>
 <li><a href="#home">Home</a></li>
 <li><a href="#about">About Channel</a></li>
 <li><a href="#videos">Videos</a></li>
 <li><a href="#community">Community</a></li>
-<li><a href="#feedback">Feedback</a></li>
+<li><a href="#comments">Comments</a></li>
 </ul>
 </nav>
 
@@ -234,30 +280,26 @@ gap:10px;
 <h1>WELCOME TO DV VILLAIN YT</h1>
 <p>Gaming • Entertainment • Power Content</p>
 
-<button class="btn subscribe-btn" onclick="window.open('https://www.youtube.com/@DV_VILLAIN_YT?sub_confirmation=1')">
+<button class="btn subscribe-btn"
+onclick="window.open('https://www.youtube.com/@DV_VILLAIN_YT?sub_confirmation=1')">
 Subscribe Now
 </button>
 
-<button class="btn community-btn" onclick="location.href='#community'">
+<button class="btn community-btn"
+onclick="location.href='#community'">
 Join Community
 </button>
 </section>
 
 <section id="about">
 <h2>About The Channel</h2>
-<p>This channel delivers powerful gaming and entertaining content. Stay connected for epic videos and updates.</p>
+<p>Epic gaming content, powerful edits, and entertaining videos. Stay tuned and join the villain army.</p>
 </section>
 
 <section id="videos">
 <h2>Latest Videos</h2>
 
-<!-- Playlist Embed (Auto Updates) -->
 <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=DV_VILLAIN_YT"></iframe>
-
-<div class="video-grid">
-<iframe src="https://www.youtube.com/embed?listType=user_uploads&list=DV_VILLAIN_YT"></iframe>
-<iframe src="https://www.youtube.com/embed?listType=user_uploads&list=DV_VILLAIN_YT"></iframe>
-</div>
 
 </section>
 
@@ -265,27 +307,50 @@ Join Community
 <h2>Join Our Community</h2>
 
 <div class="community-box">
-<button class="join-btn" onclick="window.open('YOUR_TELEGRAM_LINK')">Join Telegram</button>
-<button class="join-btn" onclick="window.open('YOUR_WHATSAPP_LINK')">Join WhatsApp</button>
+<button class="join-btn" onclick="window.open('YOUR_TELEGRAM_LINK')">
+Join Telegram
+</button>
+
+<button class="join-btn" onclick="window.open('YOUR_WHATSAPP_LINK')">
+Join WhatsApp
+</button>
 </div>
 
 </section>
 
-<section id="feedback">
-<h2>Feedback / Suggestions</h2>
+<section id="comments">
+<h2>Comments</h2>
 
-<form onsubmit="alert('Thank you for your feedback!'); return false;">
-<input type="text" placeholder="Your Name" required>
-<input type="email" placeholder="Your Email" required>
-<textarea placeholder="Your Message"></textarea>
-<button type="submit">Submit</button>
-</form>
+<div class="comment-box">
+<textarea id="commentInput" placeholder="Write your comment..."></textarea>
+<button onclick="addComment()">Post Comment</button>
+
+<div class="comments-list" id="commentsList"></div>
+</div>
 
 </section>
 
 <footer>
 © 2026 DV VILLAIN YT | Official Website
 </footer>
+
+<script>
+
+function addComment(){
+let input = document.getElementById("commentInput");
+let commentText = input.value.trim();
+
+if(commentText !== ""){
+let commentDiv = document.createElement("div");
+commentDiv.classList.add("comment");
+commentDiv.innerText = commentText;
+
+document.getElementById("commentsList").prepend(commentDiv);
+input.value = "";
+}
+}
+
+</script>
 
 </body>
 </html>
