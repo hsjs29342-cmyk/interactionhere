@@ -58,7 +58,6 @@ overflow:hidden;
 
 .particles span{
 position:absolute;
-display:block;
 width:4px;
 height:4px;
 background:red;
@@ -75,9 +74,9 @@ opacity:0.7;
 /* NAVBAR */
 nav{
 display:flex;
-flex-direction:column;
+justify-content:space-between;
 align-items:center;
-padding:15px 40px;
+padding:15px 60px;
 background:rgba(0,0,0,0.9);
 position:fixed;
 width:100%;
@@ -90,7 +89,6 @@ border-bottom:1px solid red;
 display:flex;
 align-items:center;
 gap:10px;
-margin-bottom:10px;
 }
 
 .logo img{
@@ -110,16 +108,16 @@ color:red;
 /* MENU */
 .menu{
 display:flex;
-justify-content:center;
 gap:40px;
 list-style:none;
+align-items:center;
 }
 
 .menu li a{
 text-decoration:none;
 color:white;
 font-weight:600;
-padding:6px 12px;
+padding:6px 14px;
 border-radius:6px;
 transition:0.3s;
 }
@@ -186,8 +184,26 @@ box-shadow:0 0 20px red;
 transform:scale(1.05);
 }
 
-/* MOBILE */
+/* MOBILE RESPONSIVE */
 @media(max-width:768px){
+
+nav{
+flex-direction:column;
+align-items:center;
+padding:15px 20px;
+}
+
+.menu{
+margin-top:15px;
+gap:20px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.menu li a{
+font-size:14px;
+padding:6px 10px;
+}
 
 .home h1{
 font-size:30px;
@@ -201,12 +217,9 @@ section p{
 font-size:15px;
 }
 
-.menu{
-gap:15px;
 }
 
-}
-
+/* FOOTER */
 footer{
 background:black;
 padding:20px;
@@ -265,12 +278,12 @@ Subscribe Now
 
 <section id="about">
 <h2>About Channel</h2>
-<p>Epic gaming edits and villain-style content with cinematic vibes, intense background music, and powerful storytelling for true gaming lovers.</p>
+<p>Epic gaming edits and villain-style content with cinematic vibes and intense storytelling for true gaming lovers.</p>
 </section>
 
 <section id="community">
 <h2>Community</h2>
-<p>Join our Telegram and WhatsApp community to stay updated with latest uploads, exclusive content, and behind-the-scenes villain energy.</p>
+<p>Join our Telegram and WhatsApp community to stay updated with latest uploads and exclusive content.</p>
 </section>
 
 <section id="comments">
