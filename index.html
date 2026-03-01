@@ -56,12 +56,12 @@ animation: moveLight 6s ease-in-out infinite alternate;
 /* --- ADJUSTED FLOATING ANIMATION --- */
 @keyframes homeFloat {
     0% { transform: translate3d(0, 0, 0); }
-    50% { transform: translate3d(0, -20px, 0); } /* Increased to 20px for visibility */
+    50% { transform: translate3d(0, -20px, 0); } 
     100% { transform: translate3d(0, 0, 0); }
 }
 
 #home h1, #home p, #home .btn-container {
-    display: block; /* Changed to block for better alignment on mobile */
+    display: block; 
     animation: homeFloat 3.5s ease-in-out infinite;
     will-change: transform;
     perspective: 1000px;
@@ -69,6 +69,36 @@ animation: moveLight 6s ease-in-out infinite alternate;
 
 #home p { animation-delay: 0.4s; }
 #home .btn-container { animation-delay: 0.8s; }
+
+/* --- BUTTON BACKGROUND ANIMATION --- */
+@keyframes buttonGlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 24px;
+    /* Animated Gradient Background */
+    background: linear-gradient(-45deg, #ff0000, #990000, #ff4d4d, #ff0000);
+    background-size: 300% 300%;
+    animation: buttonGlow 3s ease infinite;
+    
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    box-shadow: 0 0 20px red;
+    transform: scale(1.05);
+}
 
 /* NAVBAR */
 nav{
@@ -136,7 +166,6 @@ padding:120px 20px 80px 20px;
 border-bottom:1px solid rgba(255,0,0,0.2);
 }
 
-/* Specifically added space for Home so it doesn't clip */
 #home {
     padding-top: 150px;
     padding-bottom: 100px;
@@ -146,22 +175,6 @@ h1,h2,p{
 text-align:center;
 max-width:800px;
 margin-bottom:20px;
-}
-
-/* BUTTONS */
-.btn{
-display:inline-block;
-margin:10px;
-padding:10px 20px;
-background:red;
-color:white;
-text-decoration:none;
-border-radius:6px;
-transition:0.3s;
-}
-
-.btn:hover{
-box-shadow:0 0 15px red;
 }
 
 /* VIDEO GRID */
@@ -178,6 +191,7 @@ iframe{
 width:100%;
 height:200px;
 border-radius:10px;
+border: 1px solid rgba(255,0,0,0.3);
 }
 
 /* COMMENTS */
@@ -193,16 +207,13 @@ padding:10px;
 border-radius:6px;
 border:none;
 resize:none;
+background: #1a1a1a;
+color: white;
+border: 1px solid #333;
 }
 
 .comment-box button{
 margin-top:10px;
-padding:8px 15px;
-background:red;
-border:none;
-color:white;
-border-radius:6px;
-cursor:pointer;
 }
 
 .comment{
@@ -274,8 +285,10 @@ padding:6px 8px;
 
 <section id="community">
 <h2>Join Our Community</h2>
-<a href="https://chat.whatsapp.com" target="_blank" class="btn">WhatsApp Community</a>
-<a href="https://t.me" target="_blank" class="btn">Telegram Group</a>
+<div class="btn-container">
+    <a href="https://chat.whatsapp.com" target="_blank" class="btn">WhatsApp Community</a>
+    <a href="https://t.me" target="_blank" class="btn">Telegram Group</a>
+</div>
 </section>
 
 <section id="videos">
@@ -292,7 +305,7 @@ padding:6px 8px;
 <h2>Leave Your Feedback</h2>
 <div class="comment-box">
 <textarea id="commentInput" rows="4" placeholder="Write your suggestion..."></textarea>
-<button onclick="addComment()">Post Comment</button>
+<button class="btn" onclick="addComment()">Post Comment</button>
 </div>
 <div id="comments-list"></div>
 </section>
