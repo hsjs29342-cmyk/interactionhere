@@ -1,98 +1,72 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>KnowShare - Knowledge Platform</title>
-    <script src="/socket.io/socket.io.js"></script>
-    <style>
-        body { font-family: Arial; background:#f2f2f2; padding:20px; }
-        textarea, input { padding:8px; margin:5px 0; width:100%; }
-        button { padding:8px 15px; margin:5px 0; }
-        .post { background:white; padding:10px; margin-bottom:10px; }
-    </style>
+    <title>Geeta Connect - Student Video Chat</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
 </head>
 <body>
 
-<h2>KnowShare - Public Knowledge Platform</h2>
+<h2>Geeta Connect - Video & Chat Platform</h2>
 
-<textarea id="postContent" placeholder="Share knowledge..."></textarea>
-<button onclick="createPost()">Post</button>
+<div class="join-section">
+    <input id="username" placeholder="Enter your name">
+    <input id="room" placeholder="Enter room name (e.g. BBA2026)">
+    <button onclick="joinRoom()">Join Room</button>
+</div>
 
-<hr>
+<div class="video-section">
+    <video id="localVideo" autoplay muted></video>
+    <video id="remoteVideo" autoplay></video>
+</div>
 
-<div id="posts"></div>
-
-<hr>
-
-<h3>Live Public Chat</h3>
-<input id="chatInput" placeholder="Type message...">
-<button onclick="sendMessage()">Send</button>
-<div id="chatBox"></div>
+<div class="chat-section">
+    <div id="messages"></div>
+    <input id="chatInput" placeholder="Type message...">
+    <button onclick="sendMessage()">Send</button>
+</div>
 
 <script>
 const socket = io();
+let room;
+let localStream;
+let peerConnection;
 
-async function loadPosts() {
-    const res = await fetch("/posts");
-    const posts = await res.json();
-    document.getElementById("posts").innerHTML = "";
+const servers = {
+    iceServers: [
+        { urls: "stun:stun.l.google.com:19302" }
+    ]
+};
 
-    posts.forEach(post => {
-        document.getElementById("posts").innerHTML += `
-            <div class="post">
-                <p>${post.content}</p>
-                <button onclick="likePost('${post._id}')">❤️ ${post.likes}</button>
-                <input placeholder="Comment" 
-                       onkeydown="addComment(event, '${post._id}', this)">
-                <div>${post.comments.join("<br>")}</div>
-            </div>
-        `;
-    });
-}
+async function joinRoom() {
+    const username = document.getElementById("username").value;
+    room = document.getElementById("room").value;
 
-async function createPost() {
-    const content = document.getElementById("postContent").value;
-    if(!content) return;
+    socket.emit('join', {username: username, room: room});
 
-    await fetch("/posts", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({content})
+    localStream = await navigator.mediaDevices.getUserMedia({video: true, audio: true});
+    document.getElementById("localVideo").srcObject = localStream;
+
+    peerConnection = new RTCPeerConnection(servers);
+
+    localStream.getTracks().forEach(track => {
+        peerConnection.addTrack(track, localStream);
     });
 
-    document.getElementById("postContent").value = "";
-    loadPosts();
-}
-
-async function likePost(id) {
-    await fetch(`/like/${id}`, {method: "PUT"});
-    loadPosts();
-}
-
-async function addComment(event, id, input) {
-    if(event.key === "Enter" && input.value) {
-        await fetch(`/comment/${id}`, {
-            method: "PUT",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({comment: input.value})
-        });
-        input.value = "";
-        loadPosts();
-    }
+    peerConnection.ontrack = event => {
+        document.getElementById("remoteVideo").srcObject = event.streams[0];
+    };
 }
 
 function sendMessage() {
     const msg = document.getElementById("chatInput").value;
-    if(!msg) return;
-
-    socket.emit("chat message", msg);
+    socket.emit("message", {room: room, msg: msg});
     document.getElementById("chatInput").value = "";
 }
 
-socket.on("chat message", function(msg) {
-    document.getElementById("chatBox").innerHTML += `<p>${msg}</p>`;
+socket.on("message", function(data) {
+    document.getElementById("messages").innerHTML += "<p>" + JSON.stringify(data) + "</p>";
 });
-
-loadPosts();
 </script>
 
 </body>
