@@ -103,9 +103,10 @@ font-size:18px;
 color:red;
 }
 
+/* MENU */
 .menu{
 display:flex;
-gap:25px;
+gap:20px;
 list-style:none;
 white-space:nowrap;
 }
@@ -150,17 +151,6 @@ font-size:17px;
 line-height:1.6;
 }
 
-.home h1{
-font-size:48px;
-color:red;
-text-shadow:0 0 25px red;
-}
-
-.home p{
-margin:20px 0;
-font-size:18px;
-}
-
 /* BUTTONS */
 .btn{
 padding:10px 24px;
@@ -172,11 +162,23 @@ font-weight:600;
 background:red;
 color:white;
 transition:0.3s;
+text-decoration:none;
+display:inline-block;
 }
 
 .btn:hover{
 box-shadow:0 0 20px red;
 transform:scale(1.05);
+}
+
+/* VIDEO LINKS GRID */
+.video-links{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+max-width:900px;
+margin-top:20px;
 }
 
 /* FORM */
@@ -213,22 +215,18 @@ box-shadow:0 0 10px red;
 nav{
 flex-direction:column;
 align-items:center;
-padding:15px 20px;
+padding:15px 15px;
 }
 
 .menu{
-margin-top:12px;
-gap:15px;
+margin-top:10px;
+gap:12px;
 justify-content:center;
 }
 
 .menu li a{
 font-size:12px;
 padding:5px 8px;
-}
-
-.home h1{
-font-size:28px;
 }
 
 section h2{
@@ -282,24 +280,18 @@ color:#aaa;
 <li><a href="#home">Home</a></li>
 <li><a href="#about">About</a></li>
 <li><a href="#community">Community</a></li>
+<li><a href="#videos">Videos</a></li>
 <li><a href="#comments">Comments</a></li>
 </ul>
 </nav>
 
 <!-- HOME -->
-<section id="home" class="home">
-<h1>WELCOME TO DV VILLAIN YT</h1>
+<section id="home">
+<h2>WELCOME TO DV VILLAIN YT</h2>
 <p>Gaming • Entertainment • Power Content</p>
 
-<button class="btn"
-onclick="window.open('https://www.youtube.com/@DV_VILLAIN_YT?sub_confirmation=1')">
-Subscribe Now
-</button>
-
-<button class="btn"
-onclick="window.open('https://instagram.com/YOUR_INSTAGRAM_USERNAME')">
-Follow on Instagram
-</button>
+<a class="btn" href="https://www.youtube.com/@DV_VILLAIN_YT?sub_confirmation=1" target="_blank">Subscribe</a>
+<a class="btn" href="https://instagram.com/YOUR_INSTAGRAM_USERNAME" target="_blank">Follow Instagram</a>
 </section>
 
 <!-- ABOUT -->
@@ -313,15 +305,28 @@ Follow on Instagram
 <h2>Community</h2>
 <p>Join our official communities to stay connected and updated.</p>
 
-<button class="btn"
-onclick="window.open('https://chat.whatsapp.com/YOUR_WHATSAPP_LINK')">
-Join WhatsApp
-</button>
+<a class="btn" href="https://chat.whatsapp.com/YOUR_WHATSAPP_LINK" target="_blank">Join WhatsApp</a>
+<a class="btn" href="https://t.me/YOUR_TELEGRAM_LINK" target="_blank">Join Telegram</a>
+</section>
 
-<button class="btn"
-onclick="window.open('https://t.me/YOUR_TELEGRAM_LINK')">
-Join Telegram
-</button>
+<!-- VIDEOS -->
+<section id="videos">
+<h2>Watch My Videos</h2>
+<p>Click below to watch my latest YouTube videos.</p>
+
+<div class="video-links">
+<a class="btn" href="https://youtube.com/watch?v=VIDEO1" target="_blank">Video 1</a>
+<a class="btn" href="https://youtube.com/watch?v=VIDEO2" target="_blank">Video 2</a>
+<a class="btn" href="https://youtube.com/watch?v=VIDEO3" target="_blank">Video 3</a>
+<a class="btn" href="https://youtube.com/watch?v=VIDEO4" target="_blank">Video 4</a>
+<a class="btn" href="https://youtube.com/watch?v=VIDEO5" target="_blank">Video 5</a>
+<a class="btn" href="https://youtube.com/watch?v=VIDEO6" target="_blank">Video 6</a>
+<a class="btn" href="https://youtube.com/watch?v=VIDEO7" target="_blank">Video 7</a>
+<a class="btn" href="https://youtube.com/watch?v=VIDEO8" target="_blank">Video 8</a>
+<a class="btn" href="https://youtube.com/watch?v=VIDEO9" target="_blank">Video 9</a>
+<a class="btn" href="https://youtube.com/watch?v=VIDEO10" target="_blank">Video 10</a>
+</div>
+
 </section>
 
 <!-- COMMENTS -->
