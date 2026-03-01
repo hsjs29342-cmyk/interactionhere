@@ -1,299 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>DV Villain</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-
-/* RESET */
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, sans-serif;
-}
-
-body{
-color:white;
-scroll-behavior:smooth;
-overflow-x:hidden;
-}
-
-/* BACKGROUND VIDEO */
-.bg-video{
-position:fixed;
-right:0;
-bottom:0;
-min-width:100%;
-min-height:100%;
-object-fit:cover;
-z-index:-2;
-filter:brightness(40%);
-}
-
-/* PARTICLE CANVAS */
-#particles{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:-1;
-pointer-events:none;
-}
-
-/* NAVBAR */
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 60px;
-background:rgba(0,0,0,0.85);
-position:fixed;
-width:100%;
-top:0;
-z-index:1000;
-border-bottom:1px solid red;
-}
-
-/* LOGO */
-.logo{
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-.logo img{
-width:50px;
-height:50px;
-border-radius:50%;
-border:2px solid red;
-box-shadow:0 0 15px red;
-}
-
-.logo span{
-color:red;
-font-weight:800;
-font-size:20px;
-}
-
-/* MENU */
-.menu{
-display:flex;
-gap:30px;
-list-style:none;
-}
-
-.menu li a{
-text-decoration:none;
-color:white;
-font-weight:600;
-padding:6px 14px;
-border-radius:6px;
-transition:0.3s;
-}
-
-.menu li a:hover{
-background:red;
-box-shadow:0 0 10px red;
-}
-
-/* SECTIONS */
-section{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:120px 20px 80px 20px;
-border-bottom:1px solid rgba(255,0,0,0.2);
-}
-
-h1,h2,p{
-text-align:center;
-max-width:800px;
-margin-bottom:15px;
-}
-
-/* BUTTONS */
-.btn{
-display:inline-block;
-margin:10px;
-padding:10px 20px;
-background:red;
-color:white;
-text-decoration:none;
-border-radius:6px;
-transition:0.3s;
-}
-
-.btn:hover{
-box-shadow:0 0 15px red;
-}
-
-/* VIDEO GRID */
-.video-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-width:100%;
-max-width:1100px;
-margin-top:20px;
-}
-
-iframe{
-width:100%;
-height:200px;
-border-radius:10px;
-}
-
-/* COMMENTS */
-.comment-box{
-margin-top:20px;
-width:100%;
-max-width:600px;
-}
-
-.comment-box textarea{
-width:100%;
-padding:10px;
-border-radius:6px;
-border:none;
-resize:none;
-}
-
-.comment-box button{
-margin-top:10px;
-padding:8px 15px;
-background:red;
-border:none;
-color:white;
-border-radius:6px;
-cursor:pointer;
-}
-
-.comment{
-background:#111;
-margin:10px auto;
-padding:10px;
-width:100%;
-max-width:600px;
-border-radius:6px;
-border-left:3px solid red;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-
-nav{
-flex-direction:column;
-align-items:center;
-padding:15px 10px;
-}
-
-.menu{
-margin-top:15px;
-flex-direction:row;
-flex-wrap:nowrap;
-justify-content:center;
-gap:12px;
-}
-
-.menu li a{
-font-size:13px;
-padding:6px 8px;
-}
-
-}
-
-</style>
-</head>
-
-<body>
-
-<!-- BACKGROUND VIDEO -->
-<video autoplay muted loop class="bg-video">
-<source src="https://giffiles.alphacoders.com/219/thumb-440-219892.mp4" type="video/mp4">
-</video>
-
-<!-- PARTICLES CANVAS -->
-<canvas id="particles"></canvas>
-
-<nav>
-<div class="logo">
-<img src="https://i.imgur.com/7k12EPD.png">
-<span>DV Villain</span>
-</div>
-
-<ul class="menu">
-<li><a href="#home">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#community">Community</a></li>
-<li><a href="#videos">Videos</a></li>
-<li><a href="#comments">Comments</a></li>
-</ul>
-</nav>
-
-<section id="home">
-<h1>Welcome to DV Villain</h1>
-<p>Gaming | Entertainment | Streaming</p>
-<a href="#" class="btn">Subscribe Now</a>
-<a href="https://instagram.com" target="_blank" class="btn">Follow on Instagram</a>
-</section>
-
-<section id="about">
-<h2>About Channel</h2>
-<p>This is DV Villain gaming channel where you enjoy gameplay videos, live streams and entertainment content.</p>
-</section>
-
-<section id="community">
-<h2>Join Our Community</h2>
-<a href="https://chat.whatsapp.com" target="_blank" class="btn">WhatsApp Community</a>
-<a href="https://t.me" target="_blank" class="btn">Telegram Group</a>
-</section>
-
-<section id="videos">
-<h2>Watch My Videos</h2>
-<div class="video-grid">
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-</div>
-</section>
-
-<section id="comments">
-<h2>Leave Your Feedback</h2>
-<div class="comment-box">
-<textarea id="commentInput" rows="4" placeholder="Write your suggestion..."></textarea>
-<button onclick="addComment()">Post Comment</button>
-</div>
-<div id="comments-list"></div>
-</section>
-
 <script>
-function addComment(){
-let input=document.getElementById("commentInput");
-let text=input.value.trim();
-if(text==="") return;
-
-let div=document.createElement("div");
-div.className="comment";
-div.innerText=text;
-
-document.getElementById("comments-list").appendChild(div);
-input.value="";
-}
-
-/* 3D Floating Red Particles */
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
 
@@ -302,44 +7,75 @@ canvas.height = window.innerHeight;
 
 let particlesArray = [];
 
-class Particle {
+/* Safe center area (no particles here) */
+function isInCenter(x,y){
+let centerWidth = canvas.width * 0.5;
+let centerHeight = canvas.height * 0.5;
+
+let centerX = canvas.width/2;
+let centerY = canvas.height/2;
+
+return (
+x > centerX - centerWidth/2 &&
+x < centerX + centerWidth/2 &&
+y > centerY - centerHeight/2 &&
+y < centerY + centerHeight/2
+);
+}
+
+class Particle{
 constructor(){
+this.reset();
+this.size = Math.random() * 2 + 1;
+this.speedX = (Math.random() - 0.5) * 0.6;
+this.speedY = (Math.random() - 0.5) * 0.6;
+}
+
+reset(){
 this.x = Math.random() * canvas.width;
 this.y = Math.random() * canvas.height;
-this.size = Math.random() * 3 + 1;
-this.speedX = (Math.random() - 0.5) * 1;
-this.speedY = (Math.random() - 0.5) * 1;
+
+/* Keep generating until it's NOT in center */
+while(isInCenter(this.x,this.y)){
+this.x = Math.random() * canvas.width;
+this.y = Math.random() * canvas.height;
+}
 }
 
 update(){
 this.x += this.speedX;
 this.y += this.speedY;
 
-if(this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-if(this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+if(this.x < 0 || this.x > canvas.width || 
+   this.y < 0 || this.y > canvas.height ||
+   isInCenter(this.x,this.y)){
+this.reset();
+}
 }
 
 draw(){
-ctx.fillStyle = "red";
+ctx.fillStyle = "rgba(255, 80, 80, 0.35)"; /* light red transparent */
 ctx.beginPath();
-ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
 ctx.fill();
 }
 }
 
 function init(){
 particlesArray = [];
-for(let i=0;i<150;i++){
+for(let i=0;i<120;i++){
 particlesArray.push(new Particle());
 }
 }
 
 function animateParticles(){
 ctx.clearRect(0,0,canvas.width,canvas.height);
+
 for(let i=0;i<particlesArray.length;i++){
 particlesArray[i].update();
 particlesArray[i].draw();
 }
+
 requestAnimationFrame(animateParticles);
 }
 
@@ -352,6 +88,3 @@ canvas.height = window.innerHeight;
 init();
 });
 </script>
-
-</body>
-</html>
