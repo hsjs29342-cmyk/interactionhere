@@ -16,9 +16,8 @@
 }
 
 body{
-    background:#050510;
+    background:#0f0f0f;
     color:white;
-    overflow-x:hidden;
 }
 
 /* ===== TOP LEFT LOGO ===== */
@@ -29,7 +28,8 @@ body{
     width:65px;
     height:65px;
     border-radius:50%;
-    box-shadow:0 0 20px #00f2ff, 0 0 40px #ff00c8;
+    border:3px solid #ff0000;
+    box-shadow:0 0 20px #ff0000;
     z-index:1200;
 }
 
@@ -38,13 +38,12 @@ nav{
     position:fixed;
     top:0;
     width:100%;
-    background:rgba(0,0,0,0.7);
-    backdrop-filter:blur(15px);
+    background:#181818;
     display:flex;
     justify-content:center;
     padding:20px 0;
     z-index:1000;
-    border-bottom:1px solid rgba(0,242,255,0.4);
+    border-bottom:2px solid #ff0000;
 }
 
 nav a{
@@ -54,26 +53,11 @@ nav a{
     font-size:18px;
     font-weight:600;
     position:relative;
-    transition:0.4s;
-}
-
-nav a::after{
-    content:"";
-    position:absolute;
-    width:0%;
-    height:3px;
-    bottom:-6px;
-    left:0;
-    background:linear-gradient(90deg,#00f2ff,#ff00c8);
-    transition:0.4s;
-}
-
-nav a:hover::after{
-    width:100%;
+    transition:0.3s;
 }
 
 nav a:hover{
-    color:#00f2ff;
+    color:#ff0000;
 }
 
 /* ===== HOME ===== */
@@ -91,7 +75,7 @@ nav a:hover{
     position:absolute;
     width:100%;
     height:100%;
-    background:rgba(0,0,0,0.75);
+    background:rgba(0,0,0,0.8);
 }
 
 .home-container{
@@ -111,9 +95,7 @@ nav a:hover{
 /* ===== WELCOME TEXT ===== */
 .home-left h1{
     font-size:48px;
-    background:linear-gradient(90deg,#00f2ff,#ff00c8);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+    color:#ff0000;
     margin-bottom:20px;
 }
 
@@ -121,41 +103,41 @@ nav a:hover{
     font-size:18px;
     line-height:1.7;
     margin-bottom:25px;
+    color:#ccc;
 }
 
 /* ===== SUBSCRIBE BUTTON ===== */
 .subscribe-btn{
     display:inline-block;
     padding:14px 35px;
-    border-radius:40px;
+    border-radius:30px;
     text-decoration:none;
     font-weight:bold;
     font-size:16px;
     color:white;
-    background:linear-gradient(90deg,#ff0000,#ff00c8);
+    background:#ff0000;
     box-shadow:0 0 20px #ff0000;
     transition:0.4s;
 }
 
 .subscribe-btn:hover{
+    background:#cc0000;
     transform:scale(1.08);
-    box-shadow:0 0 30px #ff00c8, 0 0 50px #ff0000;
 }
 
 /* ===== COMMUNITY CARD ===== */
 .home-right{
-    background:rgba(255,255,255,0.05);
+    background:#181818;
     padding:45px;
-    border-radius:25px;
-    backdrop-filter:blur(20px);
-    border:1px solid rgba(0,242,255,0.5);
+    border-radius:15px;
+    border:1px solid #ff0000;
     text-align:center;
-    box-shadow:0 0 30px rgba(0,242,255,0.3);
 }
 
 .home-right h2{
-    font-size:30px;
+    font-size:28px;
     margin-bottom:25px;
+    color:#ff0000;
 }
 
 .community-btn{
@@ -163,47 +145,47 @@ nav a:hover{
     margin:15px auto;
     padding:12px 25px;
     width:80%;
-    border-radius:30px;
+    border-radius:25px;
     text-decoration:none;
     font-weight:bold;
     color:white;
-    background:linear-gradient(90deg,#00f2ff,#ff00c8);
-    transition:0.4s;
+    background:#ff0000;
+    transition:0.3s;
 }
 
 .community-btn:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 25px #ff00c8;
+    background:#cc0000;
 }
 
 /* ===== ABOUT ===== */
 #about{
     padding:120px 10%;
-    background:#0d0d18;
+    background:#121212;
     text-align:center;
 }
 
 #about h2{
     font-size:36px;
-    color:#00f2ff;
+    color:#ff0000;
     margin-bottom:20px;
 }
 
 #about p{
     font-size:18px;
     line-height:1.8;
+    color:#ccc;
 }
 
 /* ===== VIDEOS ===== */
 #videos{
     padding:120px 5%;
-    background:#050510;
+    background:#0f0f0f;
     text-align:center;
 }
 
 #videos h2{
     font-size:36px;
-    color:#ff00c8;
+    color:#ff0000;
     margin-bottom:40px;
 }
 
@@ -217,9 +199,9 @@ nav a:hover{
 .video-grid iframe{
     width:360px;
     height:210px;
-    border-radius:20px;
-    box-shadow:0 0 25px rgba(0,242,255,0.6);
-    transition:0.4s;
+    border-radius:10px;
+    border:2px solid #ff0000;
+    transition:0.3s;
 }
 
 .video-grid iframe:hover{
@@ -270,12 +252,12 @@ nav a:hover{
         <div class="home-left">
             <h1>Welcome to Villain Knowledge Hub</h1>
             <p>
-                A futuristic student-powered knowledge platform.
-                Learn. Connect. Grow. Dominate with knowledge.
+                Learn powerful concepts, mindset growth, and real knowledge.
+                This is not just a channel — it’s a movement.
             </p>
 
             <a href="YOUR_CHANNEL_LINK" target="_blank" class="subscribe-btn">
-                🔥 Subscribe Now
+                🔴 Subscribe Now
             </a>
         </div>
 
@@ -303,9 +285,8 @@ nav a:hover{
 <section id="about">
     <h2>About Channel</h2>
     <p>
-        Villain Knowledge Hub is built to empower students with facts,
-        growth mindset, and powerful learning strategies.
-        Knowledge is power — and power builds leaders.
+        Villain Knowledge Hub empowers students with clarity,
+        confidence, and competitive advantage through knowledge.
     </p>
 </section>
 
@@ -314,9 +295,9 @@ nav a:hover{
     <h2>Latest Videos</h2>
 
     <div class="video-grid">
-        <iframe src="https://www.youtube.com/embed/tRBX0P2wlSM" frameborder="0" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/lRXVOeGQXQs" frameborder="0" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/dQJgvOXFbHU" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/tRBX0P2wlSM" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/lRXVOeGQXQs" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/dQJgvOXFbHU" allowfullscreen></iframe>
     </div>
 </section>
 
