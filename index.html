@@ -1,67 +1,99 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const http = require("http");
-const { Server } = require("socket.io");
+<!DOCTYPE html>
+<html>
+<head>
+    <title>KnowShare - Knowledge Platform</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <style>
+        body { font-family: Arial; background:#f2f2f2; padding:20px; }
+        textarea, input { padding:8px; margin:5px 0; width:100%; }
+        button { padding:8px 15px; margin:5px 0; }
+        .post { background:white; padding:10px; margin-bottom:10px; }
+    </style>
+</head>
+<body>
 
-const app = express();
-const server = http.createServer(app);
-const io = new Server(server);
+<h2>KnowShare - Public Knowledge Platform</h2>
 
-app.use(cors());
-app.use(express.json());
-app.use(express.static("public"));
+<textarea id="postContent" placeholder="Share knowledge..."></textarea>
+<button onclick="createPost()">Post</button>
 
-mongoose.connect("mongodb://127.0.0.1:27017/knowshare")
-.then(() => console.log("MongoDB Connected"))
-.catch(err => console.log(err));
+<hr>
 
-const postSchema = new mongoose.Schema({
-    content: String,
-    likes: { type: Number, default: 0 },
-    comments: [String]
-});
+<div id="posts"></div>
 
-const Post = mongoose.model("Post", postSchema);
+<hr>
 
-// Create Post
-app.post("/posts", async (req, res) => {
-    const post = new Post({ content: req.body.content });
-    await post.save();
-    res.json(post);
-});
+<h3>Live Public Chat</h3>
+<input id="chatInput" placeholder="Type message...">
+<button onclick="sendMessage()">Send</button>
+<div id="chatBox"></div>
 
-// Get Posts
-app.get("/posts", async (req, res) => {
-    const posts = await Post.find().sort({ _id: -1 });
-    res.json(posts);
-});
+<script>
+const socket = io();
 
-// Like Post
-app.put("/like/:id", async (req, res) => {
-    const post = await Post.findById(req.params.id);
-    post.likes++;
-    await post.save();
-    res.json(post);
-});
+async function loadPosts() {
+    const res = await fetch("/posts");
+    const posts = await res.json();
+    document.getElementById("posts").innerHTML = "";
 
-// Add Comment
-app.put("/comment/:id", async (req, res) => {
-    const post = await Post.findById(req.params.id);
-    post.comments.push(req.body.comment);
-    await post.save();
-    res.json(post);
-});
-
-// Socket Chat
-io.on("connection", (socket) => {
-    console.log("User Connected");
-
-    socket.on("chat message", (msg) => {
-        io.emit("chat message", msg);
+    posts.forEach(post => {
+        document.getElementById("posts").innerHTML += `
+            <div class="post">
+                <p>${post.content}</p>
+                <button onclick="likePost('${post._id}')">❤️ ${post.likes}</button>
+                <input placeholder="Comment" 
+                       onkeydown="addComment(event, '${post._id}', this)">
+                <div>${post.comments.join("<br>")}</div>
+            </div>
+        `;
     });
+}
+
+async function createPost() {
+    const content = document.getElementById("postContent").value;
+    if(!content) return;
+
+    await fetch("/posts", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({content})
+    });
+
+    document.getElementById("postContent").value = "";
+    loadPosts();
+}
+
+async function likePost(id) {
+    await fetch(`/like/${id}`, {method: "PUT"});
+    loadPosts();
+}
+
+async function addComment(event, id, input) {
+    if(event.key === "Enter" && input.value) {
+        await fetch(`/comment/${id}`, {
+            method: "PUT",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({comment: input.value})
+        });
+        input.value = "";
+        loadPosts();
+    }
+}
+
+function sendMessage() {
+    const msg = document.getElementById("chatInput").value;
+    if(!msg) return;
+
+    socket.emit("chat message", msg);
+    document.getElementById("chatInput").value = "";
+}
+
+socket.on("chat message", function(msg) {
+    document.getElementById("chatBox").innerHTML += `<p>${msg}</p>`;
 });
 
-server.listen(3000, () => {
-    console.log("Server running on port 3000");
-});
+loadPosts();
+</script>
+
+</body>
+</html>
